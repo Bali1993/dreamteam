@@ -1,6 +1,6 @@
 package szlab4hazi;
 
-public class Elements {
+public abstract class Elements {
 		private String name;
 		private int position_x; //0 vagy 1 vagy 2..
 		private int position_y;		
