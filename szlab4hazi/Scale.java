@@ -2,9 +2,13 @@ package szlab4hazi;
 
 public class Scale extends Elements {
 	private boolean isPushed;
+	public int scaleIdentifier; 
+	//pl egy szám 1-5 között, ha mondjuk 5 mérleg van
+	//azért van szükség rá, hogy legyen vmi kapcsolat adott mérleg-ajtó között
 	
-	public Scale(){
+	public Scale(int scaleID){
 		super("scale");
+		scaleIdentifier = scaleID;
 	}
 
 	public boolean isPushedGetter() {
@@ -17,6 +21,14 @@ public class Scale extends Elements {
 
 	public void isPushedSetter(boolean ispushed) {
 		isPushed = ispushed;
+	}
+	
+	//ha isPushed=true, tehát ha le van nyomva a mérleg, rajta van a doboz, akkor
+	//kinyitja a mérleggel azonos ID-jü ajtót, melynek megtalálásához
+	//végig kell menni a tömbön
+	//ha megvan, akkor isClosedSetter() fv. segítségével az isClosed változót false-ra kell állítani
+	public void doorOpener(){
+		
 	}
 
 }

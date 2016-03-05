@@ -1,6 +1,9 @@
 package szlab4hazi;
 
 public class Wall extends Elements {
-	private boolean special;
-
+	public boolean special;
+	
+	public Wall(){
+		super("wall");
+	}
 }
