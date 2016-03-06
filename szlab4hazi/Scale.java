@@ -23,11 +23,17 @@ public class Scale extends Elements {
 		isPushed = ispushed;
 	}
 	
-	//ha isPushed=true, tehát ha le van nyomva a mérleg, rajta van a doboz, akkor
+	//ha isPushed=true, tehát ha le van nyomva a mérleg, rajta van a doboz (vagy maga az ezredes), akkor
 	//kinyitja a mérleggel azonos ID-jü ajtót, melynek megtalálásához
 	//végig kell menni a tömbön
 	//ha megvan, akkor isClosedSetter() fv. segítségével az isClosed változót false-ra kell állítani
 	public void doorOpener(){
+		
+	}
+	
+	//ha isPushed=false, tehát ha nincs a mérlegen semmi, akkor
+	//bezárja a hozzá tartozó ajtót
+	public void doorCloser(){
 		
 	}
 

@@ -40,6 +40,10 @@ public class Colonel extends Elements{
 		//itt kéne meghívni a Hole osztály kill() függvényét is, ha
 		//az ezredes olyan cellára lép
 		
+		//ha rámegy a mérlegre, vagy lelép onnan, akkor
+		//meg kell változtatni a Scale isPushed változóját
+		//és meghívni a Scale doorOpener() vagy doorCloser() metódusát
+		
 	}
 	
 	//Létrehoz egy Bullet objektumot
@@ -59,6 +63,10 @@ public class Colonel extends Elements{
 		//ha fel vesz egy dobozt:
 		//1. haveBox = true
 		//2. Model osztály Field-jének megfelelõ indexét doboz -> út Elements-re kell cserélni
+		
+		//ha a dobozt a mérlegrõl veszi fel, akkor a
+		//Scale osztály isPushed változóját false-ra kell állítani
+		//és meghívni a Scale doorCloser() metódusát
 	}
 	
 	//doboz lerakása
@@ -66,6 +74,10 @@ public class Colonel extends Elements{
 		//ha lerak egy dobozt:
 		//1. haveBox = false
 		//2. Model osztály Field-jének megfelelõ indexét út -> doboz Elements-re kell cserélni
+		
+		//ha a dobozt a mérlegre rakja, akkor a
+		//Scale osztály isPushed változóját true-ra kell állítani
+		//és meghívni a Scale doorOpener() metódusát
 	}
 	
 	//féregjáraton át való haladás
