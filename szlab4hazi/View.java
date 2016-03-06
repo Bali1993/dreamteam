@@ -7,7 +7,7 @@ public class View{
 	//tehát mindenképp át kell vennie majd a Model osztály Field tömbjét
 	//(vagy elég ha csak használja)
 	
-	Map<String, String> Pictures;
+	private Map<String, String> Pictures;
 	//vagy legyen HashMap?
 	
 	public View(){
