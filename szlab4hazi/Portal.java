@@ -10,5 +10,9 @@ public class Portal extends Elements {
 		setElement(x, y, this);
 	}
 	
+	public String getPortalColour(){
+		return portalColour;
+	}
+	
 	
 }
