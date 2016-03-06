@@ -1,6 +1,6 @@
 package szlab4hazi;
 
-public class Wall extends Elements {
+public class Wall extends LabyrinthElements {
 	private boolean special;
 	
 	public Wall(boolean special){

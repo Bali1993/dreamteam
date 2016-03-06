@@ -1,6 +1,6 @@
 package szlab4hazi;
 
-public class Scale extends Elements {
+public class Scale extends LabyrinthElements {
 	private boolean isPushed;
 	public int scaleIdentifier; 
 	//pl egy szám 1-5 között, ha mondjuk 5 mérleg van
