@@ -21,17 +21,18 @@ public class Bullet extends Elements{
 
 		Elements element = getElement(getPosition_x(), getPosition_y());
 		if(getName(element) == "wall")
-			if( ((Wall)element).special == true )
+			if( ((Wall)element).getSpecial() == true )
 				makePortal();
 		//mi történik itt?
 		//adott x, y pozicion lekérdezem getElement-el, hogy milyen elem van ott
 		//ha a neve megegyezik a "wall"-al, akkor
 		//utána megvizsgálom hogy az a fal speciális-e
 		//mivel tudom róla hogy fal, ezért nyugodtan elvégezhetem a Wall konverziot,
-		//igy már tudok hivatkozni a special adattagjára is
+		//igy már tudok hivatkozni a special adattagjára is és lekérdezni azt
 		
-		//sztem ezt a vizsgálatot mindig 1 cellával elõre meg kéne vizsgálni, és 
-		//aszerint a következõ ciklusban módosítani
+		//sztem ezt a vizsgálatot mindig 1 cellával elõre meg kéne nézni, és 
+		//aszerint módosítani a dolgokat
+		//-> getPosition_x() + 1 vagy getPosition_y() + 1, bulletDirection-tõl függõen
 		
 		else{
 			//x++ vagy y++
