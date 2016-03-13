@@ -1,6 +1,6 @@
 package szlab4hazi;
 
-public class Hole extends LabyrinthElements {
+public class Hole extends Elements {
 	public Hole(){
 		super("hole");
 	}

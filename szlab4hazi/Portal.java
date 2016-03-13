@@ -1,6 +1,6 @@
 package szlab4hazi;
 
-public class Portal extends ElementsForColonel {
+public class Portal extends Elements {
 	private String portalColour; //yellow or blue
 	
 	public Portal (int x, int y, String colour){

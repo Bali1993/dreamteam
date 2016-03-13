@@ -1,6 +1,6 @@
 package szlab4hazi;
 
-public class Bullet extends ElementsForColonel{
+public class Bullet extends Elements{
 	public String bulletColour; //yellow or blue
 	private String bulletDirection;
 	

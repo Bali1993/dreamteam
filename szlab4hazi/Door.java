@@ -1,6 +1,6 @@
 package szlab4hazi;
 
-public class Door extends LabyrinthElements {
+public class Door extends Elements {
 	private boolean isClosed; //ez alapján majd más képet jelenit meg a View osztály az ajtóról
 	public int doorIdentifier; 
 	//pl egy szám 1-5 között, ha mondjuk 5 ajtó van
