@@ -1,0 +1,26 @@
+package game.stargate;
+
+import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.LinkedList;
+
+import ntrfc.stargate.Entity;
+
+public abstract class Elements implements Entity{
+	protected int x;
+	protected int y;
+	protected Colonel c;
+	
+	public Elements(int x2, int y2, Colonel c){
+		this.x = x2;
+		this.y = y2;
+		this.c = c;
+	}
+	
+	public Rectangle getRec(){
+		return new Rectangle(x, y, 32, 32);
+	}
+	
+	public abstract void onCollision(int dx, int dy, int i);
+	public abstract void render(Graphics g);
+}
