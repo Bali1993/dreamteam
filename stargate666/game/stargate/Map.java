@@ -23,6 +23,7 @@ public class Map{
 	/*
 	 * egyes képek beolvasása változókba
 	 */
+	/*
 	private Image road;
 	private Image wall;
 	private Image wall_spec;
@@ -34,7 +35,7 @@ public class Map{
 	
 	private Image box_on_scale;
 	private Image box_in_hand;
-	
+	*/
 	public Map(){
 		/*
 		 * filekezelések
@@ -45,7 +46,7 @@ public class Map{
 		
 		/*
 		 * képbeolvasások
-		 */
+		 
 		ImageIcon img = new ImageIcon();
 		road = img.getImage();
 		img = new ImageIcon();
@@ -67,7 +68,7 @@ public class Map{
 		box_on_scale = img.getImage();
 		img = new ImageIcon();
 		box_in_hand = img.getImage();
-		
+		*/
 	}
 
 	/*
@@ -98,7 +99,7 @@ public class Map{
 	
 	/*
 	 * image getter-setterek
-	 */
+	 *
 	public Image getRoad(){
 		return road;
 	}
@@ -128,5 +129,5 @@ public class Map{
 	}
 	public Image getOnSclae(){
 		return box_on_scale;
-	}
+	}*/
 }

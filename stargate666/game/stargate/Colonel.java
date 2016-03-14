@@ -21,7 +21,7 @@ public class Colonel{
 	
 	private boolean haveBox;
 	private int zpmCounter;
-	
+	/*
 	private Image colonel_U;
 	private Image colonel_D;
 	private Image colonel_L;
@@ -40,7 +40,7 @@ public class Colonel{
 	private Bullet b;
 
 	public Colonel(StarGateGame g){		
-		ImageIcon img = new ImageIcon();
+		/*ImageIcon img = new ImageIcon();
 		colonel_U = img.getImage();
 		img = new ImageIcon();
 		colonel_D = img.getImage();
@@ -58,7 +58,7 @@ public class Colonel{
 		colonel_L_Box = img.getImage();
 		img = new ImageIcon();
 		colonel_R_Box = img.getImage();
-		
+		*/
 		this.haveBox = false;
 		this.facing = "down";
 		this.zpmCounter = 0;
@@ -82,7 +82,6 @@ public class Colonel{
 	 * ha ütközik akkor egyszerûen visszalép, egyébként a collision feltételként bárhol vizsgálhatjuk, csk még nem látom át h hogyan
 	 * 
 	 */
-	
 	public int getX(){
 		return this.x;
 	}
@@ -95,6 +94,33 @@ public class Colonel{
 	}
 	public void setY(int y2){
 		this.y = y2;
+	}
+	
+	public int getX_yellow(){
+		return this.x_yellow;
+	}
+	public int getY_yellow(){
+		return this.y_yellow;
+	}
+	
+	public void setX_yellow(int x2){
+		this.x_yellow = x2;
+	}
+	public void setY_yellow(int y2){
+		this.y_yellow = y2;
+	}
+	public int getX_blue(){
+		return this.x_blue;
+	}
+	public int getY_blue(){
+		return this.y_blue;
+	}
+	
+	public void setX_blue(int x2){
+		this.x_blue = x2;
+	}
+	public void setY_blue(int y2){
+		this.y_blue = y2;
 	}
 	public StarGateGame getSGG(){
 		return this.sgg;
@@ -140,6 +166,7 @@ public class Colonel{
 	public Rectangle getRec(){
 		return new Rectangle(x, y, 32, 32);
 	}
+	/*
 	public Image getColonel_up(){
 		return this.colonel_U;
 	}
@@ -164,6 +191,9 @@ public class Colonel{
 	public Image getColonel_right_box(){
 		return this.colonel_R_Box;
 	}
+	public Image colonel_atBox(){
+		return this.colonel_atBox;
+	}*/
 }
 
 
