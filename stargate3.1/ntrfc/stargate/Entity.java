@@ -2,7 +2,6 @@ package ntrfc.stargate;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
-import java.util.LinkedList;
 
 public interface Entity {
 	/*
