@@ -14,32 +14,54 @@ public class Colonel{
 	private int x;
 	private int y;
 
-	private Image colonel;
-	//Image colonel direction...
-	
+	private Image colonel_U;
+	private Image colonel_D;
+	private Image colonel_L;
+	private Image colonel_R;
 	
 	/*
 	 * bullethez tároljuk azt az irányt amibe utojára lépett a colonel, hogy arra lõjön, default "down" lsd. konsruktor
 	 */
 	private String facing; //left,right,up,down
 	
-	StarGateGame sgg;
-
+	private StarGateGame sgg;
+	private Bullet b;
 
 	public Colonel(StarGateGame g){		
 		ImageIcon img = new ImageIcon();
-		colonel = img.getImage();
-		
-		this.sgg = g;
+		colonel_U = img.getImage();
+		img = new ImageIcon();
+		colonel_D = img.getImage();
+		img = new ImageIcon();
+		colonel_L = img.getImage();
+		img = new ImageIcon();
+		colonel_R = img.getImage();
+
 		this.facing = "down";
-		
+		this.sgg = g;
 		x = 32;
 		y = 32;
 	}
-	public Image getColonel(){
-		return this.colonel;
+	public Image getColonel_up(){
+		return this.colonel_U;
 	}
-	
+	public Image getColonel_down(){
+		return this.colonel_D;
+	}
+	public Image getColonel_left(){
+		return this.colonel_L;
+	}
+	public Image getColonel_right(){
+		return this.colonel_R;
+	}
+	public int C_Col(Colonel e, LinkedList<Entity> ll){
+		for(int i=0; i < ll.size(); ++i)
+		{
+			if(e.getRec().intersects(ll.get(i).getRec()))
+				return i;   //index of element in list
+		}
+		return 0;			//0 if no collision
+	}
 	
 	/*
 	 * ezt a függvényt hívjuk meg a cntrl osztályban, és itt nézem egyelõre a collisiont, mert még csak a falra vizsgáljuk
@@ -68,12 +90,16 @@ public class Colonel{
 		this.facing = s;
 	}
 	
+	public void shot(){
+		b = new Bullet(x, y, facing);
+	}
+	
 	public void move(int dx,int dy){
 		x += dx;
 		y += dy;
 
-		if(Collision.C_Col(this, sgg.getList())!=0){
-			int i = Collision.C_Col(this, sgg.getList()); 
+		if(C_Col(this, sgg.getList())!=0){
+			int i = C_Col(this, sgg.getList()); 
 			sgg.getList().get(i).onCollision(dx, dy, i);
 		}
 	}

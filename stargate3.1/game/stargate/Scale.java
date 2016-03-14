@@ -3,7 +3,7 @@ package game.stargate;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Scale extends Elements{
+public class Scale extends Element{
 	
 	private Door d;
 	
@@ -13,6 +13,8 @@ public class Scale extends Elements{
 	@Override
 	public void onCollision(int dx, int dy, int i) {
 		//TODO
+		
+		//opendoor, closedoor meghívása
 	}
 	@Override
 	public void render(Graphics g){
@@ -20,8 +22,9 @@ public class Scale extends Elements{
 		g.fillRect(x, y, 32, 32);
 		//g.drawImage(m.getScale(), x*32, y*32, null);
 	}
-	
-	public void openDoor(){
+	@Override
+	public void onCollisionWithBullet() {
+		// TODO Auto-generated method stub
 		
 	}
 

@@ -32,8 +32,8 @@ public class Map{
 	private Image zpm;
 	private Image pit;
 	
-	private Image zpm_on_scale;
-	private Image zpm_in_hand;
+	private Image box_on_scale;
+	private Image box_in_hand;
 	
 	public Map(){
 		/*
@@ -64,9 +64,9 @@ public class Map{
 		pit = img.getImage();
 		
 		img = new ImageIcon();
-		zpm_on_scale = img.getImage();
+		box_on_scale = img.getImage();
 		img = new ImageIcon();
-		zpm_in_hand = img.getImage();
+		box_in_hand = img.getImage();
 		
 	}
 	/*

@@ -59,7 +59,10 @@ public class StarGateGame extends JPanel implements ActionListener{
 			for(int x=0; x<30; x++){				
 				switch (m.getElement(x, y)){
 				case "w": 					
-					ll.add(new Wall(x*32, y*32, c));
+					ll.add(new Wall(x*32, y*32, c, false));
+					break;
+				case "q": 					
+					ll.add(new Wall(x*32, y*32, c, true));
 					break;
 				case "z":
 					ll.add(new Zpm(x*32, y*32, c));
@@ -69,8 +72,6 @@ public class StarGateGame extends JPanel implements ActionListener{
 					break;
 				case "s":
 					ll.add(new Scale(x*32, y*32, c));
-					break;
-				case "q":
 					break;
 				case "d":
 					ll.add(new Door(x*32, y*32, c));

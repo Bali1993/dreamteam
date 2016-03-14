@@ -11,10 +11,13 @@ import javax.swing.JFrame;
 public class StarGate extends Canvas {
 	public final String TITLE = "StarGate";	
 	
-	public StarGate(){
+	StarGateGame sgg;
+	
+	public StarGate(StarGateGame g){
+		this.sgg = g;
 		JFrame frame = new JFrame(this.TITLE);
 				
-		frame.add(new StarGateGame());
+		frame.add(sgg);
 		//frame.pack();
 		frame.setSize(980, 1000);
 		frame.setResizable(false);
@@ -23,16 +26,11 @@ public class StarGate extends Canvas {
 	
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	private void start() {
-		// TODO Auto-generated method stub
-	}
 	
 	public static void main(String args[]){
-		StarGate sg = new StarGate();
+		StarGateGame sgg = new StarGateGame();
+		StarGate sg = new StarGate(sgg);
 		
-		
-		sg.start();
-			
 	}
 
 	

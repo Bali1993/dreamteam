@@ -3,7 +3,7 @@ package game.stargate;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class Box extends Elements{
+public class Box extends Element{
 
 	public Box(int x2, int y2, Colonel c) {
 		super(x2, y2, c);
@@ -20,6 +20,12 @@ public class Box extends Elements{
 		g.setColor(Color.WHITE);
 		g.drawRect(x, y, 32, 32);
 		//g.drawImage(m.getBox(), x*32, y*32, null);
+	}
+
+	@Override
+	public void onCollisionWithBullet() {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
