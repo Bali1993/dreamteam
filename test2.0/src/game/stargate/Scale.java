@@ -7,8 +7,8 @@ import java.awt.Rectangle;
 public class Scale extends Element{
 	
 	private Door d;
-	private boolean isPressed;
-	private boolean pressedByBox;
+	private boolean isPressedByColonel;
+	private boolean ispressedByBox;
 	
 	public Scale(int x2, int y2, Colonel c, Door d) {
 		super(x2, y2, c);
