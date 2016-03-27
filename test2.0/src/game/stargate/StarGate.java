@@ -51,6 +51,10 @@ public class StarGate extends Canvas {
 			//x,y 0-tól fut !!!
 			//
 			
+			//F    O     N     T    O    S:
+			//move(0,0) index megadása nem szabad
+			//mert a 0,0 index arra van lefoglalva, hogy nincs ütközés!
+			
 			switch(input){
 			case "1":
 				System.out.println("\t1.1 Ajtó zárás tesztje");
@@ -112,7 +116,7 @@ public class StarGate extends Canvas {
 			case "1.2.7":
 				//Fallal való ütközés tesztje
 				System.out.println("\t2.7 Fallal");
-				sg.sgg.getColonel().move(0, 0);
+				sg.sgg.getColonel().move(0, 7);
 				break;
 			case "2":
 				//Doboz lerakásának tesztje
