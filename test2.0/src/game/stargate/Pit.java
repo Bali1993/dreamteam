@@ -22,7 +22,7 @@ public class Pit extends Element{
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("<- [:Pit].onCollision();");
+		System.out.println("<- [:Pit].onCollision():void;");
 	}
 	
 	@Override
