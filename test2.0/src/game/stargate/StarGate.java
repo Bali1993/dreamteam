@@ -58,6 +58,7 @@ public class StarGate extends Canvas {
 				break;
 			case "1.1":
 				//ajtó zárás teszt
+				break;
 			case "1.2":
 				System.out.println("\t1.2.1 ZPM-mel");
 				System.out.println("\t1.2.2 Szakadékkal");
