@@ -104,7 +104,6 @@ public class Colonel{
 			StarGateGame.tab++;
 			Rectangle RecOfElement = ll.get(i).getRec();
 			StarGateGame.tab--;
-			
 			//összehasonlítjuk a Colonel és adott elem négyzetét, hogy egyezik-e
 			//ha igen, akkor ütközés van
 			if(RecOfColonel.intersects(RecOfElement)){
@@ -201,24 +200,24 @@ public class Colonel{
 	public void setX_yellow(int x2){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("-> [:Colonel].setX_yellow();");
+		System.out.println("-> [:Colonel].setX_yellow(int x2);");
 		
 		this.x_yellow = x2;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("<- [:Colonel].setX_yellow():void;");
+		System.out.println("<- [:Colonel].setX_yellow(int x2):void;");
 	}
 	public void setY_yellow(int y2){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("-> [:Colonel].setY_yellow();");
+		System.out.println("-> [:Colonel].setY_yellow(int y2);");
 		
 		this.y_yellow = y2;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("<- [:Colonel].setY_yellow():void;");
+		System.out.println("<- [:Colonel].setY_yellow(int y2):void;");
 	}
 	
 	
@@ -248,24 +247,24 @@ public class Colonel{
 	public void setX_blue(int x2){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("-> [:Colonel].setX_blue();");
+		System.out.println("-> [:Colonel].setX_blue(int x2);");
 		
 		this.x_blue = x2;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("<- [:Colonel].setX_blue():void;");
+		System.out.println("<- [:Colonel].setX_blue(int x2):void;");
 	}
 	public void setY_blue(int y2){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("-> [:Colonel].setY_blue();");
+		System.out.println("-> [:Colonel].setY_blue(int y2);");
 		
 		this.y_blue = y2;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("<- [:Colonel].setY_blue():void;");
+		System.out.println("<- [:Colonel].setY_blue(int y2):void;");
 	}
 	
 	
@@ -479,25 +478,25 @@ public class Colonel{
 	public void setyellowPortalFacing(String facing){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("-> [:Colonel].setyellowPortalFacing();");
+		System.out.println("-> [:Colonel].setyellowPortalFacing(String facing);");
 		
 		yellowPortalFacing = facing;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("<- [:Colonel].setyellowPortalFacing();");
+		System.out.println("<- [:Colonel].setyellowPortalFacing(String facing);");
 	}
 	
 	public void setbluePortalFacing(String facing){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("-> [:Colonel].setbluePortalFacing();");
+		System.out.println("-> [:Colonel].setbluePortalFacing(String facing);");
 		
 		bluePortalFacing = facing;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("<- [:Colonel].setbluePortalFacing():String;");
+		System.out.println("<- [:Colonel].setbluePortalFacing(String facing):String;");
 	}
 	
 	
