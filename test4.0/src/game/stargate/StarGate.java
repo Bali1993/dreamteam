@@ -107,7 +107,6 @@ public class StarGate extends Canvas {
 			case "1.2.4.1":
 				// Doboz felvételének tesztje
 				sg.sgg.getColonel().move(0, 4);
-				System.out.println("\nTeszt vége");
 				break;
 			
 			case "1.2.5":

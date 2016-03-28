@@ -471,7 +471,7 @@ public class Colonel{
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("<- [:Colonel].getbluePortalFacing();");
+		System.out.println("<- [:Colonel].getbluePortalFacing():String;");
 		return bluePortalFacing;
 	}
 	

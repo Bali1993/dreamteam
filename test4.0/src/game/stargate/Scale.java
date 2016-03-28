@@ -72,18 +72,14 @@ public class Scale extends Element{
 		//							teszt implementáció:
 		//
 		///////////////////////////////////////////////////////////////////////////////				
-		System.out.println("Felveszi a dobozt? I/N");
+		System.out.println("Ajtó bezárása? I/N");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {
 		String input = br.readLine();
 		if (input.equals("i") || input.equals("I")) { // Beolvassuk a válaszát
-		//elõfeltétel biztosítása a teszteléshez
-		//beállítjuk biztosra h az ezredesnél nincs dobox, hogy ezután fel tudja venni
-		//ez a függvény csak teszteléshez kell, ezért nem irjuk ki a nevét!
-		c.sethaveBox(false);
 		
 		StarGateGame.tab++;
-		c.haveBoxInverter(i, false); //elõfeltétel biztosítása miatt pickUp()-ot fog hívni
+		d.closeDoor();
 		StarGateGame.tab--;
 		} else if (input.equals("n") || input.equals("N")) {
 		
