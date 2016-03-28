@@ -353,7 +353,7 @@ public class Colonel{
 		//kitörli magát a láncolt listából, ha nem a Scale által lett hívva
 		if(IndexinList != -1){
 			StarGateGame.tab++;
-			LinkedList<Entity> lista = getSGG().getList();
+			LinkedList<Entity> lista = sgg.getList();
 			lista.remove(IndexinList);
 			StarGateGame.tab--;
 		}
@@ -378,7 +378,7 @@ public class Colonel{
 		//nem szabad a mérleg helyett egy dobozt berakni a listába
 		if(isCalledByScale == false){
 			StarGateGame.tab++;
-			LinkedList<Entity> lista = getSGG().getList();
+			LinkedList<Entity> lista = sgg.getList();
 			//a mezõ ahol állhat egyrész út, de az sincs a listába
 			//mérlegen állva teheti le még a boxot, azt még le is birjuk kezelni Scale onColljébõl.
 			lista.add(new Box(x*32, y*32, this));
