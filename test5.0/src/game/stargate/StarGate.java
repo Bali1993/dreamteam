@@ -111,10 +111,10 @@ public class StarGate extends Canvas {
 				break;
 			
 			case "1.1.5":
-				System.out.println("\t\t1.1.5.1 Ajtó nyitás");
+				System.out.println("\t\t1.1.5.1 Ajtó nyitás és ajtó zárás");
 				break;
 			case "1.1.5.1":
-				//ajtó nyitás mérleggel
+				//ajtó nyitás mérleggel és ajtó zárás
 				sg.sgg.getColonel().move(0, 1);
 				System.out.println("\nTeszt vége");
 				break;
