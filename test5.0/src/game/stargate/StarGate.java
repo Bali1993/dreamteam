@@ -140,6 +140,7 @@ public class StarGate extends Canvas {
 			case "3.1":
 				//Speciális fal portált nyit
 				sg.sgg.getColonel().shoot("yellow");
+				System.out.println("\nTeszt vége");
 				break;
 			default:
 				System.out.println("1. A mozgás tesztelése");	
