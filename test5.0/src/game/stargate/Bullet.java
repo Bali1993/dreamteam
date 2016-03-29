@@ -97,7 +97,7 @@ public class Bullet{
 			if(i == 2){
 				for(int j = 0; j < StarGateGame.tab; j++)
 					System.out.print("\t");
-				System.out.println("<- [:Bullet].C_Col(Bullet b, LinkedList<Entity> ll):int;");
+				System.out.println("<- [:Bullet].C_Bul(Bullet b, LinkedList<Entity> ll):int;");
 				return i;   //index of element in list
 			}
 			
