@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -166,15 +167,16 @@ public class StarGateGame extends JPanel implements ActionListener{
 		super.paint(g);
 		/*
 		 * alapszín, ha eltûnik valami, akkor ne legyen lyuk
+		 * illetve ha a replikátort megszüntetjük, akkor is fontos
 		 */
-		/*for(int x=0; x<30; x++){
+		for(int x=0; x<30; x++){
 			for(int y=0; y<30; y++){								
 					g.setColor(Color.WHITE);
 					g.fillRect(x*32,y*32,32,32);
 					g.setColor(Color.LIGHT_GRAY);
 					g.drawRect(x*32,y*32,32,32);
 			}
-		}*/
+		}
 		for(int i=0; i < ll.size(); ++i)
 		{
 			ll.get(i).render(g);
@@ -191,10 +193,10 @@ public class StarGateGame extends JPanel implements ActionListener{
 		 *g.drawImage(m.getPit(), x*32, y*32, null) 
 		 */
 	}
+	
 	/*
 	 * egyszerû billentyûzetkezelés, WASD
 	 */
-	
 	public class Cntrl extends KeyAdapter{		
 		
 		public void keyPressed(KeyEvent e){
@@ -204,22 +206,26 @@ public class StarGateGame extends JPanel implements ActionListener{
 			if(keycode == KeyEvent.VK_UP){
 				c.move(0, -32);	
 				c.setFacing("up");
-				replicator.move();
+				if(replicator.getisAlive() == true)
+					replicator.move();
 			}	
 			if(keycode == KeyEvent.VK_DOWN){
 				c.move(0, 32);
 				c.setFacing("down");
-				replicator.move();
+				if(replicator.getisAlive() == true)
+					replicator.move();
 			}
 			if(keycode == KeyEvent.VK_LEFT){
 				c.move(-32, 0);
 				c.setFacing("left");
-				replicator.move();
+				if(replicator.getisAlive() == true)
+					replicator.move();
 			}
 			if(keycode == KeyEvent.VK_RIGHT){
 				c.move(32, 0);
 				c.setFacing("right");
-				replicator.move();
+				if(replicator.getisAlive() == true)
+					replicator.move();
 			}
 			if(keycode == KeyEvent.VK_L){
 		
@@ -227,22 +233,26 @@ public class StarGateGame extends JPanel implements ActionListener{
 			if(keycode == KeyEvent.VK_W){
 				j.move(0, -32);	
 				j.setFacing("up");
-				replicator.move();
+				if(replicator.getisAlive() == true)
+					replicator.move();
 			}	
 			if(keycode == KeyEvent.VK_S){
 				j.move(0, 32);
 				j.setFacing("down");
-				replicator.move();
+				if(replicator.getisAlive() == true)
+					replicator.move();
 			}
 			if(keycode == KeyEvent.VK_A){
 				j.move(-32, 0);
 				j.setFacing("left");
-				replicator.move();
+				if(replicator.getisAlive() == true)
+					replicator.move();
 			}
 			if(keycode == KeyEvent.VK_D){
 				j.move(32, 0);
 				j.setFacing("right");
-				replicator.move();
+				if(replicator.getisAlive() == true)
+					replicator.move();
 			}
 			
 			if(keycode == KeyEvent.VK_G){

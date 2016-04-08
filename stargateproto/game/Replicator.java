@@ -11,11 +11,13 @@ public class Replicator{
 	private int x;
 	private int y;
 	private Character ch;
+	private boolean isAlive;
 	
 	public Replicator(Character ch){
-		x = 32;
-		y = 128; 
+		x = 224;
+		y = 640; 
 		this.ch = ch;
+		isAlive = true;
 	}
 	
 	
@@ -49,13 +51,15 @@ public class Replicator{
 		
 		
 		if(CollisionIndexinListofElements!=0){
-			int dx = x; int dy = y;
+			int dx = 32; int dy = 0; //mert folyamatosan megy jobbra, az most a random mozgás
 			ListofElements.get(CollisionIndexinListofElements).onCollisionWithReplicator(dx, dy, this);
 		}
 	}
 	
+	//megsemmisiti önmagát, ha szakadékba lép
+	//Pit osztály hívja, ha onColl-ja aktiválódik azaz ütközés történik
 	public void destroy(){
-		
+		isAlive = false;
 	}
 	
 	public int getX(){
@@ -78,11 +82,26 @@ public class Replicator{
 		return new Rectangle(x, y, 32, 32);
 	}
 	
+	public boolean getisAlive(){
+		return isAlive;
+	}
+	
 	public void render(Graphics g){
+		//replikátor él
+		if(isAlive == true){
 		g.setColor(Color.YELLOW);
 		g.fillRect(this.x,this.y, 32, 32);
 		g.setColor(Color.WHITE);
 		g.drawRect(this.x,this.y, 32, 32);
+		}
+		
+		//replikátor megsemmisült
+		if(isAlive == false){
+			g.setColor(Color.WHITE);
+			g.fillRect(this.x,this.y, 32, 32);
+			g.setColor(Color.LIGHT_GRAY);
+			g.drawRect(this.x,this.y, 32, 32);
+		}
 	}
 
 }

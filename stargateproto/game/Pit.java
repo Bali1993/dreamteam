@@ -12,12 +12,17 @@ public class Pit extends Element{
 		this.ch = ch;
 	}
 	
-	
-	
-	
+
 	@Override
 	public void onCollisionWithReplicator(int dx, int dy, Replicator replicator){
+		//sgg lekérése
+		StarGateGame VariableForSGG = ch.getSGG();
 		
+		//szakadék eltávolítása a listából, saját magát eltávolítja
+		VariableForSGG.getList().remove(this);
+		
+		//replikátor megsemmisitése
+		replicator.destroy();
 	}
 	
 	@Override
