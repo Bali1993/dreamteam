@@ -7,8 +7,8 @@ import java.util.Random;
 
 public class Zpm extends Element{
 
-	public Zpm(int x2, int y2) {
-		super(x2, y2);
+	public Zpm(int x, int y, Character ch) {
+		super(x, y, ch);
 	}
 
 	@Override
@@ -65,7 +65,7 @@ public class Zpm extends Element{
 			}
 			
 			//bearkjuk a láncolt listába az új ZPM-et
-			VariableForSGG.getList().add(new Zpm(xForNewZPM*32, yForNewZPM*32));
+			VariableForSGG.getList().add(new Zpm(xForNewZPM*32, yForNewZPM*32, ch));
 			
 		}
 		

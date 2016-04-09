@@ -30,6 +30,8 @@ public class Character{
 	private boolean haveBox;
 	private int zpmCounter;
 	
+	private int weight;
+	
 	//majd a grafikushoz
 	/*
 	private Image character_U;
@@ -85,19 +87,21 @@ public class Character{
 		this.facing = "down";
 		this.zpmCounter = 0;
 		
+		this.weight = 50;
+		
 		this.sgg = g;
 		this.x = x;
 		this.y = y;
 	}
 
-	public int Coll_Character(Character e, LinkedList<Entity> ll){
+	public int Coll_Character(Character c, LinkedList<Entity> ll){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Character].C_Col(Character e, LinkedList<Entity> ll);");
 		
 		//Character négyzetét lekérjük
 		StarGateGame.tab++;
-		Rectangle RecOfCharacter = e.getRec();
+		Rectangle RecOfCharacter = c.getRec();
 		StarGateGame.tab--;
 		
 		for(int i=0; i < ll.size(); ++i)
@@ -387,7 +391,10 @@ public class Character{
 			LinkedList<Entity> lista = sgg.getList();
 			//a mezõ ahol állhat egyrész út, de az sincs a listába
 			//mérlegen állva teheti le még a boxot, azt még le is birjuk kezelni Scale onColljébõl.
-			lista.add(new Box(x*32, y*32));
+			lista.add(new Box(x*32, y*32,this)); 
+			//utolsó paraméterként vár Character-t, StarGateGame-be lévõ ch-t most nem tudjuk átadni
+			//fölös egy getter rá, mert igazából sztem a Box-nak am se kell a ch, hogy onColl-en KÍVÜL elérje a listát
+			//szóval átadjuk magát a Colonelt vagy Jaffa-t this-el
 			//x, y: Character aktuális koordinátái, így maga alá rakja a dobozt
 			
 			//ez a this Character obj. megegyezik az sgg-ben eltárolt c Character objektummal, mert

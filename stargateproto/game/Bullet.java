@@ -110,9 +110,6 @@ public class Bullet{
 		return 0; //0 if no collision
 	}
 	
-	public void render(Graphics g){
-		
-	}
 	
 	public void move(String dir){
 		for(int j = 0; j < StarGateGame.tab; j++)
@@ -150,6 +147,10 @@ public class Bullet{
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("<- [:Bullet].move():void;");
+	}
+	
+	public void render(Graphics g){
+		
 	}
 
 }

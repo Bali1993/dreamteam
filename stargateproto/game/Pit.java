@@ -4,11 +4,9 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Pit extends Element{
-	Character ch;
 
-	public Pit(int x2, int y2, Character ch) {
-		super(x2, y2);
-		this.ch = ch;
+	public Pit(int x, int y, Character ch) {
+		super(x, y, ch);
 	}
 	
 

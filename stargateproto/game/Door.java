@@ -9,12 +9,11 @@ public class Door extends Element{
 	//a láncolt lista segítségével ez lekezelõdik
 	//opened: nincs benne a listába
 	//closed: benne van a listába
+	//de a class diagram felvittem, hátha majd késõbb mégis szükségünk lesz rá
+	//meg jobban kifejezõ, hogy egy változóval is jelezzük, hogy nyitva van-e
 	
-	Character ch;
-	
-	public Door(int x2, int y2, Character ch) {
-		super(x2, y2);
-		this.ch = ch;
+	public Door(int x, int y, Character ch) {
+		super(x, y, ch);
 	}
 	
 	@Override
@@ -31,15 +30,6 @@ public class Door extends Element{
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("<- [:Door].onCollision():void;");
-	}
-	
-	@Override
-	public void render(Graphics g){
-		g.setColor(Color.RED);
-		g.fillRect(x, y, 32, 32);
-		g.setColor(Color.DARK_GRAY);
-		g.drawRect(x, y, 32, 32);
-		//g.drawImage(m.getScale(), x*32, y*32, null);
 	}
 	
 	public void openDoor(){
@@ -76,6 +66,15 @@ public class Door extends Element{
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("<- [:Door].closeDoor():void;");	
+	}
+	
+	@Override
+	public void render(Graphics g){
+		g.setColor(Color.RED);
+		g.fillRect(x, y, 32, 32);
+		g.setColor(Color.DARK_GRAY);
+		g.drawRect(x, y, 32, 32);
+		//g.drawImage(m.getScale(), x*32, y*32, null);
 	}
 	
 }

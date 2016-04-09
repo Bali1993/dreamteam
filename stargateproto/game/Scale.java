@@ -7,11 +7,14 @@ public class Scale extends Element{
 	
 	private Door d;
 	//private boolean isPressedByColonel; sztem nem kell
-	//private boolean isPressedByBox; //rendes implementációhoz kell majd
+	//private boolean isPressedByBox; // ez se kell
+	private boolean isPressedEnough; //eléggé le van-e a nyomva a mérleg, átlépi a súlyhatárt
+	private int WeightLimit;
 	
-	public Scale(int x2, int y2, Door d) {
-		super(x2, y2);
+	public Scale(int x, int y, Door d, int WeightLimit, Character ch) {
+		super(x, y, ch);
 		this.d = d;
+		this.WeightLimit = WeightLimit;
 	}
 	
 	@Override
@@ -31,6 +34,7 @@ public class Scale extends Element{
 		///////////////////////////////////////////////////////////////////////////////
 		//
 		//ha majd a rendes játék implementáció lesz, a következõ részt így kéne megirni:
+		// mivel a program változott, ez már nem vmi jó..
 		//
 		///////////////////////////////////////////////////////////////////////////////
 		/*

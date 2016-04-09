@@ -8,10 +8,12 @@ import ntrfc.Entity;
 public abstract class Element implements Entity{
 	protected int x;
 	protected int y;
+	protected Character ch;
 	
-	public Element(int x2, int y2){
-		this.x = x2;
-		this.y = y2;
+	public Element(int x, int y, Character ch){
+		this.x = x;
+		this.y = y;
+		this.ch = ch;
 	}
 	
 	//default implemenáció minden leszármazott számára

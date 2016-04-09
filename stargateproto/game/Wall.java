@@ -6,12 +6,10 @@ import java.awt.Graphics;
 public class Wall extends Element{
 	private boolean isSpecial;
 	private Portal p;
-	private Character ch;
 	
-	public Wall(int x2, int y2, boolean b, Character ch) {
-		super(x2, y2);
+	public Wall(int x, int y, boolean b, Character ch) {
+		super(x, y, ch);
 		this.isSpecial = b;
-		this.ch = ch;
 	}
 
 	@Override
@@ -91,7 +89,7 @@ public class Wall extends Element{
 				for(int j = 0; j < StarGateGame.tab; j++)
 					System.out.print("\t");
 				System.out.println("-> [:Portal].Portal();");
-				p = new Portal (x, y, Bulletcolour);
+				p = new Portal (x, y, Bulletcolour, ch);
 				for(int j = 0; j < StarGateGame.tab; j++)
 					System.out.print("\t");
 				System.out.println("<- [:Portal].Portal();");

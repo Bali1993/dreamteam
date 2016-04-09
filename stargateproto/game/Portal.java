@@ -3,10 +3,11 @@ package game;
 import java.awt.Graphics;
 
 public class Portal extends Element{
-	
-	private String colour; //yellow or blue
-	public Portal(int x2, int y2, String colour) {
-		super(x2, y2);
+	//private String facing; fölöesleges, mert a Colonelnél el van tárolva, és a saját facingjét a portál nem használja, csak a párjáét	
+	private String colour; //yellow / blue / red / green
+
+	public Portal(int x, int y, String colour, Character ch) {
+		super(x, y, ch);
 		this.colour = colour;
 	}
 	

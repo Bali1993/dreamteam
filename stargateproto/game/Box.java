@@ -4,8 +4,11 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Box extends Element{
-	public Box(int x2, int y2) {
-		super(x2, y2);
+	private int weight;
+	
+	public Box(int x, int y, Character ch) {
+		super(x, y, ch);
+		this.weight = 30;
 	}
 	
 	// Ez a függvény adja meg, hogy mit csinál a doboz, ha vele ütközünk

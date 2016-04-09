@@ -30,7 +30,7 @@ public class StarGateGame extends JPanel implements ActionListener{
 	//ezt a ch referenciát az elemek konstruktorába adjuk át
 	//Megjegyzés: ugye onColl esetében nem mind1 h milyen karakter megy neki az adott elemnek, ott is átadjuk, hogy Jaffa vagy Colonel megy neki
 	private Character ch;
-	//Wall osztályban az onCollwithBulletben is szükséges, de lehet ott jobb lenne paraméterként átadni, passz
+	//Wall osztályban az onCollwithBulletben is szükséges
 	//Pit osztályba is kéne a onCollisinWithReplicator miatt, hogy szakadékot útra cserélje
 	
 	private Character c;
@@ -153,19 +153,19 @@ public class StarGateGame extends JPanel implements ActionListener{
 					ll.add(new Wall(x*32, y*32, true, ch));
 					break;
 				case 'z':
-					ll.add(new Zpm(x*32, y*32));
+					ll.add(new Zpm(x*32, y*32, ch));
 					break;
 				case 'b':
-					ll.add(new Box(x*32, y*32));
+					ll.add(new Box(x*32, y*32, ch));
 					break;
 				case 'p':
 					ll.add(new Pit(x*32, y*32, ch));
 					break;
 				case 'g':
-					ll.add(new Portal(x*32, y*32, "yellow"));
+					ll.add(new Portal(x*32, y*32, "yellow", ch));
 					break;
 				case 's':
-					ll.add(new Scale(x*32, y*32, door));
+					ll.add(new Scale(x*32, y*32, door, 100, ch));
 					break;
 				default: 
 
