@@ -28,6 +28,7 @@ public class Pit extends Element{
 			System.out.print("\t");
 		System.out.println("-> [:Pit].onCollision();");
 		
+		//
 		StarGateGame.tab++;
 		character.getSGG().gameover();
 		StarGateGame.tab--;

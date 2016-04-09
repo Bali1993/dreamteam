@@ -31,6 +31,7 @@ public class Character{
 	private int zpmCounter;
 	
 	private int weight;
+	private boolean isAlive;
 	
 	//majd a grafikushoz
 	/*
@@ -88,6 +89,7 @@ public class Character{
 		this.zpmCounter = 0;
 		
 		this.weight = 50;
+		this.isAlive = true;
 		
 		this.sgg = g;
 		this.x = x;
@@ -389,8 +391,8 @@ public class Character{
 		if(isCalledByScale == false){
 			StarGateGame.tab++;
 			LinkedList<Entity> lista = sgg.getList();
-			//a mezõ ahol állhat egyrész út, de az sincs a listába
-			//mérlegen állva teheti le még a boxot, azt még le is birjuk kezelni Scale onColljébõl.
+			//a mezõ ahol állhat egyrész út, illetve
+			//mérlegen állva teheti le még a boxot, amit le kell kezelni a Scale onColljébõl.
 			lista.add(new Box(x*32, y*32,this)); 
 			//utolsó paraméterként vár Character-t, StarGateGame-be lévõ ch-t most nem tudjuk átadni
 			//fölös egy getter rá, mert igazából sztem a Box-nak am se kell a ch, hogy onColl-en KÍVÜL elérje a listát
@@ -442,6 +444,11 @@ public class Character{
 			System.out.print("\t");
 		System.out.println("<- [:Character].setzpmCounter():void;");
 	}
+	
+	public boolean getisAlive(){
+		return isAlive;
+	}
+
 	
 	public void render(Graphics g){
 		g.setColor(Color.MAGENTA);

@@ -39,9 +39,8 @@ public class Door extends Element{
 		
 		//isOpened változó állítása
 		//isOpened = true;
+		
 		//és törli magát a láncolt listából
-		
-		
 		StarGateGame.tab++;
 		ch.getSGG().getList().remove(this);
 		StarGateGame.tab--;
@@ -58,6 +57,7 @@ public class Door extends Element{
 		
 		//isOpened változó állítása
 		//isOpened = false;
+		
 		//és berakja magát a láncolt listába
 		StarGateGame.tab++;
 		ch.getSGG().getList().add(this);

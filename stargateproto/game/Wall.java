@@ -29,16 +29,7 @@ public class Wall extends Element{
 			System.out.print("\t");
 		System.out.println("<- [:Wall].onCollision():void;");
 	}
-	@Override
-	public void render(Graphics g){
-		g.setColor(Color.BLACK);
-		g.fillRect(x, y, 32, 32);
-		g.setColor(Color.DARK_GRAY);
-		g.drawRect(x, y, 32, 32);
-		//g.drawImage(m.getWall(), x*32, y*32, null);
-	}
 
-	
 	@Override
 	//TODO:
 	//ha pl kék színû portál nyitva de nyitunk egy új kék színû portált, akkor
@@ -123,6 +114,15 @@ public class Wall extends Element{
 			System.out.print("\t");
 		System.out.println("<- [:Wall].onCollisionWithBullet():void;");
 		
+	}
+	
+	@Override
+	public void render(Graphics g){
+		g.setColor(Color.BLACK);
+		g.fillRect(x, y, 32, 32);
+		g.setColor(Color.DARK_GRAY);
+		g.drawRect(x, y, 32, 32);
+		//g.drawImage(m.getWall(), x*32, y*32, null);
 	}
 
 }

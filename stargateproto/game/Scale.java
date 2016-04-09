@@ -8,12 +8,13 @@ public class Scale extends Element{
 	private Door d;
 	//private boolean isPressedByColonel; sztem nem kell
 	//private boolean isPressedByBox; // ez se kell
-	private boolean isPressedEnough; //eléggé le van-e a nyomva a mérleg, átlépi a súlyhatárt
+	private int CurrentWeight; //aktualis súly összesen a mérlegen
 	private int WeightLimit;
 	
 	public Scale(int x, int y, Door d, int WeightLimit, Character ch) {
 		super(x, y, ch);
 		this.d = d;
+		this.CurrentWeight = 0;
 		this.WeightLimit = WeightLimit;
 	}
 	

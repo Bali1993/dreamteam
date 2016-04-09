@@ -10,13 +10,13 @@ import ntrfc.Entity;
 public class Replicator{
 	private int x;
 	private int y;
-	private Character character;
+	StarGateGame sgg;
 	private boolean isAlive;
 	
-	public Replicator(Character character){
-		x = 224; y = 640; 
-		//x=32;y=384;
-		this.character = character;
+	public Replicator(StarGateGame sgg, int x, int y){
+		this.x = x;
+		this.y = y;
+		this.sgg = sgg;
 		isAlive = true;
 	}
 	
@@ -45,7 +45,7 @@ public class Replicator{
 		//Véletlenszerû mozgás a pályán
 		x += 32;
 		
-		LinkedList<Entity> ListofElements = character.getSGG().getList();
+		LinkedList<Entity> ListofElements = sgg.getList();
 		
 		int CollisionIndexinListofElements = Coll_Replicator(this, ListofElements); 
 		

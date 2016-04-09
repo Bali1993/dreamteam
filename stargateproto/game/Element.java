@@ -24,7 +24,7 @@ public abstract class Element implements Entity{
 	}
 	
 	
-	//default implementáció, hogy ütközés esetén a repliktor lepattan minden elemröl
+	//default implementáció, hogy ütközés esetén a replikátor lepattan minden elemröl
 	//csak a szakadék esetén kell overrideolni, mely szerint megsemmisiti a replikátort
 	//és a szakadékból út lesz
 	public void onCollisionWithReplicator(Replicator replicator, int dx, int dy){
@@ -37,8 +37,6 @@ public abstract class Element implements Entity{
 	//hasonlóan mint getRec()-nél érdemes lenne ezt is felvenni absztrakt osztályként mert
 	//különben csak annyit látunk, hogy [:Element] típus
 	public void onCollisionWithBullet(Bullet bullet){
-		//i változót paraméterként felvettem, hogy a Wall tudja hol történt ütközés, melyik láncolt lista indexen
-		//igy portál nyitáskor azon az indexen tudjon nyitni egy portált (saját maga helyén)
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Element].onCollisionWithBullet(int i);");

@@ -33,6 +33,10 @@ public class StarGateGame extends JPanel implements ActionListener{
 	//Wall osztályban az onCollwithBulletben is szükséges
 	//Pit osztályba is kéne a onCollisinWithReplicator miatt, hogy szakadékot útra cserélje
 	
+	//update: közbe rájöttem hogy sgg-t és átadhatnánk, nem kéne Character ch-t
+	//de akkor csúnyább lenne a class diagram és nincs kedvem mindenhol átirni már ezt :D
+	
+	
 	private Character c;
 	private Character j;
 	private Replicator replicator;
@@ -51,7 +55,9 @@ public class StarGateGame extends JPanel implements ActionListener{
 		c = new Character(this, 32, 32);
 		j = new Character(this, 64, 64);
 		ch = new Character(this, 96,96 ); //mind1 h mi a koordinátája, nem használjuk csak a fent emlitett referencia miatt kell
-		replicator = new Replicator(ch);
+		int Replicator_x = 224; int Replicator_y = 640; 
+		//int Replicator_x = 32; int Replicator_y = 384; 
+		replicator = new Replicator(this, Replicator_x, Replicator_y);
 		
 		ll = new LinkedList<Entity>();
 		buildMAP();

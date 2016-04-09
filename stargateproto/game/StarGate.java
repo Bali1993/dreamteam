@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 public class StarGate extends Canvas {
 	private static final long serialVersionUID = 1L;
 	public final String TITLE = "StarGate";
-	StarGateGame sgg;
+	private StarGateGame sgg;
 	
 	public StarGate(StarGateGame g){
 		this.sgg = g;
@@ -32,7 +32,7 @@ public class StarGate extends Canvas {
 		
 	}
 	
-	public static void main(String args[]){
+	public static void main(String[] args){
 		System.out.println("1. A mozgás tesztelése");	
 		System.out.println("2. Doboz lerakásának tesztelése");
 		System.out.println("3. Lövedék kilövésének tesztje");
