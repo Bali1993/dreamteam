@@ -14,8 +14,8 @@ public class Replicator{
 	private boolean isAlive;
 	
 	public Replicator(Character ch){
-		x = 224;
-		y = 640; 
+		x = 224; y = 640; 
+		//x=32;y=384;
 		this.ch = ch;
 		isAlive = true;
 	}

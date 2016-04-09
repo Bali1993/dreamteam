@@ -2,7 +2,6 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 public class Scale extends Element{
 	
@@ -69,21 +68,9 @@ public class Scale extends Element{
 	
 	@Override
 	public void render(Graphics g){
-		g.setColor(Color.LIGHT_GRAY);
+		g.setColor(Color.GREEN);
 		g.fillRect(x, y, 32, 32);
 		//g.drawImage(m.getScale(), x*32, y*32, null);
 	}
 
-	@Override
-	public Rectangle getRec(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Scale].getRec();");
-		
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Scale].getRec():Rectangle;");
-		return new Rectangle(x, y, 32, 32);
-	}
 }

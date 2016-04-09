@@ -19,8 +19,7 @@ public class StarGate extends Canvas {
 	public StarGate(StarGateGame g){
 		this.sgg = g;
 		
-		//játékablak leszedése
-		
+		//játékablak leszedéséhez az alábbiakat kell kikommentezni
 		JFrame frame = new JFrame(this.TITLE);
 				
 		frame.add(sgg);

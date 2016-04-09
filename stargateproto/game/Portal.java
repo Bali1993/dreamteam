@@ -1,7 +1,6 @@
 package game;
 
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 public class Portal extends Element{
 	
@@ -79,16 +78,4 @@ public class Portal extends Element{
 		
 	}
 
-	@Override
-	public Rectangle getRec(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Portal].getRec();");
-		
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Portal].getRec():Rectangle;");
-		return new Rectangle(x, y, 32, 32);
-	}
 }

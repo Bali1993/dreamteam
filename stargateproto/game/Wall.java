@@ -2,8 +2,6 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
-
 
 public class Wall extends Element{
 	private boolean isSpecial;
@@ -121,20 +119,6 @@ public class Wall extends Element{
 		System.out.println("<- [:Wall].onCollisionWithBullet():void;");
 		
 	}
-	
-	@Override
-	public Rectangle getRec(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Wall].getRec();");
-		
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Wall].getRec():Rectangle;");
-		return new Rectangle(x, y, 32, 32);
-	}
-
 
 }
  

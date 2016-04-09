@@ -13,15 +13,13 @@ public abstract class Element implements Entity{
 		this.x = x2;
 		this.y = y2;
 	}
-	/* kikommentezve, tesztelés miatt, normál progban elementsben lesz csak default implementáció a getRec elementekre, nem saját osztban
+	
+	//default implemenáció minden leszármazott számára
+	//ha majd szükséges késõbbi teszteléshez a függvénykiiratás, akkor érdemes absztrakt osztályként felvenni
+	//és minden leszármazottban másként megvalósítani
 	public Rectangle getRec(){
-		System.out.println("-> [:Wall].getRec();");
-		
-		System.out.println("<- [:Wall].getRec():Rectangle;");
 		return new Rectangle(x, y, 32, 32);
 	}
-	*/
-	public abstract Rectangle getRec();
 	
 	
 	//default implementáció, hogy ütközés esetén a repliktor lepattan minden elemröl

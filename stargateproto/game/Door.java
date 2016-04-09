@@ -2,7 +2,6 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Rectangle;
 
 public class Door extends Element{
 
@@ -77,19 +76,6 @@ public class Door extends Element{
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("<- [:Door].closeDoor():void;");	
-	}
-	
-	@Override
-	public Rectangle getRec(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Door].getRec();");
-		
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Door].getRec():Rectangle;");
-		return new Rectangle(x, y, 32, 32);
 	}
 	
 }

@@ -72,7 +72,7 @@ public class Map{
 
 	//a txt egy sorának String-jébõl vissza adja az adott oszlopban lévõ karaktert
 	public char getElement(int x, int y){
-		char elem = Map[x].charAt(y);
+		char elem = Map[y].charAt(x);
 		return elem;
 	}
 	
