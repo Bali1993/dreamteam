@@ -13,7 +13,7 @@ public class Pit extends Element{
 	
 
 	@Override
-	public void onCollisionWithReplicator(int dx, int dy, Replicator replicator){
+	public void onCollisionWithReplicator(Replicator replicator, int dx, int dy){
 		//sgg lekérése
 		StarGateGame VariableForSGG = ch.getSGG();
 		
@@ -25,7 +25,7 @@ public class Pit extends Element{
 	}
 	
 	@Override
-	public void onCollision(int dx, int dy, int i, Character character) {
+	public void onCollisionWithCharacter(Character character, int dx, int dy) {
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Pit].onCollision();");

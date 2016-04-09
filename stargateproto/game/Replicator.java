@@ -52,7 +52,7 @@ public class Replicator{
 		
 		if(CollisionIndexinListofElements!=0){
 			int dx = 32; int dy = 0; //mert folyamatosan megy jobbra, az most a random mozgás
-			ListofElements.get(CollisionIndexinListofElements).onCollisionWithReplicator(dx, dy, this);
+			ListofElements.get(CollisionIndexinListofElements).onCollisionWithReplicator(this, dx, dy);
 		}
 	}
 	

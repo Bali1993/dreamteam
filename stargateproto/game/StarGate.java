@@ -43,7 +43,7 @@ public class StarGate extends Canvas {
 		
 		/////////////////////////////////SKELETON TEST////////////////////////////////////////
 		
-		
+		//egylõre maradhat PROTO TEST-hez is, mert hasznos
 		
 		
 		

@@ -10,13 +10,12 @@ public class Box extends Element{
 	
 	// Ez a függvény adja meg, hogy mit csinál a doboz, ha vele ütközünk
 	@Override
-	public void onCollision(int dx, int dy, int i, Character charachter) {
+	public void onCollisionWithCharacter(Character character, int dx, int dy) {
 		for (int j = 0; j < StarGateGame.tab; j++) // Kiíratjuk a megfelelõ forrmában a nevét
 			System.out.print("\t");
 		System.out.println("-> [:Box].onCollision();");
 		
-		
-		//mikor majd játszunk egy végtelen ciklusba olvasunk itt, míg el nem lép a mezõrõl az ezredes
+		//mikor majd játszunk egy végtelen ciklusba olvasunk itt, míg el nem lép a mezõrõl a karakter
 		//-> pickUp(), putDown(), move() meghívása szükséges
 		//emlékeztetõ: haveBoxInverter() segítségével lehet pickup() / putDown()-ot meghívni
 

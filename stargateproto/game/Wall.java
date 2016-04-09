@@ -15,7 +15,7 @@ public class Wall extends Element{
 	}
 
 	@Override
-	public void onCollision(int dx, int dy, int i, game.Character character) {
+	public void onCollisionWithCharacter(Character character, int dx, int dy) {
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Wall].onCollision();");
@@ -40,16 +40,19 @@ public class Wall extends Element{
 		//g.drawImage(m.getWall(), x*32, y*32, null);
 	}
 
+	
 	@Override
 	//TODO:
 	//ha pl kék színû portál nyitva de nyitunk egy új kék színû portált, akkor
 	// a régi eltûnik
 	
-	//"i" paraméter: az ütközés helye a láncolt listában
-	//(ezen Wall saját indexe a láncolt listában)
-	//ja.. de akkor lehet nem is kéne átvenni i paramétert, simán lekérdezi saját indexét a Wall
-	//indexOf()-al
-	public void onCollisionWithBullet(int i) {
+	//mivel onCollision-re müködik minden, ezért
+	//abba maradtunk, hogy a Wall hozza létre a Portalt, ha a lövedék speciális falat ér,
+	//nem pedig maga a lövedék, ezért
+	//a Wall-nak tudnia kell, hogy mi a Bullet dir változójának értéke és
+	//annak ellentetjét átadni a Portal-nak
+	//illetve tudnia kell a Bullet színét is
+	public void onCollisionWithBullet(Bullet bullet) {
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Wall].onCollisionWithBullet();");
@@ -58,11 +61,9 @@ public class Wall extends Element{
 		if(isSpecial){
 			//nem kell minden függvényre külön a tab++, tab--, mert ezen függvényeken belül nem történik további fv hívás
 			StarGateGame.tab++;
-				//Bullet bullet = c.getBullet();
-				//String Bulletdir = bullet.getBulletdir(); //vmiért nem müködik nullpointerexceptiont ad!
-				String Bulletdir = "down";
-				//String Bulletcolour = bullet.getBulletcolour();  //vmiért nem müködik nullpointerexceptiont ad!
-				String Bulletcolour = "yellow";
+				String Bulletdir = bullet.getBulletdir();
+				String Bulletcolour = bullet.getBulletcolour();
+				
 				String Portaldir;
 				//irány csere
 				//ha pl. up irányból jött a lövedék, a portál iránya down lesz
@@ -97,19 +98,25 @@ public class Wall extends Element{
 				
 				
 				//be is kell jegyezni a láncolt listába:
-				ch.getSGG().getList().add(i, p);
+				//saját indexére rakja be
+				ch.getSGG().getList().add(ch.getSGG().getList().indexOf(this), p);
 				
-				//és fontos, hogy a Colonelnél is jelezni kell
-				if(Bulletcolour == "yellow"){
-					ch.setX_yellow(x);
-					ch.setY_yellow(y);
-					ch.setyellowPortalFacing(Portaldir);
+				//és fontos, hogy a karakternél is jelezni kell
+				//emlékeztetõ:
+				//		Colonel esetében:
+				//		PortalOne: kék portál		PortalTwo: sárga portál
+				//		Jaffa esetében
+				//		PortalOne: piros portál		PortalTwo: 	zöld portál
+				if(Bulletcolour == "blue" || Bulletcolour == "red"){
+					ch.setPortalOne_x(x);
+					ch.setPortalOne_y(y);
+					ch.setPortalOne_Facing(Portaldir);
 				}
 					
-				if(Bulletcolour == "blue"){
-					ch.setX_blue(x);
-					ch.setY_blue(y);
-					ch.setbluePortalFacing(Portaldir);
+				if(Bulletcolour == "yellow" || Bulletcolour == "green"){
+					ch.setPortalTwo_x(x);
+					ch.setPortalTwo_y(y);
+					ch.setPortalTwo_Facing(Portaldir);
 				}
 			StarGateGame.tab--;
 		}

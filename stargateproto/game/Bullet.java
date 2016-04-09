@@ -11,20 +11,21 @@ public class Bullet{
 	private int y;
 	private String dir;
 	private String colour;
-	private Character c;
+	private Character character; //melyik karakter hozta létre a lövedéket
 	
 	
-	public Bullet(int x2, int y2, String facing, String colour, Character character) {
+	public Bullet(int x, int y, String facing, String colour, Character character) {
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Bullet].Bullet();");
 		
-		this.x = x2;
-		this.y = y2;
+		this.x = x;
+		this.y = y;
 		this.dir = facing;
-		this.c = character;
+		this.character = character;
 		this.colour = colour;
 		
+		//ahogy létrehozódik a lövedék, el is inditjuk az útjára
 		StarGateGame.tab++;
 		this.move(dir);
 		StarGateGame.tab--;
@@ -125,10 +126,13 @@ public class Bullet{
 		//mivel nem akarunk többszálú programozást, ezért
 		//mig mozog a lövedék, az ezredest nem tudjuk mozgatni
 		
+		//vagy esetleg ugy lehetne megoldani a mozgását, mint a replikátornak, hogy bármilyen bill. leütésre mozog
+		//és akkor nem a konstruktorból kéne elínditani
+		
 		//while(){ amig nem ütközik akadályba a lövedék, növeljük koordinátáját és ütközésvizsgálat
 			
 			StarGateGame.tab++;
-			LinkedList<Entity> ListofElements = c.getSGG().getList();
+			LinkedList<Entity> ListofElements = character.getSGG().getList();
 			StarGateGame.tab--;
 			
 			StarGateGame.tab++;
@@ -137,7 +141,7 @@ public class Bullet{
 			
 			if(CollisionIndexinListofElements!=0){
 				StarGateGame.tab++;
-				ListofElements.get(CollisionIndexinListofElements).onCollisionWithBullet(CollisionIndexinListofElements);
+				ListofElements.get(CollisionIndexinListofElements).onCollisionWithBullet(this);
 				StarGateGame.tab--;
 			}
 			

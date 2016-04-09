@@ -2,11 +2,12 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.Image;
+
 import java.awt.Rectangle;
 import java.util.LinkedList;
-
-import javax.swing.ImageIcon;
+//majd a grafikushoz
+//import java.awt.Image;
+//import javax.swing.ImageIcon;
 
 import ntrfc.Entity;
 
@@ -14,16 +15,23 @@ public class Character{
 	private int x;
 	private int y;
 	
-	private int x_yellow;
-	private int y_yellow;
-	private int x_blue;
-	private int y_blue;
-	private String yellowPortalFacing;
-	private String bluePortalFacing;
+	//FONTOS:
+	//Colonel esetében:
+	//		PortalOne: kék portál		PortalTwo: sárga portál
+	//Jaffa esetében
+	//		PortalOne: piros portál		PortalTwo: 	zöld portál
+	private int PortalOne_x;
+	private int PortalOne_y;
+	private int PortalTwo_x;
+	private int PortalTwo_y;
+	private String PortalOne_Facing;
+	private String PortalTwo_Facing;
 	
 	private boolean haveBox;
 	private int zpmCounter;
 	
+	//majd a grafikushoz
+	/*
 	private Image character_U;
 	private Image character_D;
 	private Image character_L;
@@ -33,15 +41,17 @@ public class Character{
 	private Image character_D_Box;
 	private Image character_L_Box;
 	private Image character_R_Box;
-	/*
-	 * bullethez tároljuk azt az irányt amibe utoljára lépett a Character, hogy arra lõjön, default "down" lsd. konsruktor
-	 */
+	*/
+	
+	 //bullethez tároljuk azt az irányt amibe utoljára lépett a Character, hogy arra lõjön, default "down" lsd. konsruktor
 	private String facing; //up, down, left, right
 	
 	private StarGateGame sgg;
-	private Bullet b;
+	private Bullet b; // bár nem is használja a Character, fölösleges eltárolni referenciaként
 
-	public Character(StarGateGame g){		
+	public Character(StarGateGame g, int x, int y){
+		//majd a grafikushoz
+		/*
 		ImageIcon img = new ImageIcon();
 		character_U = img.getImage();
 		img = new ImageIcon();
@@ -60,24 +70,24 @@ public class Character{
 		character_L_Box = img.getImage();
 		img = new ImageIcon();
 		character_R_Box = img.getImage();
-		
+		*/
 		
 		
 		//-1-el jelezzük, hogy nincs még portál nyitva
-		this.x_yellow = -1;
-		this.y_yellow = -1;
-		this.x_blue = -1;
-		this.y_blue = -1;
-		yellowPortalFacing = "nincs még portál";
-		bluePortalFacing = "nincs még portál";
+		this.PortalOne_x = -1;
+		this.PortalOne_y = -1;
+		this.PortalTwo_x = -1;
+		this.PortalTwo_y = -1;
+		PortalOne_Facing = "nincs még portál";
+		PortalTwo_Facing = "nincs még portál";
 		
 		this.haveBox = false;
 		this.facing = "down";
 		this.zpmCounter = 0;
 		
 		this.sgg = g;
-		x = 32;
-		y = 32;
+		this.x = x;
+		this.y = y;
 	}
 
 	public int C_Col(Character e, LinkedList<Entity> ll){
@@ -117,7 +127,7 @@ public class Character{
 		//ezért vissza adhatunk 0-t, ha nem történt ütközés
 	}
 	
-	
+	//A Character koordináátinak lekérdezése, beállítása
 	public int getX(){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
@@ -162,128 +172,7 @@ public class Character{
 		System.out.println("<- [:Character].setY(int y2):void;");
 	}
 	
-	public int getX_yellow(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].getX_yellow();");
-		
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].getX_yellow():int;");
-		return this.x_yellow;
-	}
-	public int getY_yellow(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].getY_yellow();");
-		
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].getY_yellow():int;");
-		return this.y_yellow;	
-	}
-	
-	public void setX_yellow(int x2){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].setX_yellow(int x2);");
-		
-		this.x_yellow = x2;
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].setX_yellow(int x2):void;");
-	}
-	public void setY_yellow(int y2){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].setY_yellow(int y2);");
-		
-		this.y_yellow = y2;
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].setY_yellow(int y2):void;");
-	}
-	
-	
-	public int getX_blue(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].getX_blue();");
-		
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].getX_blue():int;");
-		return this.x_blue;
-	}
-	public int getY_blue(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].getY_blue();");
-		
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].getY_blue():int;");
-		return this.y_blue;	
-	}
-	
-	public void setX_blue(int x2){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].setX_blue(int x2);");
-		
-		this.x_blue = x2;
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].setX_blue(int x2):void;");
-	}
-	public void setY_blue(int y2){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].setY_blue(int y2);");
-		
-		this.y_blue = y2;
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].setY_blue(int y2):void;");
-	}
-	
-	
-	public StarGateGame getSGG(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].getSGG();");
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].getSGG():StarGateGame;");
-		return this.sgg;
-	}
-	
-	
-	//mivel onCollision-re müködik minden, ezért
-	//abba maradtunk, hogy a Wall hozza létre a Portalt, ha a lövedék speciális falat ér,
-	//nem pedig maga a lövedék, ezért
-	//a Wall-nak tudnia kell, hogy mi a Bullet dir változójának értéke és
-	//annak ellentetjét átadni a Portal-nak
-	public Bullet getBullet(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].getBullet();");
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].getBullet():Bullet;");
-		return b;
-	}
-	
+	//Character Facing-jének lekérdezése vagy beállítása
 	public String getFacing(){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
@@ -306,21 +195,151 @@ public class Character{
 		System.out.println("<- [:Character].setFacing():void;");
 	}
 	
+
 	public void shoot(String colour){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Character].shoot();");
 		
 		StarGateGame.tab++;
-		//ez a this Character obj. megegyezik az sgg-ben eltárolt c Character objektummal, mert
-		//csak egy Character obj.ot hozunk létre
-		//right?
 		b = new Bullet(x, y, facing, colour, this);
 		StarGateGame.tab--;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("<- [:Character].shoot():void;");
+	}
+	
+	
+	
+	public void move(int dx,int dy){
+		for(int j = 0; j < StarGateGame.tab; j++)
+			System.out.print("\t");
+		System.out.println("-> [:Character].move();");
+		
+		//a move() függvényt a tesztelés miatt megváltoztattuk
+		//most nem mozgatjuk, hanem egybõl konkrét cellára pozícionáljuk
+		//ezért lett az alábbi rész kikommentezve
+		 x += dx;
+		 y += dy;
+		 
+		
+		
+		//fontos, hogy
+		//a következõ rész, a *32 csak a teszteléshez szükséges
+		//dx = dx * 32;
+		//dy = dy * 32;
+		// ez is csak teszthez
+		//x= dx;
+		//y= dy;
+		
+		StarGateGame.tab++;
+		LinkedList<Entity> ListofElements = sgg.getList();
+		StarGateGame.tab--;
+		
+		StarGateGame.tab++;
+		int CollisionIndexinListofElements = C_Col(this, ListofElements); 
+		StarGateGame.tab--;
+		
+		if(CollisionIndexinListofElements!=0){
+			StarGateGame.tab++;
+			ListofElements.get(CollisionIndexinListofElements).onCollisionWithCharacter(this, dx, dy);
+			StarGateGame.tab--;
+		}
+		
+		for(int j = 0; j < StarGateGame.tab; j++)
+			System.out.print("\t");
+		System.out.println("<- [:Character].move():void;");
+		
+	}
+	
+	//Rectangle lekérdezése
+	public Rectangle getRec(){
+		for(int j = 0; j < StarGateGame.tab; j++)
+			System.out.print("\t");
+		System.out.println("-> [:Character].getRec();");
+		
+		
+		for(int j = 0; j < StarGateGame.tab; j++)
+			System.out.print("\t");
+		System.out.println("<- [:Character].getRec():Rectangle;");
+		return new Rectangle(x, y, 32, 32);
+	}
+	
+	//SGG lekérdezése
+	public StarGateGame getSGG(){
+		for(int j = 0; j < StarGateGame.tab; j++)
+			System.out.print("\t");
+		System.out.println("-> [:Character].getSGG();");
+		
+		for(int j = 0; j < StarGateGame.tab; j++)
+			System.out.print("\t");
+		System.out.println("<- [:Character].getSGG():StarGateGame;");
+		return this.sgg;
+	}
+	
+	//Portálok koordinátáival kapcsolatos metódusok:
+	public int getPortalOne_x(){
+		return PortalOne_x;
+	}
+	public int getPortalOne_y(){
+		return PortalOne_y;	
+	}
+	public void setPortalOne_x(int x){
+		this.PortalOne_x = x;
+	}
+	public void setPortalOne_y(int y){
+		this.PortalOne_y = y;
+	}
+	public int getPortalTwo_x(){
+		return PortalTwo_x;
+	}
+	public int getPortalTwo_y(){
+		return PortalTwo_y;	
+	}
+	public void setPortalTwo_x(int x){
+		this.PortalTwo_x = x;
+	}
+	public void setPortalTwo_y(int y){
+		this.PortalTwo_y = y;
+	}
+	
+	//Portálok Facing-jével kapcsolatos metódusok:
+	public String getPortalOne_Facing(){
+		return PortalOne_Facing;
+	}
+	public void setPortalOne_Facing(String facing){
+		this.PortalOne_Facing = facing;
+	}
+	public String getPortalTwo_Facing(){
+		return PortalTwo_Facing;
+	}
+	public void setPortalTwo_Facing(String facing){
+		this.PortalTwo_Facing = facing;
+	}
+	
+	
+	//érdemes ezt a függvényt használni, mert
+	//ugyanazon gombbal történik a box felvétele és lerakása (SPACE-el)
+	public void haveBoxInverter(int indexinList, boolean isCalledByScale){
+		for(int j = 0; j < StarGateGame.tab; j++)
+			System.out.print("\t");
+		System.out.println("-> [:Character].haveBoxInverter(int indexinList, boolean isCalledByScale);");
+		
+		if(haveBox == false){
+			StarGateGame.tab++;
+			pickUp(indexinList);
+			StarGateGame.tab--;
+		}
+		else{
+			StarGateGame.tab++;
+			putDown(isCalledByScale);
+			StarGateGame.tab--;
+		}
+		
+		for(int j = 0; j < StarGateGame.tab; j++)
+			System.out.print("\t");
+		System.out.println("<- [:Character].haveBoxInverter(int indexinList, boolean isCalledByScale):void;");
 	}
 	
 	
@@ -382,133 +401,6 @@ public class Character{
 		System.out.println("<- [:Character].putDown(boolean isCalledByScale):void;");
 	}
 	
-	public void move(int dx,int dy){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].move();");
-		
-		//a move() függvényt a tesztelés miatt megváltoztattuk
-		//most nem mozgatjuk, hanem egybõl konkrét cellára pozícionáljuk
-		//ezért lett az alábbi rész kikommentezve
-		 x += dx;
-		 y += dy;
-		 
-		
-		
-		//fontos, hogy
-		//a következõ rész, a *32 csak a teszteléshez szükséges
-		//dx = dx * 32;
-		//dy = dy * 32;
-		// ez is csak teszthez
-		//x= dx;
-		//y= dy;
-		
-		StarGateGame.tab++;
-		LinkedList<Entity> ListofElements = sgg.getList();
-		StarGateGame.tab--;
-		
-		StarGateGame.tab++;
-		int CollisionIndexinListofElements = C_Col(this, ListofElements); 
-		StarGateGame.tab--;
-		
-		if(CollisionIndexinListofElements!=0){
-			StarGateGame.tab++;
-			ListofElements.get(CollisionIndexinListofElements).onCollision(dx, dy, CollisionIndexinListofElements, this);
-			StarGateGame.tab--;
-		}
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].move():void;");
-		
-	}
-	
-	
-	public Rectangle getRec(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].getRec();");
-		
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].getRec():Rectangle;");
-		return new Rectangle(x, y, 32, 32);
-	}
-	
-	
-	public String getyellowPortalFacing(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].getyellowPortalFacing();");
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].getyellowPortalFacing();");
-		return yellowPortalFacing;
-	}
-	
-	public String getbluePortalFacing(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].getbluePortalFacing();");
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].getbluePortalFacing():String;");
-		return bluePortalFacing;
-	}
-	
-	
-	public void setyellowPortalFacing(String facing){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].setyellowPortalFacing(String facing);");
-		
-		yellowPortalFacing = facing;
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].setyellowPortalFacing(String facing);");
-	}
-	
-	public void setbluePortalFacing(String facing){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].setbluePortalFacing(String facing);");
-		
-		bluePortalFacing = facing;
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].setbluePortalFacing(String facing):String;");
-	}
-	
-	
-	
-	//érdemes ezt a függvényt használni, mert
-	//ugyanazon gombbal történik a box felvétele és lerakása (SPACE-el)
-	public void haveBoxInverter(int indexinList, boolean isCalledByScale){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].haveBoxInverter(int indexinList, boolean isCalledByScale);");
-		
-		if(haveBox == false){
-			StarGateGame.tab++;
-			pickUp(indexinList);
-			StarGateGame.tab--;
-		}
-		else{
-			StarGateGame.tab++;
-			putDown(isCalledByScale);
-			StarGateGame.tab--;
-		}
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].haveBoxInverter(int indexinList, boolean isCalledByScale):void;");
-	}
-	
 	public boolean gethaveBox(){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
@@ -520,7 +412,6 @@ public class Character{
 		System.out.println("<- [:Character].gethaveBox():boolean;");
 		return haveBox;
 	}
-	
 	
 	public int getzpmCounter(){
 		for(int j = 0; j < StarGateGame.tab; j++)
@@ -545,13 +436,6 @@ public class Character{
 		System.out.println("<- [:Character].setzpmCounter():void;");
 	}
 	
-	//FONTOS: ez csak a teszteléshez kell, hogy biztosítani tudjuk az elõfeltételeket !!!!!!!
-	//haveBox változó beállítását elvégzi a putDown(), pickUp()
-	public boolean sethaveBox(boolean haveBox){
-		//nevét nem irjuk ki, mert csak teszteléshez kell
-		return this.haveBox = haveBox;
-	}
-	
 	public void render(Graphics g){
 		g.setColor(Color.MAGENTA);
 		g.fillRect(this.x,this.y, 32, 32);
@@ -559,6 +443,9 @@ public class Character{
 		g.drawRect(this.x,this.y, 32, 32);
 	} 
 	
+	
+	//majd a grafikushoz
+	/*
 	public Image getCharacter_up(){
 		return this.character_U;
 	}
@@ -586,25 +473,5 @@ public class Character{
 	public Image Character_atBox(){
 		return this.character_atBox;
 	}
+	*/
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

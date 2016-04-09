@@ -12,7 +12,7 @@ public class Zpm extends Element{
 	}
 
 	@Override
-	public void onCollision(int dx, int dy, int i, Character character) {
+	public void onCollisionWithCharacter(Character character, int dx, int dy) {
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Zpm].onCollision();");
@@ -25,7 +25,7 @@ public class Zpm extends Element{
 		
 		//ZPM eltávolítása a listából
 		StarGateGame.tab++;
-		VariableForSGG.getList().remove(i);
+		VariableForSGG.getList().remove(this);
 		StarGateGame.tab--;
 		
 		//zpmCounter növelése 1-el

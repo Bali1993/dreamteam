@@ -33,14 +33,12 @@ public class StarGateGame extends JPanel implements ActionListener{
 	//Wall osztályban az onCollwithBulletben is szükséges, de lehet ott jobb lenne paraméterként átadni, passz
 	//Pit osztályba is kéne a onCollisinWithReplicator miatt, hogy szakadékot útra cserélje
 	
-	private Colonel c;
-	private Jaffa j;
+	private Character c;
+	private Character j;
 	private Replicator replicator;
-	/*
-	 * 
-	 * Entity azért kell mert sima <object>-et kap, annak nincs definiálva a getRec() függvénye, így nem tudnánk emghívni
-	 * minden elemre egyesével a lekérdezést.
-	 */
+
+	//Entity azért kell mert sima <object>-et kap, annak nincs definiálva a getRec() függvénye, így nem tudnánk meghívni
+	//minden elemre egyesével a lekérdezést.
 	private LinkedList<Entity> ll;
 	
 	
@@ -50,9 +48,9 @@ public class StarGateGame extends JPanel implements ActionListener{
 	public StarGateGame(){
 		
 		m = new Map();
-		c = new Colonel(this);
-		j = new Jaffa(this);
-		ch = new Character(this);
+		c = new Character(this, 32, 32);
+		j = new Character(this, 64, 64);
+		ch = new Character(this, 96,96 ); //mind1 h mi a koordinátája, nem használjuk csak a fent emlitett referencia miatt kell
 		replicator = new Replicator(ch);
 		
 		ll = new LinkedList<Entity>();
@@ -73,7 +71,7 @@ public class StarGateGame extends JPanel implements ActionListener{
 	//CSAK A TESZTELÉSHEZ SZÜKSGÉGES
 	//hogy a StarGate-bõl is elérjük a Colonel-t
 	//ezért nem iratjuk ki a nevét
-	public Colonel getColonel(){
+	public Character getColonel(){
 		return this.c;
 	}
 	
@@ -214,7 +212,7 @@ public class StarGateGame extends JPanel implements ActionListener{
 	}
 	
 	/*
-	 * egyszerû billentyûzetkezelés, WASD
+	 * egyszerû billentyûzetkezelés
 	 */
 	public class Cntrl extends KeyAdapter{		
 		
