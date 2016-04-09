@@ -21,7 +21,7 @@ public class Replicator{
 	}
 	
 	
-	public int C_Rep(Replicator r, LinkedList<Entity> ll){
+	public int Coll_Replicator(Replicator r, LinkedList<Entity> ll){
 		//Replicator négyzetét lekérjük
 		Rectangle RecOfReplicator = r.getRec();
 		
@@ -47,7 +47,7 @@ public class Replicator{
 		
 		LinkedList<Entity> ListofElements = character.getSGG().getList();
 		
-		int CollisionIndexinListofElements = C_Rep(this, ListofElements); 
+		int CollisionIndexinListofElements = Coll_Replicator(this, ListofElements); 
 		
 		
 		if(CollisionIndexinListofElements!=0){

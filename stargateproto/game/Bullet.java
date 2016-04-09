@@ -72,7 +72,7 @@ public class Bullet{
 		return new Rectangle(x, y, 32, 32);
 	}
 	
-	public int C_Bul(Bullet b, LinkedList<Entity> ll){
+	public int Coll_Bullet(Bullet b, LinkedList<Entity> ll){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Bullet].C_Bul(Bullet b, LinkedList<Entity> ll);");
@@ -136,7 +136,7 @@ public class Bullet{
 			StarGateGame.tab--;
 			
 			StarGateGame.tab++;
-			int CollisionIndexinListofElements = C_Bul(this, ListofElements); 
+			int CollisionIndexinListofElements = Coll_Bullet(this, ListofElements); 
 			StarGateGame.tab--;
 			
 			if(CollisionIndexinListofElements!=0){
