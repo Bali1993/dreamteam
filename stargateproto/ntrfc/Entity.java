@@ -9,7 +9,7 @@ import game.Replicator;
 public interface Entity {
 	
 	//deklarálja a getRec() függvényt, hogy a listában tárolt elemeken meghívhassuk
-	public abstract Rectangle getRec();
+	public Rectangle getRec();
 	
 	//elsõ paraméter
 	//		azt adjuk meg, hogy Repliator, Character vagy Bullet - el történt az ütközés
