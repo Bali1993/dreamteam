@@ -1,0 +1,25 @@
+1. ha akarunk több mérleg, ajtót, akkor ezeknek a párosítását megoldani
+-> lásd StarGateGame-be buildDoorandScales() függvény
+
+2. ajtónyitás bug: 
+létrehozás után belemegyek az ajtóba, mégis átengedi a karaktert
+bár ha rámegyek a mérlegre a paintelése mégis jól müködik, eltünik a listából és egy út lesz a helyén
+azt vettem észre hogy ha létrehozok több ajtó-mérleget, akkor csak elsõ ajtó szar, bugos..
+
+3. ZPM random generálása is bugos:
+valamiért pályaelemekre is rágenerálódik (fal, ajtó, stb)
+
+4. Box onColl-jének megírása
+
+5. Bullet léptetése (move() megírása)
+
+6. Element osztályban public void onCollisionWithBullet(Bullet bullet)-re default implementáció írása
+
+7. Portal onColl-jét finomitani, mivel csa a sárga-kék portált veszi még csak figyelembe
+illetve esélyes h bugos is, nem próbáltam még ki
+
+8. Scale onColl-je elég szegényes
+
+9. Wall-nél override-olni onCollisionWithBullet(Bullet bullet)-et
+kezdetleges implementacio megvan de nem biztos hogy jó, illetve, fontos h még ezt is meg kell valóstani:
+"ha pl kék színû portál nyitva de nyitunk egy új kék színû portált, akkor a régi eltünik"
