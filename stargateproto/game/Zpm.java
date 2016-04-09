@@ -2,6 +2,8 @@ package game;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Rectangle;
+import java.util.Random;
 
 public class Zpm extends Element{
 
@@ -26,6 +28,46 @@ public class Zpm extends Element{
 		VariableForSGG.getList().remove(i);
 		StarGateGame.tab--;
 		
+		//zpmCounter növelése 1-el
+		character.setzpmCounter(1);
+		
+		//ha az egyik karakter begyûjt 2 ZPM-et, akkor keletkezik egy új ZPM egy véletlenszerû helyen
+		//adott karakternél számoljuk külön h begyüjtött-e kettõt
+		if(character.getzpmCounter() % 2 == 0){
+			boolean collision = true;
+			int xForNewZPM = 0; //fordito sir h inicializáljam valamennyire
+			int yForNewZPM = 0;
+			
+			while(collision == true){
+				//generálunk egy Rectangle-t az új ZPM-nek
+				// min és max számok között generál egy random számot, akár végpontokat is beleértve
+				int min = 1; int max = 29;
+				Random random1 = new Random();
+				xForNewZPM = random1.nextInt(max - min + 1) + min;
+				Random random2 = new Random();
+				yForNewZPM = random2.nextInt(max - min + 1) + min;
+				
+				//Rectangle képzése a koordinátákból
+				Rectangle RecOfNewZPM = new Rectangle( xForNewZPM,  yForNewZPM, 32, 32);
+				
+				for(int k=0; k < VariableForSGG.getList().size(); ++k)
+				{	
+					//adott elem négyzete a láncolt listában
+					Rectangle RecOfElement = VariableForSGG.getList().get(k).getRec();
+					//összehasonlítjuk az új ZPM és adott elem négyzetét, hogy egyezik-e
+					//ha igen, akkor ütközés van
+					if(RecOfNewZPM.intersects(RecOfElement) == false){
+						collision = false;
+						break;
+					}
+					
+				}
+			}
+			
+			//bearkjuk a láncolt listába az új ZPM-et
+			VariableForSGG.getList().add(new Zpm(xForNewZPM*32, yForNewZPM*32));
+			
+		}
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");

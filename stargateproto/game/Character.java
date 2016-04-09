@@ -62,22 +62,14 @@ public class Character{
 		character_R_Box = img.getImage();
 		
 		
-		//rendes játékhoz:
+		
 		//-1-el jelezzük, hogy nincs még portál nyitva
-		/*this.x_yellow = -1;
+		this.x_yellow = -1;
 		this.y_yellow = -1;
 		this.x_blue = -1;
 		this.y_blue = -1;
 		yellowPortalFacing = "nincs még portál";
 		bluePortalFacing = "nincs még portál";
-		*/
-		//teszteléshez elõfeltételek biztosítása:
-		//sárga portál létrehoztunk már a txt-bõl és abba megyünk bele és teleportálni akarunk
-		//kék portált nem hozzuk létre a txt-bõl csak itt beállítjuk a Characternél az értékeket
-		this.x_blue = 15;
-		this.y_blue = 15;
-		this.bluePortalFacing = "left";
-		
 		
 		this.haveBox = false;
 		this.facing = "down";
@@ -126,12 +118,6 @@ public class Character{
 	}
 	
 	
-	
-	/*
-	 * ezt a függvényt hívjuk meg a cntrl osztályban, és itt nézem egyelõre a collisiont, mert még csak a falra vizsgáljuk
-	 * ha ütközik akkor egyszerûen visszalép, egyébként a collision feltételként bárhol vizsgálhatjuk, csk még nem látom át h hogyan
-	 * 
-	 */
 	public int getX(){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
@@ -286,7 +272,7 @@ public class Character{
 	//abba maradtunk, hogy a Wall hozza létre a Portalt, ha a lövedék speciális falat ér,
 	//nem pedig maga a lövedék, ezért
 	//a Wall-nak tudnia kell, hogy mi a Bullet dir változójának értéke és
-	//annak ellentetjét átadni a Portal-naka
+	//annak ellentetjét átadni a Portal-nak
 	public Bullet getBullet(){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
