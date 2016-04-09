@@ -23,3 +23,5 @@ illetve esélyes h bugos is, nem próbáltam még ki
 9. Wall-nél override-olni onCollisionWithBullet(Bullet bullet)-et
 kezdetleges implementacio megvan de nem biztos hogy jó, illetve, fontos h még ezt is meg kell valóstani:
 "ha pl kék színû portál nyitva de nyitunk egy új kék színû portált, akkor a régi eltünik"
+
+10. Ha lövedék éri a replikátort, akkor megsemmisül. - ez elég nagy fejtörés lesz, mert a replikátor nincs benne a láncolt listába
