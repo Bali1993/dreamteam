@@ -90,7 +90,7 @@ public class Character{
 		this.y = y;
 	}
 
-	public int C_Col(Character e, LinkedList<Entity> ll){
+	public int C_Cha(Character e, LinkedList<Entity> ll){
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:Character].C_Col(Character e, LinkedList<Entity> ll);");
@@ -238,7 +238,7 @@ public class Character{
 		StarGateGame.tab--;
 		
 		StarGateGame.tab++;
-		int CollisionIndexinListofElements = C_Col(this, ListofElements); 
+		int CollisionIndexinListofElements = C_Cha(this, ListofElements); 
 		StarGateGame.tab--;
 		
 		if(CollisionIndexinListofElements!=0){
