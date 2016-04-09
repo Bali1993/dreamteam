@@ -10,13 +10,13 @@ import ntrfc.Entity;
 public class Replicator{
 	private int x;
 	private int y;
-	private Character ch;
+	private Character character;
 	private boolean isAlive;
 	
-	public Replicator(Character ch){
+	public Replicator(Character character){
 		x = 224; y = 640; 
 		//x=32;y=384;
-		this.ch = ch;
+		this.character = character;
 		isAlive = true;
 	}
 	
@@ -45,7 +45,7 @@ public class Replicator{
 		//Véletlenszerû mozgás a pályán
 		x += 32;
 		
-		LinkedList<Entity> ListofElements = ch.getSGG().getList();
+		LinkedList<Entity> ListofElements = character.getSGG().getList();
 		
 		int CollisionIndexinListofElements = C_Rep(this, ListofElements); 
 		
