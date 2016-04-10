@@ -5,12 +5,12 @@ import java.awt.Graphics;
 
 public class Door extends Element{
 
-	//private boolean isOpened; nem is használjuk sehol,
-	//a láncolt lista segítségével ez lekezelõdik
+	private boolean isOpened;
+	//csinálhatnánk azt is h a láncolt lista segítségével lekezeljük
 	//opened: nincs benne a listába
 	//closed: benne van a listába
-	//de a class diagram felvittem, hátha majd késõbb mégis szükségünk lesz rá
-	//meg jobban kifejezõ, hogy egy változóval is jelezzük, hogy nyitva van-e
+	//ez azért nem jó mert random zpm generálódhat az ajtó helyére, mig nyitva van, szóval maradjon az isOpened változó állítása
+	//a láncolt listában pedig mindig benne marad az ajtó
 	
 	public Door(int x, int y, Character ch) {
 		super(x, y, ch);
@@ -23,8 +23,11 @@ public class Door extends Element{
 		System.out.println("-> [:Door].onCollision();");
 		
 		StarGateGame.tab++;
-		character.setX(character.getX()-dx);
-		character.setY(character.getY()-dy);
+		//ha nincs nyitva az ajtó, akkor lepattanunk róla, különben nem történik semmi
+		if(isOpened == false){
+			character.setX(character.getX()-dx);
+			character.setY(character.getY()-dy);
+		}
 		StarGateGame.tab--;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
@@ -38,11 +41,8 @@ public class Door extends Element{
 		System.out.println("-> [:Door].openDoor();");
 		
 		//isOpened változó állítása
-		//isOpened = true;
-		
-		//és törli magát a láncolt listából
 		StarGateGame.tab++;
-		ch.getSGG().getList().remove(this);
+		isOpened = true;
 		StarGateGame.tab--;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
@@ -56,11 +56,8 @@ public class Door extends Element{
 		System.out.println("-> [:Door].closeDoor();");
 		
 		//isOpened változó állítása
-		//isOpened = false;
-		
-		//és berakja magát a láncolt listába
 		StarGateGame.tab++;
-		ch.getSGG().getList().add(this);
+		isOpened = false;
 		StarGateGame.tab--;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
