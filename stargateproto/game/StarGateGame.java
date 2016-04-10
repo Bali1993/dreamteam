@@ -81,28 +81,14 @@ public class StarGateGame extends JPanel implements ActionListener{
 		return this.c;
 	}
 	
-	public void win(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:StarGateGame].win();");
-		
-		//called by zpm obj itself
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:StarGateGame].win():void;");
-	}
-	
-	public void gameover(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:StarGateGame].gameover();");
-		
-		//called by pit
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:StarGateGame].gameover():void;");
+	//A játék véget ér, ha mind a két felhasználó az általuk irányított karakterrel a szakadékba lép vagy
+	//ha az utolsó ZPM is fel lett véve a pályáról. 
+	//Utóbbi esetben a képernyõre kiíródik, hogy a két felhasználó egyenként mennyi ZPMet gyûjtött össze, 
+	//és akinek többet sikerült, az a nyertes. 
+	///Ha az egyik játékos meghal, de a másiknak sikerül felvennie az utolsó ZPM-et, 
+	//akkor mindenképp õ lesz a nyertes, függetlenül attól, hogy mennyi ZPM van nála.
+	public void EndofGame(){
+		//TODO
 	}
 	
 	public LinkedList<Entity> getList(){

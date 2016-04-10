@@ -448,6 +448,10 @@ public class Character{
 	public boolean getisAlive(){
 		return isAlive;
 	}
+	
+	public void setisAlive(boolean isAlive){
+		this.isAlive = isAlive;
+	}
 
 	
 	public void render(Graphics g){
