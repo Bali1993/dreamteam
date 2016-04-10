@@ -25,3 +25,6 @@ kezdetleges implementacio megvan de nem biztos hogy jó, illetve, fontos h még ez
 "ha pl kék színû portál nyitva de nyitunk egy új kék színû portált, akkor a régi eltünik"
 
 10. Ha lövedék éri a replikátort, akkor megsemmisül. - ez elég nagy fejtörés lesz, mert a replikátor nincs benne a láncolt listába
+
+11.public void onCollisionWithReplicator()
+Default implementációja, hogy ütközés esetén a replikátor az elemekrõl lepattan. Egyrészt Pit osztály esetében kell felüldefiniálni, mely szerint megsemmisíti a replikátort és a szakadékból út lesz. Másrészt a Zpm és Box osztály esetében, mivel õk nem csinálnak semmit a replikátorral. A replikátor állhat ugyanazon a mezõn, mint ahol a ZPM és a doboz van.
