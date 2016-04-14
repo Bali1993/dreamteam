@@ -278,7 +278,7 @@ public class StarGateGame extends JPanel implements ActionListener{
 			//illetve még akkor, ha rajta állunk a mérlegen és felvesszük a dobozt
 			
 			//putDown() hívása alapból itt történik, de
-			//még a mérlegen állva is lehet hívni (Scale onColl), vagy Box onColl során (felveszi, majd újra le is rakja ott a dobozt)
+			//még a mérlegen állva is lehet hívni (Scale onColl)
 		}
 	}
 
