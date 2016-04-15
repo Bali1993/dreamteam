@@ -123,21 +123,21 @@ public class StarGateGame extends JPanel implements ActionListener{
 	 //felépíti a pályát, végigmegy a map[] tömbön és végiggelenõrzi a stringek karaktereit, 
 	//majd az alapján berakja a láncolt listába
 	public void buildMAP(){
-		Door door = null;
+		
+		Door door1 = null ;
+		Door door2 = null ;
 		
 		for(int x=0; x<30; x++){
 			for(int y=0; y<30; y++){				
 				switch (m.getElement(x, y)){
-				case 'd': 	
-					door = new Door(x*32,y*32, ch);
-					ll.add(door);
-				}
-			}//for x
-		}//for y
-		
-		for(int x=0; x<30; x++){
-			for(int y=0; y<30; y++){				
-				switch (m.getElement(x, y)){
+				case '1': 	
+					door1 = new Door(x*32,y*32, ch);
+					ll.add(door1);
+				break;
+				case '3': 	
+					door2 = new Door(x*32,y*32, ch);
+					ll.add(door2);
+				break;
 				case 'w': 					
 					ll.add(new Wall(x*32, y*32, false, ch));
 					break;
@@ -156,11 +156,11 @@ public class StarGateGame extends JPanel implements ActionListener{
 				case 'g':
 					ll.add(new Portal(x*32, y*32, "yellow", ch));
 					break;
-				case 's':
-					ll.add(new Scale(x*32, y*32, door, 100, ch));
+				case '2':
+					ll.add(new Scale(x*32, y*32, door1, 100, ch));
 					break;
-				default: 
-
+				case '4':
+					ll.add(new Scale(x*32, y*32, door2, 100, ch));
 					break;
 				}
 			}//for x

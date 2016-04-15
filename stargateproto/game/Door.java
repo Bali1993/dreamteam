@@ -14,6 +14,7 @@ public class Door extends Element{
 	
 	public Door(int x, int y, Character ch) {
 		super(x, y, ch);
+		isOpened = false;
 	}
 	
 	@Override
@@ -67,11 +68,20 @@ public class Door extends Element{
 	
 	@Override
 	public void render(Graphics g){
+		if(isOpened == false){
 		g.setColor(Color.RED);
 		g.fillRect(x, y, 32, 32);
 		g.setColor(Color.DARK_GRAY);
 		g.drawRect(x, y, 32, 32);
 		//g.drawImage(m.getScale(), x*32, y*32, null);
+		}
+		
+		if(isOpened == true){
+			g.setColor(Color.WHITE);
+			g.fillRect(this.x,this.y, 32, 32);
+			g.setColor(Color.LIGHT_GRAY);
+			g.drawRect(this.x,this.y, 32, 32);
+		}
 	}
 	
 }
