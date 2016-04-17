@@ -13,7 +13,7 @@ import javax.swing.JFrame;
  */
 public class StarGate extends Canvas {
 	private static final long serialVersionUID = 1L;
-	private final String TITLE = "StarGate";
+	public final String TITLE = "StarGate";
 	private StarGateGame sgg;
 	
 	public StarGate(StarGateGame g){
@@ -33,6 +33,10 @@ public class StarGate extends Canvas {
 	}
 	
 	public static void main(String[] args){
+		StarGateGame sgg = new StarGateGame();
+		StarGate sg = new StarGate(sgg);
+		
+		/*
 		System.out.println("1. A mozgás tesztelése");	
 		System.out.println("2. Doboz lerakásának tesztelése");
 		System.out.println("3. Lövedék kilövésének tesztje");
@@ -151,17 +155,19 @@ public class StarGate extends Canvas {
 			
 			}
 			
-	}catch(IOException io){
+		}catch(IOException io){
 			io.printStackTrace();
 		}	
 		
 		
+		
+		
 		}
 		
-		
+		*/
 		
 		
 	}
-}
-	
 
+	
+}

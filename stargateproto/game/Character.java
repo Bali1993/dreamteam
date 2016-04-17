@@ -20,18 +20,12 @@ public class Character{
 	//		PortalOne: kék portál		PortalTwo: sárga portál
 	//Jaffa esetében
 	//		PortalOne: piros portál		PortalTwo: 	zöld portál
-	private int PortalBlue_x;
-	private int PortalBlue_y;
-	private int PortalYellow_x;
-	private int PortalYellow_y;
-	private int PortalRed_x;
-	private int PortalRed_y;
-	private int PortalGreen_x;
-	private int PortalGreen_y;
-	private String PortalBlue_Facing;
-	private String PortalYellow_Facing;
-	private String PortalRed_Facing;
-	private String PortalGreen_Facing;
+	private int PortalOne_x;
+	private int PortalOne_y;
+	private int PortalTwo_x;
+	private int PortalTwo_y;
+	private String PortalOne_Facing;
+	private String PortalTwo_Facing;
 	
 	private boolean haveBox;
 	private int zpmCounter;
@@ -83,18 +77,12 @@ public class Character{
 		
 		
 		//-1-el jelezzük, hogy nincs még portál nyitva
-		this.PortalBlue_x = -1;
-		this.PortalBlue_y = -1;
-		this.PortalYellow_x = -1;
-		this.PortalYellow_y = -1;
-		this.PortalRed_x = -1;
-		this.PortalRed_y = -1;
-		this.PortalGreen_x = -1;
-		this.PortalGreen_y = -1;
-		PortalBlue_Facing = "nincs még portál";
-		PortalYellow_Facing = "nincs még portál";
-		PortalRed_Facing = "nincs még portál";
-		PortalGreen_Facing = "nincs még portál";
+		this.PortalOne_x = -1;
+		this.PortalOne_y = -1;
+		this.PortalTwo_x = -1;
+		this.PortalTwo_y = -1;
+		PortalOne_Facing = "nincs még portál";
+		PortalTwo_Facing = "nincs még portál";
 		
 		this.haveBox = false;
 		this.facing = "down";
@@ -296,32 +284,45 @@ public class Character{
 		return this.sgg;
 	}
 	
-
-	
-	
-	//érdemes ezt a függvényt használni, mert
-	//ugyanazon gombbal történik a box felvétele és lerakása (SPACE-el)
-	public void haveBoxInverter(int indexinList, boolean isCalledByScale){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:Character].haveBoxInverter(int indexinList, boolean isCalledByScale);");
-		
-		if(haveBox == false){
-			StarGateGame.tab++;
-			pickUp(indexinList);
-			StarGateGame.tab--;
-		}
-		else{
-			StarGateGame.tab++;
-			putDown(isCalledByScale);
-			StarGateGame.tab--;
-		}
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:Character].haveBoxInverter(int indexinList, boolean isCalledByScale):void;");
+	//Portálok koordinátáival kapcsolatos metódusok:
+	public int getPortalOne_x(){
+		return PortalOne_x;
+	}
+	public int getPortalOne_y(){
+		return PortalOne_y;	
+	}
+	public void setPortalOne_x(int x){
+		this.PortalOne_x = x;
+	}
+	public void setPortalOne_y(int y){
+		this.PortalOne_y = y;
+	}
+	public int getPortalTwo_x(){
+		return PortalTwo_x;
+	}
+	public int getPortalTwo_y(){
+		return PortalTwo_y;	
+	}
+	public void setPortalTwo_x(int x){
+		this.PortalTwo_x = x;
+	}
+	public void setPortalTwo_y(int y){
+		this.PortalTwo_y = y;
 	}
 	
+	//Portálok Facing-jével kapcsolatos metódusok:
+	public String getPortalOne_Facing(){
+		return PortalOne_Facing;
+	}
+	public void setPortalOne_Facing(String facing){
+		this.PortalOne_Facing = facing;
+	}
+	public String getPortalTwo_Facing(){
+		return PortalTwo_Facing;
+	}
+	public void setPortalTwo_Facing(String facing){
+		this.PortalTwo_Facing = facing;
+	}
 	
 	//Box vagy Scale onColl-jébõl hívódik, haveBoxInverter() által
 	//szükséges a listaindex átadása, hogy azon indexen lévõ elemet
@@ -333,17 +334,20 @@ public class Character{
 			System.out.print("\t");
 		System.out.println("-> [:Character].pickUp(int IndexinList);");
 		
-		//Character változójának állítása
-		this.haveBox = true;
-		
-		//kitörli magát a láncolt listából, ha nem a Scale által lett hívva
-		if(IndexinList != -1){
-			StarGateGame.tab++;
-			LinkedList<Entity> lista = sgg.getList();
-			lista.remove(IndexinList);
-			StarGateGame.tab--;
+		//hogy ha nincs nála még doboz, akkor tudjon csak felvenni egyet
+		//mert egyszerre csak 1 doboz lehet nála
+		if(this.haveBox == false){
+				//Character változójának állítása
+				this.haveBox = true;
+				
+				//kitörli magát a láncolt listából, ha nem a Scale által lett hívva
+				if(IndexinList != -1111){
+					StarGateGame.tab++;
+					LinkedList<Entity> lista = sgg.getList();
+					lista.remove(IndexinList);
+					StarGateGame.tab--;
+				}
 		}
-		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("<- [:Character].pickUp(int IndexinList):void;");
@@ -355,28 +359,31 @@ public class Character{
 			System.out.print("\t");
 		System.out.println("-> [:Character].putDown(boolean isCalledByScale);");
 		
-		//Character változójának állítása
-		this.haveBox = false;
-		
-		//az ezredes maga alá rak egy dobozt
-		//berakjuk a dobozt a láncolt listába egy út helyett
-		//kivéve ha mérlegen állva hívódik a putDown(), mert akkor
-		//nem szabad a mérleg helyett egy dobozt berakni a listába
-		if(isCalledByScale == false){
-			StarGateGame.tab++;
-			LinkedList<Entity> lista = sgg.getList();
-			//a mezõ ahol állhat egyrész út, illetve
-			//mérlegen állva teheti le még a boxot, amit le kell kezelni a Scale onColljébõl.
-			lista.add(new Box(x*32, y*32,this)); 
-			//utolsó paraméterként vár Character-t, StarGateGame-be lévõ ch-t most nem tudjuk átadni
-			//fölös egy getter rá, mert igazából sztem a Box-nak am se kell a ch, hogy onColl-en KÍVÜL elérje a listát
-			//szóval átadjuk magát a Colonelt vagy Jaffa-t this-el
-			//x, y: Character aktuális koordinátái, így maga alá rakja a dobozt
-			
-			//ez a this Character obj. megegyezik az sgg-ben eltárolt c Character objektummal, mert
-			//csak egy Character obj.ot hozunk létre
-			//right?
-			StarGateGame.tab--;
+		//ha van nála doboz, akkor tudjon csak lerakni egyet maga alá
+		if(this.haveBox == true){
+				//Character változójának állítása
+				this.haveBox = false;
+				
+				//az ezredes maga alá rak egy dobozt
+				//berakjuk a dobozt a láncolt listába egy út helyett
+				//kivéve ha mérlegen állva hívódik a putDown(), mert akkor
+				//nem szabad a mérleg helyett egy dobozt berakni a listába
+				if(isCalledByScale == false){
+					StarGateGame.tab++;
+					LinkedList<Entity> lista = sgg.getList();
+					//a mezõ ahol állhat egyrész út, illetve
+					//mérlegen állva teheti le még a boxot, amit le kell kezelni a Scale onColljébõl.
+					lista.add(new Box(x, y,this));
+					//utolsó paraméterként vár Character-t, StarGateGame-be lévõ ch-t most nem tudjuk átadni
+					//fölös egy getter rá, mert igazából sztem a Box-nak am se kell a ch, hogy onColl-en KÍVÜL elérje a listát
+					//szóval átadjuk magát a Colonelt vagy Jaffa-t this-el
+					//x, y: Character aktuális koordinátái, így maga alá rakja a dobozt
+					
+					//ez a this Character obj. megegyezik az sgg-ben eltárolt c Character objektummal, mert
+					//csak egy Character obj.ot hozunk létre
+					//right?
+					StarGateGame.tab--;
+				}
 		}
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
@@ -422,6 +429,10 @@ public class Character{
 	public boolean getisAlive(){
 		return isAlive;
 	}
+	
+	public void setisAlive(boolean isAlive){
+		this.isAlive = isAlive;
+	}
 
 	
 	public void render(Graphics g){
@@ -429,106 +440,16 @@ public class Character{
 		g.fillRect(this.x,this.y, 32, 32);
 		g.setColor(Color.WHITE);
 		g.drawRect(this.x,this.y, 32, 32);
+		
+		if(haveBox){
+			g.setColor(Color.MAGENTA);
+			g.fillRect(this.x,this.y, 32, 32);
+			g.setColor(Color.ORANGE);
+			g.fillRect(this.x + 16,this.y + 16, 16, 16);
+			g.setColor(Color.WHITE);
+			g.drawRect(this.x,this.y, 32, 32);
+		}
 	} 
-	
-
-	public int getPortalBlue_x() {
-		return PortalBlue_x;
-	}
-
-	public void setPortalBlue_x(int portalBlue_x) {
-		PortalBlue_x = portalBlue_x;
-	}
-
-	public int getPortalBlue_y() {
-		return PortalBlue_y;
-	}
-
-	public void setPortalBlue_y(int portalBlue_y) {
-		PortalBlue_y = portalBlue_y;
-	}
-
-	public int getPortalYellow_x() {
-		return PortalYellow_x;
-	}
-
-	public void setPortalYellow_x(int portalYellow_x) {
-		PortalYellow_x = portalYellow_x;
-	}
-
-	public int getPortalYellow_y() {
-		return PortalYellow_y;
-	}
-
-	public void setPortalYellow_y(int portalYellow_y) {
-		PortalYellow_y = portalYellow_y;
-	}
-
-	public int getPortalRed_x() {
-		return PortalRed_x;
-	}
-
-	public void setPortalRed_x(int portalRed_x) {
-		PortalRed_x = portalRed_x;
-	}
-
-	public int getPortalRed_y() {
-		return PortalRed_y;
-	}
-
-	public void setPortalRed_y(int portalRed_y) {
-		PortalRed_y = portalRed_y;
-	}
-
-	public int getPortalGreen_x() {
-		return PortalGreen_x;
-	}
-
-	public void setPortalGreen_x(int portalGreen_x) {
-		PortalGreen_x = portalGreen_x;
-	}
-
-	public int getPortalGreen_y() {
-		return PortalGreen_y;
-	}
-
-	public void setPortalGreen_y(int portalGreen_y) {
-		PortalGreen_y = portalGreen_y;
-	}
-
-	public String getPortalBlue_Facing() {
-		return PortalBlue_Facing;
-	}
-
-	public void setPortalBlue_Facing(String portalBlue_Facing) {
-		PortalBlue_Facing = portalBlue_Facing;
-	}
-
-	public String getPortalYellow_Facing() {
-		return PortalYellow_Facing;
-	}
-
-	public void setPortalYellow_Facing(String portaYellow_Facing) {
-		PortalYellow_Facing = portaYellow_Facing;
-	}
-
-	public String getPortalRed_Facing() {
-		return PortalRed_Facing;
-	}
-
-	public void setPortalRed_Facing(String portalRed_Facing) {
-		PortalRed_Facing = portalRed_Facing;
-	}
-
-	public String getPortalGreen_Facing() {
-		return PortalGreen_Facing;
-	}
-
-	public void setPortalGreen_Facing(String portaGreen_Facing) {
-		PortalGreen_Facing = portaGreen_Facing;
-	}
-
-
 	
 	
 	//majd a grafikushoz

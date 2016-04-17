@@ -53,19 +53,7 @@ public class StarGateGame extends JPanel implements ActionListener{
 		
 		m = new Map();
 		c = new Character(this, 32, 32);
-		c.setPortalBlue_x(0);
-		c.setPortalBlue_y(128);
-		c.setPortalBlue_Facing("right");
-		c.setPortalYellow_x(0);
-		c.setPortalYellow_y(224);
-		c.setPortalYellow_Facing("right");
 		j = new Character(this, 64, 64);
-		j.setPortalRed_x(256);
-		j.setPortalRed_y(0);
-		j.setPortalRed_Facing("down");
-		j.setPortalGreen_x(160);
-		j.setPortalGreen_y(0);
-		j.setPortalGreen_Facing("down");
 		ch = new Character(this, 96,96 ); //mind1 h mi a koordinátája, nem használjuk csak a fent emlitett referencia miatt kell
 		int Replicator_x = 224; int Replicator_y = 640; 
 		//int Replicator_x = 32; int Replicator_y = 384; 
@@ -93,28 +81,14 @@ public class StarGateGame extends JPanel implements ActionListener{
 		return this.c;
 	}
 	
-	public void win(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:StarGateGame].win();");
-		
-		//called by zpm obj itself
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:StarGateGame].win():void;");
-	}
-	
-	public void gameover(){
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("-> [:StarGateGame].gameover();");
-		
-		//called by pit
-		
-		for(int j = 0; j < StarGateGame.tab; j++)
-			System.out.print("\t");
-		System.out.println("<- [:StarGateGame].gameover():void;");
+	//A játék véget ér, ha mind a két felhasználó az általuk irányított karakterrel a szakadékba lép vagy
+	//ha az utolsó ZPM is fel lett véve a pályáról. 
+	//Utóbbi esetben a képernyõre kiíródik, hogy a két felhasználó egyenként mennyi ZPMet gyûjtött össze, 
+	//és akinek többet sikerült, az a nyertes. 
+	///Ha az egyik játékos meghal, de a másiknak sikerül felvennie az utolsó ZPM-et, 
+	//akkor mindenképp õ lesz a nyertes, függetlenül attól, hogy mennyi ZPM van nála.
+	public void EndofGame(){
+		//TODO
 	}
 	
 	public LinkedList<Entity> getList(){
@@ -130,40 +104,32 @@ public class StarGateGame extends JPanel implements ActionListener{
 	}
 	
 	
-	//mérleg-ajtó párositás elvégzése beolvasáskor
-	//elöször végig kell menni a teljes txt-n és kigyûjteni az összes doort és létrehozni, így
-	//mikor újra végig megyünk a txt-n már a scalek is létrehozhatók, a konstruktorába hozzáadható a
-	//hozzá tartozó ajtó, így ID sem kell, mert a mérlegnek lesz egy referenciája a 
-	//hozzá tartozó ajtóról
-	public void buildDoorsandScales(){
-		//txt-ben:
-		//1 - ajto1
-		//2 - mérleg1
-
-		//3 - ajto2
-		//4 - mérleg2
-		//stb..
-		//TODO..
-	}
-	
 	 //felépíti a pályát, végigmegy a map[] tömbön és végiggelenõrzi a stringek karaktereit, 
 	//majd az alapján berakja a láncolt listába
 	public void buildMAP(){
-		Door door = null;
+		
+		Door door1 = null ;
+		Door door2 = null ;
+		
+		//txt-ben:
+		//1 - ajto1
+		//2 - mérleg1
+	
+		//3 - ajto2
+		//4 - mérleg2
+		//stb..
 		
 		for(int x=0; x<30; x++){
 			for(int y=0; y<30; y++){				
 				switch (m.getElement(x, y)){
-				case 'd': 	
-					door = new Door(x*32,y*32, ch);
-					ll.add(door);
-				}
-			}//for x
-		}//for y
-		
-		for(int x=0; x<30; x++){
-			for(int y=0; y<30; y++){				
-				switch (m.getElement(x, y)){
+				case '1': 	
+					door1 = new Door(x*32,y*32, ch);
+					ll.add(door1);
+				break;
+				case '3': 	
+					door2 = new Door(x*32,y*32, ch);
+					ll.add(door2);
+				break;
 				case 'w': 					
 					ll.add(new Wall(x*32, y*32, false, ch));
 					break;
@@ -179,27 +145,35 @@ public class StarGateGame extends JPanel implements ActionListener{
 				case 'p':
 					ll.add(new Pit(x*32, y*32, ch));
 					break;
-				case 'y':
+				case 'g':
 					ll.add(new Portal(x*32, y*32, "yellow", ch));
 					break;
-				case 'k':
-					ll.add(new Portal(x*32, y*32, "blue", ch));
+				/*case '2':
+					ll.add(new Scale(x*32, y*32, door1, 100, ch));
 					break;
-				case 's':
-					ll.add(new Scale(x*32, y*32, door, 100, ch));
-					break;
-				case 'g':
-					ll.add(new Portal(x*32, y*32, "green", ch));
-					break;
-				case 'v':
-					ll.add(new Portal(x*32, y*32, "red", ch));
-				default: 
-
-					break;
+				case '4':
+					ll.add(new Scale(x*32, y*32, door2, 100, ch));
+					break;*/
 				}
 			}//for x
 		}//for y
+		
+		//majd újra végig megyünk a pályán és most már létrehozzuk a mérlegeket is
+		//a mérleg konstruktorába már át tudjuk adni a megfelelõ ajtót is
+		for(int x=0; x<30; x++){
+			for(int y=0; y<30; y++){				
+				switch (m.getElement(x, y)){
+				case '2':
+					ll.add(new Scale(x*32, y*32, door1, 100, ch));
+					break;
+				case '4':
+					ll.add(new Scale(x*32, y*32, door2, 100, ch));
+					break;
+				}
+			}
+		}
 	}
+	
 	
 	/*
 	 * itt rajzoljuk ki, azért külön mert különben mindig újratöltené fel a listánkat a kül. elemekkel
@@ -220,13 +194,23 @@ public class StarGateGame extends JPanel implements ActionListener{
 					g.drawRect(x*32,y*32,32,32);
 			}
 		}
+		
+		
+		//fontos, hogy legelöször a replicatort rendereljük, mert 
+		//mikor a replicator meghal, egy fehér hátteret rajzolok ki helyette
+		replicator.render(g); 
+		
+		
+		//elemek kirajzolása
 		for(int i=0; i < ll.size(); ++i)
 		{
 			ll.get(i).render(g);
 		}
+		
+		//karakterek kirajzolása
 		c.render(g);
 		j.render(g);
-		replicator.render(g);
+		
 		
 		/*
 		 *g.drawImage(m.getBox(), x*32, y*32, null);
@@ -243,7 +227,6 @@ public class StarGateGame extends JPanel implements ActionListener{
 	public class Cntrl extends KeyAdapter{		
 		
 		public void keyPressed(KeyEvent e){
-			
 			int keycode = e.getKeyCode();
 			
 			if(keycode == KeyEvent.VK_UP){
@@ -270,8 +253,8 @@ public class StarGateGame extends JPanel implements ActionListener{
 				if(replicator.getisAlive() == true)
 					replicator.move();
 			}
-			if(keycode == KeyEvent.VK_L){
-		
+			if(keycode == KeyEvent.VK_NUMPAD0){
+				c.putDown(false);
 			}
 			if(keycode == KeyEvent.VK_W){
 				j.move(0, -32);	
@@ -298,21 +281,25 @@ public class StarGateGame extends JPanel implements ActionListener{
 					replicator.move();
 			}
 			
-			if(keycode == KeyEvent.VK_G){
-				
+			if(keycode == KeyEvent.VK_F){
+				j.putDown(false);
 			}
 			//TODO: putDown(), pickUp(), shoot() meghívása
 			//shoot()
-				//sárga lövedék létrehozása: bal egérgomb
-				//kék lövedék létrehozása: jobb egérgomb
-			//putDown(), pickUp()legyen SPACE
+				//sárga lövedék létrehozása ezredessel: bal egérgomb
+				//kék lövedék létrehozása ezredessel: jobb egérgomb
+				//piros lövedék létrehozása jaffaval: O bill.
+				//zöld lövedék létrehozása jaffaval: P bill.
+			//putDown(), pickUp()
+				//ezredes: 0-s bill a numpadon
+				//jaffa: F bill.
 			
 			//várjunk csak! 
 			//pickUp()-ot nem itt hivjuk meg, hanem mikor ütközünk a box-al, annak onColl.jébe
 			//illetve még akkor, ha rajta állunk a mérlegen és felvesszük a dobozt
 			
 			//putDown() hívása alapból itt történik, de
-			//még a mérlegen állva is lehet hívni (Scale onColl), vagy Box onColl során (felveszi, majd újra le is rakja ott a dobozt)
+			//még a mérlegen állva is lehet hívni (Scale onColl)
 		}
 	}
 

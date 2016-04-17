@@ -96,26 +96,16 @@ public class Wall extends Element{
 				//		PortalOne: kék portál		PortalTwo: sárga portál
 				//		Jaffa esetében
 				//		PortalOne: piros portál		PortalTwo: 	zöld portál
-				if(Bulletcolour == "blue"){
-					ch.setPortalBlue_x(x);
-					ch.setPortalBlue_y(y);
-					ch.setPortalBlue_Facing(Portaldir);
-				}
-				if(Bulletcolour == "red"){
-					ch.setPortalRed_x(x);
-					ch.setPortalRed_y(y);
-					ch.setPortalRed_Facing(Portaldir);
-				}
-				if(Bulletcolour == "yellow"){
-					ch.setPortalYellow_x(x);
-					ch.setPortalYellow_y(y);
-					ch.setPortalYellow_Facing(Portaldir);
+				if(Bulletcolour == "blue" || Bulletcolour == "red"){
+					ch.setPortalOne_x(x);
+					ch.setPortalOne_y(y);
+					ch.setPortalOne_Facing(Portaldir);
 				}
 					
-				if(Bulletcolour == "green"){
-					ch.setPortalGreen_x(x);
-					ch.setPortalGreen_y(y);
-					ch.setPortalGreen_Facing(Portaldir);
+				if(Bulletcolour == "yellow" || Bulletcolour == "green"){
+					ch.setPortalTwo_x(x);
+					ch.setPortalTwo_y(y);
+					ch.setPortalTwo_Facing(Portaldir);
 				}
 			StarGateGame.tab--;
 		}
