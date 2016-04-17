@@ -19,8 +19,8 @@ public class Box extends Element{
 		System.out.println("-> [:Box].onCollision();");
 		
 		//mikor majd játszunk egy végtelen ciklusba olvasunk itt, míg el nem lép a mezõrõl a karakter
-		//-> pickUp(), move() meghívása szükséges
-		//emlékeztetõ: haveBoxInverter() segítségével lehet pickup()-ot meghívni
+		//-> pickUp(), putDown(), move() meghívása szükséges
+		//emlékeztetõ: haveBoxInverter() segítségével lehet pickup() / putDown()-ot meghívni
 
 		for (int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");

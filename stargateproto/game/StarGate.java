@@ -13,7 +13,7 @@ import javax.swing.JFrame;
  */
 public class StarGate extends Canvas {
 	private static final long serialVersionUID = 1L;
-	public final String TITLE = "StarGate";
+	private final String TITLE = "StarGate";
 	private StarGateGame sgg;
 	
 	public StarGate(StarGateGame g){
@@ -151,7 +151,7 @@ public class StarGate extends Canvas {
 			
 			}
 			
-		}catch(IOException io){
+	}catch(IOException io){
 			io.printStackTrace();
 		}	
 		
@@ -162,6 +162,6 @@ public class StarGate extends Canvas {
 		
 		
 	}
-
-	
 }
+	
+

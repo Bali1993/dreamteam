@@ -30,7 +30,7 @@ public class Pit extends Element{
 		
 		//
 		StarGateGame.tab++;
-		character.setisAlive(false);
+		character.getSGG().gameover();
 		StarGateGame.tab--;
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
