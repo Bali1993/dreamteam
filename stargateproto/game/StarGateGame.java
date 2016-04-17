@@ -53,7 +53,19 @@ public class StarGateGame extends JPanel implements ActionListener{
 		
 		m = new Map();
 		c = new Character(this, 32, 32);
+		c.setPortalBlue_x(0);
+		c.setPortalBlue_y(128);
+		c.setPortalBlue_Facing("right");
+		c.setPortalYellow_x(0);
+		c.setPortalYellow_y(224);
+		c.setPortalYellow_Facing("right");
 		j = new Character(this, 64, 64);
+		j.setPortalRed_x(256);
+		j.setPortalRed_y(0);
+		j.setPortalRed_Facing("down");
+		j.setPortalGreen_x(160);
+		j.setPortalGreen_y(0);
+		j.setPortalGreen_Facing("down");
 		ch = new Character(this, 96,96 ); //mind1 h mi a koordinátája, nem használjuk csak a fent emlitett referencia miatt kell
 		int Replicator_x = 224; int Replicator_y = 640; 
 		//int Replicator_x = 32; int Replicator_y = 384; 
@@ -92,14 +104,18 @@ public class StarGateGame extends JPanel implements ActionListener{
 	}
 	
 	public LinkedList<Entity> getList(){
-		for(int j = 0; j < StarGateGame.tab; j++)
+		//kiiratás kivéve, mert
+		//nagyon lelassítja a programot a zpm random generálásakor
+		
+		/*for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
 		System.out.println("-> [:StarGateGame].getList();");
 		
 		
 		for(int j = 0; j < StarGateGame.tab; j++)
 			System.out.print("\t");
-		System.out.println("<- [:StarGateGame].getList:LinkedList<Entity>();");
+		System.out.println("<- [:StarGateGame].getList:LinkedList<Entity>();"); 
+		*/
 		return ll;
 	}
 	
@@ -145,8 +161,17 @@ public class StarGateGame extends JPanel implements ActionListener{
 				case 'p':
 					ll.add(new Pit(x*32, y*32, ch));
 					break;
-				case 'g':
+				case 'y':
 					ll.add(new Portal(x*32, y*32, "yellow", ch));
+					break;
+				case 'k':
+					ll.add(new Portal(x*32, y*32, "blue", ch));
+					break;
+				case 'g':
+					ll.add(new Portal(x*32, y*32, "green", ch));
+					break;
+				case 'x':
+					ll.add(new Portal(x*32, y*32, "red", ch));
 					break;
 				/*case '2':
 					ll.add(new Scale(x*32, y*32, door1, 100, ch));

@@ -15,17 +15,19 @@ public class Character{
 	private int x;
 	private int y;
 	
-	//FONTOS:
-	//Colonel esetében:
-	//		PortalOne: kék portál		PortalTwo: sárga portál
-	//Jaffa esetében
-	//		PortalOne: piros portál		PortalTwo: 	zöld portál
-	private int PortalOne_x;
-	private int PortalOne_y;
-	private int PortalTwo_x;
-	private int PortalTwo_y;
-	private String PortalOne_Facing;
-	private String PortalTwo_Facing;
+
+	private int PortalBlue_x;
+	private int PortalBlue_y;
+	private int PortalYellow_x;
+	private int PortalYellow_y;
+	private int PortalRed_x;
+	private int PortalRed_y;
+	private int PortalGreen_x;
+	private int PortalGreen_y;
+	private String PortalBlue_Facing;
+	private String PortalYellow_Facing;
+	private String PortalRed_Facing;
+	private String PortalGreen_Facing;
 	
 	private boolean haveBox;
 	private int zpmCounter;
@@ -77,12 +79,18 @@ public class Character{
 		
 		
 		//-1-el jelezzük, hogy nincs még portál nyitva
-		this.PortalOne_x = -1;
-		this.PortalOne_y = -1;
-		this.PortalTwo_x = -1;
-		this.PortalTwo_y = -1;
-		PortalOne_Facing = "nincs még portál";
-		PortalTwo_Facing = "nincs még portál";
+		this.PortalBlue_x = -1;
+		this.PortalBlue_y = -1;
+		this.PortalYellow_x = -1;
+		this.PortalYellow_y = -1;
+		this.PortalRed_x = -1;
+		this.PortalRed_y = -1;
+		this.PortalGreen_x = -1;
+		this.PortalGreen_y = -1;
+		PortalBlue_Facing = "nincs még portál";
+		PortalYellow_Facing = "nincs még portál";
+		PortalRed_Facing = "nincs még portál";
+		PortalGreen_Facing = "nincs még portál";
 		
 		this.haveBox = false;
 		this.facing = "down";
@@ -285,44 +293,103 @@ public class Character{
 	}
 	
 	//Portálok koordinátáival kapcsolatos metódusok:
-	public int getPortalOne_x(){
-		return PortalOne_x;
+	public int getPortalBlue_x() {
+		return PortalBlue_x;
 	}
-	public int getPortalOne_y(){
-		return PortalOne_y;	
+
+	public void setPortalBlue_x(int portalBlue_x) {
+		PortalBlue_x = portalBlue_x;
 	}
-	public void setPortalOne_x(int x){
-		this.PortalOne_x = x;
+
+	public int getPortalBlue_y() {
+		return PortalBlue_y;
 	}
-	public void setPortalOne_y(int y){
-		this.PortalOne_y = y;
+
+	public void setPortalBlue_y(int portalBlue_y) {
+		PortalBlue_y = portalBlue_y;
 	}
-	public int getPortalTwo_x(){
-		return PortalTwo_x;
+
+	public int getPortalYellow_x() {
+		return PortalYellow_x;
 	}
-	public int getPortalTwo_y(){
-		return PortalTwo_y;	
+
+	public void setPortalYellow_x(int portalYellow_x) {
+		PortalYellow_x = portalYellow_x;
 	}
-	public void setPortalTwo_x(int x){
-		this.PortalTwo_x = x;
+
+	public int getPortalYellow_y() {
+		return PortalYellow_y;
 	}
-	public void setPortalTwo_y(int y){
-		this.PortalTwo_y = y;
+
+	public void setPortalYellow_y(int portalYellow_y) {
+		PortalYellow_y = portalYellow_y;
 	}
-	
-	//Portálok Facing-jével kapcsolatos metódusok:
-	public String getPortalOne_Facing(){
-		return PortalOne_Facing;
+
+	public int getPortalRed_x() {
+		return PortalRed_x;
 	}
-	public void setPortalOne_Facing(String facing){
-		this.PortalOne_Facing = facing;
+
+	public void setPortalRed_x(int portalRed_x) {
+		PortalRed_x = portalRed_x;
 	}
-	public String getPortalTwo_Facing(){
-		return PortalTwo_Facing;
+
+	public int getPortalRed_y() {
+		return PortalRed_y;
 	}
-	public void setPortalTwo_Facing(String facing){
-		this.PortalTwo_Facing = facing;
+
+	public void setPortalRed_y(int portalRed_y) {
+		PortalRed_y = portalRed_y;
 	}
+
+	public int getPortalGreen_x() {
+		return PortalGreen_x;
+	}
+
+	public void setPortalGreen_x(int portalGreen_x) {
+		PortalGreen_x = portalGreen_x;
+	}
+
+	public int getPortalGreen_y() {
+		return PortalGreen_y;
+	}
+
+	public void setPortalGreen_y(int portalGreen_y) {
+		PortalGreen_y = portalGreen_y;
+	}
+
+	public String getPortalBlue_Facing() {
+		return PortalBlue_Facing;
+	}
+
+	public void setPortalBlue_Facing(String portalBlue_Facing) {
+		PortalBlue_Facing = portalBlue_Facing;
+	}
+
+	public String getPortalYellow_Facing() {
+		return PortalYellow_Facing;
+	}
+
+	public void setPortalYellow_Facing(String portaYellow_Facing) {
+		PortalYellow_Facing = portaYellow_Facing;
+	}
+
+	public String getPortalRed_Facing() {
+		return PortalRed_Facing;
+	}
+
+	public void setPortalRed_Facing(String portalRed_Facing) {
+		PortalRed_Facing = portalRed_Facing;
+	}
+
+	public String getPortalGreen_Facing() {
+		return PortalGreen_Facing;
+	}
+
+	public void setPortalGreen_Facing(String portaGreen_Facing) {
+		PortalGreen_Facing = portaGreen_Facing;
+	}
+
+
 	
 	//Box vagy Scale onColl-jébõl hívódik, haveBoxInverter() által
 	//szükséges a listaindex átadása, hogy azon indexen lévõ elemet

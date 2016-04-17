@@ -34,10 +34,11 @@ public class Zpm extends Element{
 		//ha az egyik karakter begyûjt 2 ZPM-et, akkor keletkezik egy új ZPM egy véletlenszerû helyen
 		//adott karakternél számoljuk külön h begyüjtött-e kettõt
 		if(character.getzpmCounter() % 2 == 0){
-			boolean collision = true;
+			boolean collision = true; //kezdetben azt mondjuk, hogy ütközés van
 			int xForNewZPM = 0; //fordito sir h inicializáljam valamennyire
 			int yForNewZPM = 0;
 			
+			//addig generáljon Rectangle-ket az új ZPM-nek mig ütközés van
 			while(collision == true){
 				//generálunk egy Rectangle-t az új ZPM-nek
 				// min és max számok között generál egy random számot, akár végpontokat is beleértve
@@ -47,25 +48,35 @@ public class Zpm extends Element{
 				Random random2 = new Random();
 				yForNewZPM = random2.nextInt(max - min + 1) + min;
 				
+				//szorzás 32-vel
+				xForNewZPM = xForNewZPM * 32;
+				yForNewZPM = yForNewZPM * 32;
+				
 				//Rectangle képzése a koordinátákból
 				Rectangle RecOfNewZPM = new Rectangle( xForNewZPM,  yForNewZPM, 32, 32);
+				System.out.println(RecOfNewZPM);
 				
+				//átállítjuk az ütközés értékét hamisra
+				//és végig megyünk a láncolt lista minden elemén
+				//intersect esetén az ütközés értéke igaz lesz
+				collision = false;
 				for(int k=0; k < VariableForSGG.getList().size(); ++k)
 				{	
 					//adott elem négyzete a láncolt listában
 					Rectangle RecOfElement = VariableForSGG.getList().get(k).getRec();
+					
 					//összehasonlítjuk az új ZPM és adott elem négyzetét, hogy egyezik-e
 					//ha igen, akkor ütközés van
-					if(RecOfNewZPM.intersects(RecOfElement) == false){
-						collision = false;
-						break;
+					if(RecOfNewZPM.intersects(RecOfElement)){
+						collision = true;
 					}
-					
 				}
+				
 			}
 			
+
 			//bearkjuk a láncolt listába az új ZPM-et
-			VariableForSGG.getList().add(new Zpm(xForNewZPM*32, yForNewZPM*32, ch));
+			VariableForSGG.getList().add(new Zpm(xForNewZPM, yForNewZPM, ch));
 			
 		}
 		

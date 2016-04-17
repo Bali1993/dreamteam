@@ -17,7 +17,6 @@ public class Box extends Element{
 	
 	public Box(int x, int y, Character ch) { 
 		super(x, y, ch);
-		System.out.println("létrejott egy doboz");
 		this.weight = 30;
 		
 		keylistener = new CntrlForBox();
