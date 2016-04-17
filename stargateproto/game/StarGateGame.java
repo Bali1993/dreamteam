@@ -104,28 +104,20 @@ public class StarGateGame extends JPanel implements ActionListener{
 	}
 	
 	
-	//mérleg-ajtó párositás elvégzése beolvasáskor
-	//elöször végig kell menni a teljes txt-n és kigyûjteni az összes doort és létrehozni, így
-	//mikor újra végig megyünk a txt-n már a scalek is létrehozhatók, a konstruktorába hozzáadható a
-	//hozzá tartozó ajtó, így ID sem kell, mert a mérlegnek lesz egy referenciája a 
-	//hozzá tartozó ajtóról
-	public void buildDoorsandScales(){
-		//txt-ben:
-		//1 - ajto1
-		//2 - mérleg1
-
-		//3 - ajto2
-		//4 - mérleg2
-		//stb..
-		//TODO..
-	}
-	
 	 //felépíti a pályát, végigmegy a map[] tömbön és végiggelenõrzi a stringek karaktereit, 
 	//majd az alapján berakja a láncolt listába
 	public void buildMAP(){
 		
 		Door door1 = null ;
 		Door door2 = null ;
+		
+		//txt-ben:
+		//1 - ajto1
+		//2 - mérleg1
+	
+		//3 - ajto2
+		//4 - mérleg2
+		//stb..
 		
 		for(int x=0; x<30; x++){
 			for(int y=0; y<30; y++){				
@@ -156,6 +148,21 @@ public class StarGateGame extends JPanel implements ActionListener{
 				case 'g':
 					ll.add(new Portal(x*32, y*32, "yellow", ch));
 					break;
+				/*case '2':
+					ll.add(new Scale(x*32, y*32, door1, 100, ch));
+					break;
+				case '4':
+					ll.add(new Scale(x*32, y*32, door2, 100, ch));
+					break;*/
+				}
+			}//for x
+		}//for y
+		
+		//majd újra végig megyünk a pályán és most már létrehozzuk a mérlegeket is
+		//a mérleg konstruktorába már át tudjuk adni a megfelelõ ajtót is
+		for(int x=0; x<30; x++){
+			for(int y=0; y<30; y++){				
+				switch (m.getElement(x, y)){
 				case '2':
 					ll.add(new Scale(x*32, y*32, door1, 100, ch));
 					break;
@@ -163,9 +170,10 @@ public class StarGateGame extends JPanel implements ActionListener{
 					ll.add(new Scale(x*32, y*32, door2, 100, ch));
 					break;
 				}
-			}//for x
-		}//for y
+			}
+		}
 	}
+	
 	
 	/*
 	 * itt rajzoljuk ki, azért külön mert különben mindig újratöltené fel a listánkat a kül. elemekkel
