@@ -1,5 +1,6 @@
 package game;
 
+import java.awt.Color;
 import java.awt.Graphics;
 
 public class Portal extends Element{
@@ -120,7 +121,30 @@ public class Portal extends Element{
 	@Override
 	public void render(Graphics g) {
 		// TODO Auto-generated method stub
-		
+		if(colour == "blue"){
+			g.setColor(Color.BLUE);
+			g.fillRect(this.x,this.y, 32, 32);
+			g.setColor(Color.WHITE);
+			g.drawRect(this.x,this.y, 32, 32);
+			}
+			if(colour == "yellow"){
+				g.setColor(Color.YELLOW);
+				g.fillRect(this.x,this.y, 32, 32);
+				g.setColor(Color.WHITE);
+				g.drawRect(this.x,this.y, 32, 32);
+				}
+			if(colour == "red"){
+				g.setColor(Color.RED);
+				g.fillRect(this.x,this.y, 32, 32);
+				g.setColor(Color.WHITE);
+				g.drawRect(this.x,this.y, 32, 32);
+				}
+			if(colour == "green"){
+				g.setColor(Color.GREEN);
+				g.fillRect(this.x,this.y, 32, 32);
+				g.setColor(Color.WHITE);
+				g.drawRect(this.x,this.y, 32, 32);
+				}
 	}
 
 }
