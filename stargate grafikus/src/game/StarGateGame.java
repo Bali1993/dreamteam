@@ -129,24 +129,24 @@ public class StarGateGame extends JPanel implements ActionListener {
             if (c.getzpmCounter() == j.getzpmCounter()) {
                 if (c.getisAlive()) {
                     if (j.getisAlive()) {
-                        popupwindow("draw" + Zpm);
-                        System.out.println("draw" + Zpm);
+                        popupwindow("Draw" + Zpm);
+                        System.out.println("Draw" + Zpm);
                     } else {
-                        popupwindow("Colonel win" + Zpm );
-                        System.out.println("colonel win" + Zpm );
+                        popupwindow("Colonel wins" + Zpm );
+                        System.out.println("colonel wins" + Zpm );
                     }
                 } else {
-                    popupwindow("Jaffa win" + Zpm);
-                    System.out.println("Jaffa win" + Zpm);
+                    popupwindow("Jaffa wins" + Zpm);
+                    System.out.println("Jaffa wins" + Zpm);
                 }
             }
             if (j.getzpmCounter() > c.getzpmCounter()) {
                 if (j.getisAlive()) {
-                    System.out.println("Jaffa win" + Zpm);
-                    popupwindow("Jaffa win" + Zpm );
+                    System.out.println("Jaffa wins" + Zpm);
+                    popupwindow("Jaffa wins" + Zpm );
                 } else {
-                    popupwindow("Colonel win");
-                    System.out.println("colonel win" + Zpm);
+                    popupwindow("Colonel wins" + Zpm);
+                    System.out.println("colonel wins" + Zpm);
                 }
             }
         }
