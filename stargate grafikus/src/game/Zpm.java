@@ -26,9 +26,10 @@ public class Zpm extends Element {
 	public void onCollisionWithCharacter(Character character, int dx, int dy) {
 
 		StarGateGame VariableForSGG = character.getSGG();
-
+        character.setzpmCounter(1);
+        VariableForSGG.EndofGame();
 		VariableForSGG.getList().remove(this);
-		character.setzpmCounter(1);
+		
 
 		// ha az egyik karakter begy�jt 2 ZPM-et, akkor keletkezik egy �j ZPM
 		// egy v�letlenszer� helyen

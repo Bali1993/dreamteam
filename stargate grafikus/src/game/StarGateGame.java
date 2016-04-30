@@ -34,6 +34,7 @@ public class StarGateGame extends JPanel implements ActionListener {
 	private Scale scale2;
 	private Door door1;
 	private Door door2;
+    private Object[] options = { "QUIT" };
 	
 	public StarGateGame() {
 		door1 = null;
@@ -94,40 +95,58 @@ public class StarGateGame extends JPanel implements ActionListener {
 	public Replicator getReplicator() {
 		return this.replicator;
 	}
+    
+    private void popupwindow(String message) {
+        int n = JOptionPane.showOptionDialog(null, message, "Game Over", JOptionPane.PLAIN_MESSAGE,
+                                             JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
+        System.out.println(n);
+        if (n == 0 || n == -1) {
+            System.exit(0);
+        }
+    }
 
-	public void EndofGame() {
-		if ((j.getisAlive() == false) && (c.getisAlive() == false)) {
-			System.out.println("game over");
-		}
-		if ((j.getzpmCounter() + c.getzpmCounter()) == zpmdb) {
-			if (c.getzpmCounter() > j.getzpmCounter()) {
-				if (c.getisAlive()) {
-					System.out.println("colonel win");
-				} else {
-					System.out.println("jaffa win");
-				}
-			}
-			if (c.getzpmCounter() == j.getzpmCounter()) {
-				if (c.getisAlive()) {
-					if (j.getisAlive()) {
-						System.out.println("draw");
-					} else {
-						System.out.println("colonel win");
-					}
-				} else {
-					System.out.println("Jaffa win");
-				}
-			}
-			if (j.getzpmCounter() > c.getzpmCounter()) {
-				if (j.getisAlive()) {
-					System.out.println("Jaffa win");
-				} else {
-					System.out.println("colonel win");
-				}
-			}
-		}
-
-	}
+    public void EndofGame() {
+        if ((j.getisAlive() == false) && (c.getisAlive() == false)) {
+            System.out.println("game over");
+            popupwindow("Game Over");
+        }
+        if ((j.getzpmCounter() + c.getzpmCounter()) == zpmdb) {
+            if (c.getzpmCounter() > j.getzpmCounter()) {
+                if (c.getisAlive()) {
+                    System.out.println("colonel win");
+                    popupwindow("Colonel win");
+                    
+                } else {
+                    System.out.println("jaffa win");
+                    popupwindow("Jaffa win");
+                }
+            }
+            if (c.getzpmCounter() == j.getzpmCounter()) {
+                if (c.getisAlive()) {
+                    if (j.getisAlive()) {
+                        popupwindow("draw");
+                        System.out.println("draw");
+                    } else {
+                        popupwindow("Colonel win");
+                        System.out.println("colonel win");
+                    }
+                } else {
+                    popupwindow("Jaffa win");
+                    System.out.println("Jaffa win");
+                }
+            }
+            if (j.getzpmCounter() > c.getzpmCounter()) {
+                if (j.getisAlive()) {
+                    System.out.println("Jaffa win");
+                    popupwindow("Jaffa win");
+                } else {
+                    popupwindow("Colonel win");
+                    System.out.println("colonel win");
+                }
+            }
+        }
+        
+    }
 
 	public LinkedList<Entity> getList() {
 		return ll;
