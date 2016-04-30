@@ -27,7 +27,7 @@ public class Zpm extends Element {
 
 		StarGateGame VariableForSGG = character.getSGG();
         character.setzpmCounter(1);
-        VariableForSGG.EndofGame();
+        
 		VariableForSGG.getList().remove(this);
 		
 
@@ -80,6 +80,7 @@ public class Zpm extends Element {
 			VariableForSGG.getList().add(new Zpm(xForNewZPM, yForNewZPM, ch));
 
 		}
+		VariableForSGG.EndofGame();
 	}
 	
 	@Override
