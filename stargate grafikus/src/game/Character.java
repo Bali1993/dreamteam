@@ -33,6 +33,7 @@ public class Character {
 
 	private int weight1;
 	private int weight2;
+	private int weight3;
 
 	private boolean isAlive;
 
@@ -111,6 +112,7 @@ public class Character {
 
 		this.weight1 = 0;
 		weight2 = 0;
+		weight3 = 0;
 		this.isAlive = true;
 
 		this.sgg = g;
@@ -227,6 +229,18 @@ public class Character {
 			sgg.getScale2().setCurrentWeight(sgg.getScale2().getCurrentWeight() - weight2);
 			weight2 = 0;
 		}
+		
+		if (sgg.getScale3().getX() == x && sgg.getScale3().getY() == y) {
+			if (haveBox) {
+				weight3 = 2;
+			} else {
+				weight3 = 1;
+			}
+			sgg.getScale3().setCurrentWeight(sgg.getScale3().getCurrentWeight() + weight3);
+		} else {
+			sgg.getScale3().setCurrentWeight(sgg.getScale3().getCurrentWeight() - weight3);
+			weight3 = 0;
+		}
 
 		if (sgg.getScale1().getCurrentWeight() >= sgg.getScale1().getWeightLimit()) {
 			sgg.getDoor1().setisOpened(true);
@@ -239,6 +253,12 @@ public class Character {
 		} else {
 			sgg.getDoor2().setisOpened(false);
 		}
+		if (sgg.getScale3().getCurrentWeight() >= sgg.getScale3().getWeightLimit()) {
+			sgg.getDoor3().setisOpened(true);
+		} else {
+			sgg.getDoor3().setisOpened(false);
+		}
+		
 		if (CollisionIndexinListofElements >= 0) {
 			ListofElements.get(CollisionIndexinListofElements).onCollisionWithCharacter(this, dx, dy);
 		}

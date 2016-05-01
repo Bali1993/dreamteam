@@ -33,15 +33,19 @@ public class StarGateGame extends JPanel implements ActionListener {
 	private LinkedList<Entity> ll;
 	private Scale scale1;
 	private Scale scale2;
+	private Scale scale3;
 	private Door door1;
 	private Door door2;
+	private Door door3;
     private Object[] options = { "QUIT" };
 	
 	public StarGateGame() {
 		door1 = null;
 		door2 = null;
+		door3 = null;
 		scale1 = null;
 		scale2 = null;
+		scale3 = null;
 		zpmdb = 0;
 
 		m = new Map();
@@ -76,6 +80,9 @@ public class StarGateGame extends JPanel implements ActionListener {
 	public Door getDoor2() {
 		return door2;
 	}
+	public Door getDoor3() {
+		return door3;
+	}
 
 	public Scale getScale1() {
 		return scale1;
@@ -83,6 +90,10 @@ public class StarGateGame extends JPanel implements ActionListener {
 
 	public Scale getScale2() {
 		return scale2;
+	}
+	
+	public Scale getScale3() {
+		return scale3;
 	}
 
 	public Character getColonel() {
@@ -162,9 +173,13 @@ public class StarGateGame extends JPanel implements ActionListener {
 		// txt-ben:
 		// 1 - ajto1
 		// 2 - mï¿½rleg1
+		
 
 		// 3 - ajto2
 		// 4 - mï¿½rleg2
+		
+		// 5 - ajto3
+		// 6 - mérleg3
 		// stb..
 
 		for (int x = 0; x < 30; x++) {
@@ -177,6 +192,10 @@ public class StarGateGame extends JPanel implements ActionListener {
 				case '3':
 					door2 = new Door(x * 32, y * 32, ch);
 					ll.add(door2);
+					break;
+				case '5':
+					door3 = new Door(x * 32, y * 32, ch);
+					ll.add(door3);
 					break;
 				case 'w':
 					ll.add(new Wall(x * 32, y * 32, false, ch));
@@ -229,6 +248,11 @@ public class StarGateGame extends JPanel implements ActionListener {
 					scale2 = new Scale(x * 32, y * 32, door2, 1, ch);
 					ll.add(scale2);
 					break;
+				case '6':
+					scale3 = new Scale(x * 32, y * 32, door3, 1, ch);
+					ll.add(scale3);
+					break;
+					
 				}
 			}
 		}
