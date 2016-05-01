@@ -377,7 +377,9 @@ public class Character {
 		if (sgg.getScale2().getX() == x && sgg.getScale2().getY() == y) {
 			sgg.getScale2().setCurrentWeight(sgg.getScale2().getCurrentWeight() - box.getWeight());
 		}
-
+		if (sgg.getScale3().getX() == x && sgg.getScale3().getY() == y) {
+			sgg.getScale3().setCurrentWeight(sgg.getScale3().getCurrentWeight() - box.getWeight());
+		}
 		lista.remove(index);
 
 		this.haveBox = true;
@@ -395,6 +397,9 @@ public class Character {
 		}
 		if (sgg.getScale2().getX() == x && sgg.getScale2().getY() == y) {
 			sgg.getScale2().setCurrentWeight(sgg.getScale2().getCurrentWeight() + box.getWeight());
+		}
+		if (sgg.getScale3().getX() == x && sgg.getScale3().getY() == y) {
+			sgg.getScale3().setCurrentWeight(sgg.getScale3().getCurrentWeight() + box.getWeight());
 		}
 
 	}
