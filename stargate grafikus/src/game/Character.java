@@ -4,10 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.io.File;
 import java.util.LinkedList;
-
-import javax.imageio.ImageIO;
 
 import ntrfc.Entity;
 
@@ -51,43 +48,30 @@ public class Character {
 						// referenciak�nt
 
 	
-	Image image_character_up;
-	Image image_character_down;
-	Image image_character_left;
-	Image image_character_right;
-	Image image_character_up_with_box;
-	Image image_character_down_with_box;
-	Image image_character_left_with_box;
-	Image image_character_right_with_box;
+	private Image image_character_up;
+	private Image image_character_down;
+	private Image image_character_left;
+	private Image image_character_right;
+	private Image image_character_up_with_box;
+	private Image image_character_down_with_box;
+	private Image image_character_left_with_box;
+	private Image image_character_right_with_box;
 	
 	public Character(StarGateGame g, int x, int y) {
-		try{
-			File file1 = new File("../src/character_up.jpg");
-			image_character_up = ImageIO.read(file1);
-			
-			File file2 = new File("../src/character_down.jpg");
-			image_character_down = ImageIO.read(file2);
-			
-			File file3 = new File("../src/character_left.jpg");
-			image_character_left = ImageIO.read(file3);
-			
-			File file4 = new File("../src/character_right.jpg");
-			image_character_right = ImageIO.read(file4);
-			
-			File file5 = new File("../src/character_up_with_box.jpg");
-			image_character_up_with_box = ImageIO.read(file5);
-			
-			File file6 = new File("../src/character_down_with_box.jpg");
-			image_character_down_with_box = ImageIO.read(file6);
-			
-			File file7 = new File("../src/character_left_with_box.jpg");
-			image_character_left_with_box = ImageIO.read(file7);
-			
-			File file8 = new File("../src/character_right_with_box.jpg");
-			image_character_right_with_box = ImageIO.read(file8);
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
+		this.sgg = g;
+		this.x = x;
+		this.y = y;
+	
+		//kepek eltarolasa
+		Map map = sgg.getMap();
+		image_character_up = map.get_image_character_up();
+		image_character_down = map.get_image_character_down();
+		image_character_left = map.get_image_character_left();
+		image_character_right = map.get_image_character_right();
+		image_character_up_with_box = map.get_image_character_up_with_box();
+		image_character_down_with_box = map.get_image_character_down_with_box();
+		image_character_left_with_box = map.get_image_character_left_with_box();
+		image_character_right_with_box = map.get_image_character_right_with_box();
 		
 
 		// -1-el jelezz�k, hogy nincs m�g port�l nyitva
@@ -114,10 +98,6 @@ public class Character {
 		weight2 = 0;
 		weight3 = 0;
 		this.isAlive = true;
-
-		this.sgg = g;
-		this.x = x;
-		this.y = y;
 		
 		this.b = null;
 	}

@@ -2,9 +2,6 @@ package game;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
-
-import javax.imageio.ImageIO;
 
 public class Portal extends Element {
 	// private String facing; f�l�esleges, mert a Coloneln�l el van t�rolva, �s
@@ -21,22 +18,12 @@ public class Portal extends Element {
 		super(x, y, ch);
 		this.colour = colour;
 		
-		try{
-			File file1 = new File("../src/portal_blue.jpg");
-			image_portal_blue = ImageIO.read(file1);
-			
-			File file2 = new File("../src/portal_yellow.jpg");
-			image_portal_yellow = ImageIO.read(file2);
-			
-			File file3 = new File("../src/portal_red.jpg");
-			image_portal_red = ImageIO.read(file3);
-			
-			File file4 = new File("../src/portal_green.jpg");
-			image_portal_green = ImageIO.read(file4);
-			
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
+		//kepek eltarolasa
+		Map map = ch.getSGG().getMap();
+		image_portal_blue = map.get_image_portal_blue();
+		image_portal_yellow = map.get_image_portal_yellow();
+		image_portal_red = map.get_image_portal_red();
+		image_portal_green = map.get_image_portal_green();
 	}
 
 	@Override
@@ -46,11 +33,8 @@ public class Portal extends Element {
 			int X_blue = character.getPortalBlue_x();
 			int Y_blue = character.getPortalBlue_y();
 			String bluePortalFacing = character.getPortalBlue_Facing();
-			System.out.println(X_blue);
 			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
 			if (X_blue != -1) {
-				System.out.println(X_blue);
-				System.out.println(bluePortalFacing);
 				if (bluePortalFacing == "up") {
 					character.setX(X_blue);
 					character.setY(Y_blue - 32);
@@ -68,7 +52,6 @@ public class Portal extends Element {
 					character.setY(Y_blue);
 				}
 			} else {
-				System.out.println(X_blue);
 				character.setX(character.getX() - dx);
 				character.setY(character.getY() - dy);
 			}
@@ -172,11 +155,8 @@ public class Portal extends Element {
 			int X_blue = c.getPortalBlue_x();
 			int Y_blue = c.getPortalBlue_y();
 			String bluePortalFacing = c.getPortalBlue_Facing();
-			System.out.println(X_blue);
 			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
 			if (X_blue != -1) {
-				System.out.println(X_blue);
-				System.out.println(bluePortalFacing);
 				if (bluePortalFacing == "up") {
 					replicator.setX(X_blue);
 					replicator.setY(Y_blue - 32);
@@ -194,7 +174,6 @@ public class Portal extends Element {
 					replicator.setY(Y_blue);
 				}
 			} else {
-				System.out.println(X_blue);
 				replicator.setX(replicator.getX() - dx);
 				replicator.setY(replicator.getY() - dy);
 			}

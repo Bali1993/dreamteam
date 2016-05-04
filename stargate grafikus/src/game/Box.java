@@ -2,28 +2,19 @@ package game;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
-
-import javax.imageio.ImageIO;
 
 public class Box extends Element {
 	private int weight;
-
-	private Character character; // akivel �tk�zik a doboz, jaffa vagy colonel,
-									// onCollWithCharacter-be adunk neki �rt�ket
-
+	
 	private Image image_box;
 	
 	public Box(int x, int y, Character ch) {
 		super(x, y, ch);
 		this.weight = 1;
 		
-		try{
-			File file = new File("../src/box.jpg");
-			image_box = ImageIO.read(file);
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
+		//kep eltarolasa
+		image_box = ch.getSGG().getMap().get_image_box();
+		
 	}
 
 	// Ez a f�ggv�ny adja meg, hogy mit csin�l a doboz, ha vele �tk�z�nk

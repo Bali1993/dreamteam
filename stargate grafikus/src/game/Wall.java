@@ -2,9 +2,6 @@ package game;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
-
-import javax.imageio.ImageIO;
 
 public class Wall extends Element {
 	private boolean isSpecial;
@@ -17,15 +14,10 @@ public class Wall extends Element {
 		super(x, y, ch);
 		this.isSpecial = b;
 		
-		try{
-			File file1 = new File("../src/wall_normal.jpg");
-			image_wall_normal = ImageIO.read(file1);
-			
-			File file2 = new File("../src/wall_special.jpg");
-			image_wall_special = ImageIO.read(file2);
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
+		//kepek eltarolasa
+		Map map = ch.getSGG().getMap();
+		image_wall_normal = map.get_image_wall_normal();
+		image_wall_special = map.get_image_wall_special();
 	}
 
 	@Override

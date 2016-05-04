@@ -47,19 +47,20 @@ public class StarGateGame extends JPanel implements ActionListener {
 		scale2 = null;
 		scale3 = null;
 		zpmdb = 0;
-
+		
 		m = new Map();
+		ll = new LinkedList<Entity>();
+		
+		ch = new Character(this, 96, 96);
+		
+		buildMAP();
+		
 		c = new Character(this, 32, 32);
 		j = new Character(this, 896, 32);
 
-		ch = new Character(this, 96, 96);
-		
 		int Replicator_x = 32;
 		int Replicator_y = 896;
 		replicator = new Replicator(this, Replicator_x, Replicator_y);
-
-		ll = new LinkedList<Entity>();
-		buildMAP();
 
 		addKeyListener(new Cntrl());
 		setFocusable(true);
@@ -71,6 +72,11 @@ public class StarGateGame extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		repaint();
+	}
+	
+	//kepbeolvasasok miatt szÃ¼ksegek az Element-ek szamara egy referencia a Map-re
+	public Map getMap(){
+		return this.m;
 	}
 
 	public Door getDoor1() {
@@ -111,7 +117,7 @@ public class StarGateGame extends JPanel implements ActionListener {
     private void popupwindow(String message) {
         int n = JOptionPane.showOptionDialog(null, message, "End of Game", JOptionPane.PLAIN_MESSAGE,
                                              JOptionPane.QUESTION_MESSAGE, null, options, options[0]);
-        System.out.println(n);
+      
         if (n == 0 || n == -1) {
             System.exit(0);
         }
@@ -120,20 +126,14 @@ public class StarGateGame extends JPanel implements ActionListener {
     public void EndofGame() {
     	String Zpm = new String("\nColonel's ZPM: " + c.getzpmCounter() + "\nJaffa's ZPM: " +j.getzpmCounter());
         if ((j.getisAlive() == false) && (c.getisAlive() == false)) {
-        	
-            System.out.println("game over" + Zpm);
             popupwindow("Game Over" + Zpm);
-            
-            
         }
         if ((j.getzpmCounter() + c.getzpmCounter()) == zpmdb) {
             if (c.getzpmCounter() > j.getzpmCounter()) {
                 if (c.getisAlive()) {
-                    System.out.println("colonel wins" + Zpm);
                     popupwindow("Colonel wins" + Zpm);
                     
                 } else {
-                    System.out.println("jaffa wins" + Zpm);
                     popupwindow("Jaffa wins" + Zpm);
                 }
             }
@@ -141,23 +141,18 @@ public class StarGateGame extends JPanel implements ActionListener {
                 if (c.getisAlive()) {
                     if (j.getisAlive()) {
                         popupwindow("Draw" + Zpm);
-                        System.out.println("Draw" + Zpm);
                     } else {
                         popupwindow("Colonel wins" + Zpm );
-                        System.out.println("colonel wins" + Zpm );
                     }
                 } else {
                     popupwindow("Jaffa wins" + Zpm);
-                    System.out.println("Jaffa wins" + Zpm);
                 }
             }
             if (j.getzpmCounter() > c.getzpmCounter()) {
                 if (j.getisAlive()) {
-                    System.out.println("Jaffa wins" + Zpm);
                     popupwindow("Jaffa wins" + Zpm );
                 } else {
                     popupwindow("Colonel wins" + Zpm);
-                    System.out.println("colonel wins" + Zpm);
                 }
             }
         }
@@ -179,7 +174,7 @@ public class StarGateGame extends JPanel implements ActionListener {
 		// 4 - mï¿½rleg2
 		
 		// 5 - ajto3
-		// 6 - mérleg3
+		// 6 - mï¿½rleg3
 		// stb..
 
 		for (int x = 0; x < 30; x++) {

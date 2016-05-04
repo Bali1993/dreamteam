@@ -3,10 +3,8 @@ package game;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
-import java.io.File;
 import java.util.LinkedList;
 
-import javax.imageio.ImageIO;
 
 import ntrfc.Entity;
 
@@ -31,21 +29,12 @@ public class Bullet implements Runnable {
 		this.colour = colour;
 		this.hit = false;
 		
-		try{
-			File file1 = new File("../src/bullet_blue.jpg");
-			image_bullet_blue = ImageIO.read(file1);
-			
-			File file2 = new File("../src/bullet_yellow.jpg");
-			image_bullet_yellow = ImageIO.read(file2);
-			
-			File file3 = new File("../src/bullet_red.jpg");
-			image_bullet_red = ImageIO.read(file3);
-			
-			File file4 = new File("../src/bullet_green.jpg");
-			image_bullet_green = ImageIO.read(file4);
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
+		//kepek eltarolasa
+		Map map = character.getSGG().getMap();
+		image_bullet_blue = map.get_image_bullet_blue();
+		image_bullet_yellow = map.get_image_bullet_yellow();
+		image_bullet_red = map.get_image_bullet_red();
+		image_bullet_green = map.get_image_bullet_green();
 	}
 
 	@Override
@@ -111,7 +100,7 @@ public class Bullet implements Runnable {
 	public int Coll_Bullet(Bullet b, LinkedList<Entity> ll) {
 		Rectangle RecOfBullet = b.getRec();
 		
-		//replicator megsemmísítése
+		//replicator megsemmï¿½sï¿½tï¿½se
 		if (RecOfBullet.intersects(character.getSGG().getReplicator().getRec())){
 			character.getSGG().getReplicator().destroy();
 			this.setHit(true);

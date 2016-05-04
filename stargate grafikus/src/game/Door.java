@@ -2,9 +2,6 @@ package game;
 
 import java.awt.Graphics;
 import java.awt.Image;
-import java.io.File;
-
-import javax.imageio.ImageIO;
 
 public class Door extends Element {
 
@@ -17,15 +14,10 @@ public class Door extends Element {
 		super(x, y, ch);
 		isOpened = false;
 		
-		try{
-			File file1 = new File("../src/door_opened.jpg");
-			image_door_opened = ImageIO.read(file1);
-			
-			File file2 = new File("../src/door_closed.jpg");
-			image_door_closed = ImageIO.read(file2);
-		}catch(Exception ex){
-			ex.printStackTrace();
-		}
+		//kepek eltarolasa
+		Map map = ch.getSGG().getMap();
+		image_door_opened = map.get_image_door_opened();
+		image_door_closed = map.get_image_door_closed();
 	}
 
 	@Override
