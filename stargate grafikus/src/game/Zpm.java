@@ -15,7 +15,7 @@ public class Zpm extends Element {
 		super(x, y, ch);
 		
 		try{
-			File file = new File("../stargate grafikus/src/zpm.jpg");
+			File file = new File("../src/zpm.jpg");
 			image_zpm = ImageIO.read(file);
 		}catch(Exception ex){
 			ex.printStackTrace();
@@ -57,7 +57,6 @@ public class Zpm extends Element {
 
 				// Rectangle k�pz�se a koordin�t�kb�l
 				Rectangle RecOfNewZPM = new Rectangle(xForNewZPM, yForNewZPM, 32, 32);
-				System.out.println(RecOfNewZPM);
 				// �t�ll�tjuk az �tk�z�s �rt�k�t hamisra
 				// �s v�gig megy�nk a l�ncolt lista minden elem�n
 				// intersect eset�n az �tk�z�s �rt�ke igaz lesz

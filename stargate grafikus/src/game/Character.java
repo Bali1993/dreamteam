@@ -62,28 +62,28 @@ public class Character {
 	
 	public Character(StarGateGame g, int x, int y) {
 		try{
-			File file1 = new File("../stargate grafikus/src/character_up.jpg");
+			File file1 = new File("../src/character_up.jpg");
 			image_character_up = ImageIO.read(file1);
 			
-			File file2 = new File("../stargate grafikus/src/character_down.jpg");
+			File file2 = new File("../src/character_down.jpg");
 			image_character_down = ImageIO.read(file2);
 			
-			File file3 = new File("../stargate grafikus/src/character_left.jpg");
+			File file3 = new File("../src/character_left.jpg");
 			image_character_left = ImageIO.read(file3);
 			
-			File file4 = new File("../stargate grafikus/src/character_right.jpg");
+			File file4 = new File("../src/character_right.jpg");
 			image_character_right = ImageIO.read(file4);
 			
-			File file5 = new File("../stargate grafikus/src/character_up_with_box.jpg");
+			File file5 = new File("../src/character_up_with_box.jpg");
 			image_character_up_with_box = ImageIO.read(file5);
 			
-			File file6 = new File("../stargate grafikus/src/character_down_with_box.jpg");
+			File file6 = new File("../src/character_down_with_box.jpg");
 			image_character_down_with_box = ImageIO.read(file6);
 			
-			File file7 = new File("../stargate grafikus/src/character_left_with_box.jpg");
+			File file7 = new File("../src/character_left_with_box.jpg");
 			image_character_left_with_box = ImageIO.read(file7);
 			
-			File file8 = new File("../stargate grafikus/src/character_right_with_box.jpg");
+			File file8 = new File("../src/character_right_with_box.jpg");
 			image_character_right_with_box = ImageIO.read(file8);
 		}catch(Exception ex){
 			ex.printStackTrace();

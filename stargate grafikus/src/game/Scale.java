@@ -23,10 +23,10 @@ public class Scale extends Element {
 		this.WeightLimit = WeightLimit;
 		
 		try{
-			File file1 = new File("../stargate grafikus/src/scale.jpg");
+			File file1 = new File("../src/scale.jpg");
 			image_scale = ImageIO.read(file1);
 			
-			File file2 = new File("../stargate grafikus/src/scale_with_box.jpg");
+			File file2 = new File("../src/scale_with_box.jpg");
 			image_scale_with_box = ImageIO.read(file2);
 		}catch(Exception ex){
 			ex.printStackTrace();

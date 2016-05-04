@@ -32,16 +32,16 @@ public class Bullet implements Runnable {
 		this.hit = false;
 		
 		try{
-			File file1 = new File("../stargate grafikus/src/bullet_blue.jpg");
+			File file1 = new File("../src/bullet_blue.jpg");
 			image_bullet_blue = ImageIO.read(file1);
 			
-			File file2 = new File("../stargate grafikus/src/bullet_yellow.jpg");
+			File file2 = new File("../src/bullet_yellow.jpg");
 			image_bullet_yellow = ImageIO.read(file2);
 			
-			File file3 = new File("../stargate grafikus/src/bullet_red.jpg");
+			File file3 = new File("../src/bullet_red.jpg");
 			image_bullet_red = ImageIO.read(file3);
 			
-			File file4 = new File("../stargate grafikus/src/bullet_green.jpg");
+			File file4 = new File("../src/bullet_green.jpg");
 			image_bullet_green = ImageIO.read(file4);
 		}catch(Exception ex){
 			ex.printStackTrace();

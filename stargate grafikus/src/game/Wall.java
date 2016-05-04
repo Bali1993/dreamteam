@@ -18,10 +18,10 @@ public class Wall extends Element {
 		this.isSpecial = b;
 		
 		try{
-			File file1 = new File("../stargate grafikus/src/wall_normal.jpg");
+			File file1 = new File("../src/wall_normal.jpg");
 			image_wall_normal = ImageIO.read(file1);
 			
-			File file2 = new File("../stargate grafikus/src/wall_special.jpg");
+			File file2 = new File("../src/wall_special.jpg");
 			image_wall_special = ImageIO.read(file2);
 		}catch(Exception ex){
 			ex.printStackTrace();

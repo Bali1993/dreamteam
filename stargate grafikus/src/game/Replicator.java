@@ -26,7 +26,7 @@ public class Replicator {
 		isAlive = true;
 		
 		try{
-			File file = new File("../stargate grafikus/src/replicator.jpg");
+			File file = new File("../src/replicator.jpg");
 			image_replicator = ImageIO.read(file);
 		}catch(Exception ex){
 			ex.printStackTrace();

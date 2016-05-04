@@ -22,16 +22,16 @@ public class Portal extends Element {
 		this.colour = colour;
 		
 		try{
-			File file1 = new File("../stargate grafikus/src/portal_blue.jpg");
+			File file1 = new File("../src/portal_blue.jpg");
 			image_portal_blue = ImageIO.read(file1);
 			
-			File file2 = new File("../stargate grafikus/src/portal_yellow.jpg");
+			File file2 = new File("../src/portal_yellow.jpg");
 			image_portal_yellow = ImageIO.read(file2);
 			
-			File file3 = new File("../stargate grafikus/src/portal_red.jpg");
+			File file3 = new File("../src/portal_red.jpg");
 			image_portal_red = ImageIO.read(file3);
 			
-			File file4 = new File("../stargate grafikus/src/portal_green.jpg");
+			File file4 = new File("../src/portal_green.jpg");
 			image_portal_green = ImageIO.read(file4);
 			
 		}catch(Exception ex){

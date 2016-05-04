@@ -34,7 +34,7 @@ public class Map{
 	
 	private void openFile() {
 		try{
-			s = new Scanner(new File("src/Map.txt"));
+			s = new Scanner(new File("../src/Map.txt"));
 			//s = new Scanner(new File("src/forRandomZPM.txt"));
 		}catch(Exception e){
 			System.out.println("error during loading file");

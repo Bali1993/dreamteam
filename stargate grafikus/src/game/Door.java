@@ -18,10 +18,10 @@ public class Door extends Element {
 		isOpened = false;
 		
 		try{
-			File file1 = new File("../stargate grafikus/src/door_opened.jpg");
+			File file1 = new File("../src/door_opened.jpg");
 			image_door_opened = ImageIO.read(file1);
 			
-			File file2 = new File("../stargate grafikus/src/door_closed.jpg");
+			File file2 = new File("../src/door_closed.jpg");
 			image_door_closed = ImageIO.read(file2);
 		}catch(Exception ex){
 			ex.printStackTrace();

@@ -19,7 +19,7 @@ public class Box extends Element {
 		this.weight = 1;
 		
 		try{
-			File file = new File("../stargate grafikus/src/box.jpg");
+			File file = new File("../src/box.jpg");
 			image_box = ImageIO.read(file);
 		}catch(Exception ex){
 			ex.printStackTrace();
