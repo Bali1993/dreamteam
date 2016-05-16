@@ -7,17 +7,21 @@ import java.util.Scanner;
 import javax.imageio.ImageIO;
 
 
+/*
+ *	A pálya osztálya, ahol a pályaelemek beolvasása történik txt fájlokból	 
+ */
 public class Map{
+	// Fájl olvasó
 	private Scanner s;
 	
 	/*
-	 * string t�mb, melyben soronk�nt t�roljuk a p�ly�t
-	 * ahogyan beolvassuk txtb�l
+	 * String tömb, melyben soronként tároljuk a pályát
+	 * ahogyan beolvassuk txtből
 	*/
 	private String Map[] = new String[30];
 	
 	/*
-	 * egyes k�pek beolvas�sa v�ltoz�kba
+	 * egyes képek beolvasása változókba
 	 */
 	
 	//cmd es eclipse miatt, lasd konstruktorban
@@ -56,6 +60,10 @@ public class Map{
 	
 	private Image image_zpm;
 	
+	/*
+	 * Map konstruktora, ahol a beolvasásokat, 
+	 * filekezeléseket végezzük
+	 */
 	public Map(){		
 		//kepek beolvasasa, a megfelelot kell kikommentezni
 		//cmd-hez:
@@ -66,9 +74,13 @@ public class Map{
 		
 		
 		//fajlkezelesek
+		// file megynyitása
 		openFile();
+		// fájl olvasása
 		readFile();
+		// fájl bezárása
 		closeFile();
+		//Képek beolvasása
 		readImages();
 	}
 
@@ -218,19 +230,23 @@ public class Map{
 	}
 	
 	
-	//a txt egy sor�nak String-j�b�l vissza adja az adott oszlopban l�v� karaktert
+	//a txt egy sorának String-jéből visszaadja az
+	//adott oszlopban lévő karaktert
 	public char getElement(int x, int y){
 		char elem = Map[y].charAt(x);
 		return elem;
 	}
 	
+	// Fájl megnyitása elérési út alapján
 	private void openFile() {
 		try{
 			s = new Scanner(new File(path + "Map.txt"));
-		}catch(Exception e){
+		}catch(Exception e){ //Ha hiba van elkapjuk
 			System.out.println("error during loading file");
 		}
 	}
+	
+	// Fájl olvasása
 	private void readFile() {
 		while(s.hasNext()){
 			for(int i=0; i<30; i++){
@@ -238,6 +254,8 @@ public class Map{
 			}
 		}
 	}
+	
+	// Fájl bezárása
 	private void closeFile() {
 		s.close();
 	}

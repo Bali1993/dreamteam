@@ -25,19 +25,19 @@ public class Zpm extends Element {
 		VariableForSGG.getList().remove(this);
 		
 
-		// ha az egyik karakter begy�jt 2 ZPM-et, akkor keletkezik egy �j ZPM
-		// egy v�letlenszer� helyen
-		// adott karaktern�l sz�moljuk k�l�n h begy�jt�tt-e kett�t
+		// ha az egyik karakter begyűjt 2 ZPM-et, akkor keletkezik egy új ZPM
+		// egy véletlenszerű helyen
+		// adott karakternél számoljuk közben, hogy begyűjtött-e kettőt
 		if (character.getzpmCounter() % 2 == 0) {
-			boolean collision = true; // kezdetben azt mondjuk, hogy �tk�z�s van
-			int xForNewZPM = 0; // fordito sir h inicializ�ljam valamennyire
+			boolean collision = true; // kezdetben azt mondjuk, hogy ütközés van
+			int xForNewZPM = 0; // Inicializálás egy alapértelmezett értékkel
 			int yForNewZPM = 0;
 
-			// addig gener�ljon Rectangle-ket az �j ZPM-nek mig �tk�z�s van
+			// addig generáljon Rectangle-ket az új ZPM-nek mig ütközés van
 			while (collision == true) {
-				// gener�lunk egy Rectangle-t az �j ZPM-nek
-				// min �s max sz�mok k�z�tt gener�l egy random sz�mot, ak�r
-				// v�gpontokat is bele�rtve
+				// generálunk egy Rectangle-t az új ZPM-nek
+				// min és max számok között generál egy random számot, akár
+				// végpontokat is beleértve
 				int min = 1;
 				int max = 29;
 				Random random1 = new Random();
@@ -45,37 +45,40 @@ public class Zpm extends Element {
 				Random random2 = new Random();
 				yForNewZPM = random2.nextInt(max - min + 1) + min;
 
-				// szorz�s 32-vel
+				// szorzás 32-vel
 				xForNewZPM = xForNewZPM * 32;
 				yForNewZPM = yForNewZPM * 32;
 
-				// Rectangle k�pz�se a koordin�t�kb�l
+				// Rectangle készítése a koordinátákból
 				Rectangle RecOfNewZPM = new Rectangle(xForNewZPM, yForNewZPM, 32, 32);
-				// �t�ll�tjuk az �tk�z�s �rt�k�t hamisra
-				// �s v�gig megy�nk a l�ncolt lista minden elem�n
-				// intersect eset�n az �tk�z�s �rt�ke igaz lesz
+				// Átállítjuk az ütközés értékét hamisra
+				// és végig megyünk a láncolt lista minden elemén
+				// intersect esetén az ütközés értéke igaz lesz
 				collision = false;
 				for (int k = 0; k < VariableForSGG.getList().size(); ++k) {
-					// adott elem n�gyzete a l�ncolt list�ban
+					// adott elem négyzete a láncolt listában
 					Rectangle RecOfElement = VariableForSGG.getList().get(k).getRec();
 
-					// �sszehasonl�tjuk az �j ZPM �s adott elem n�gyzet�t, hogy
+					// összehasonlítjuk az adott elem, és az új ZPM négyzetét, hogy
 					// egyezik-e
-					// ha igen, akkor �tk�z�s van
+					// ha igen, akkor ütközés van
 					if (RecOfNewZPM.intersects(RecOfElement)) {
 						collision = true;
 					}
 				}
 
 			}
-			// bearkjuk a l�ncolt list�ba az �j ZPM-et
+			// bearkjuk a láncolt listába az új ZPM-et
 			VariableForSGG.setZpmdb(VariableForSGG.getZpmdb() + 1);
 			VariableForSGG.getList().add(new Zpm(xForNewZPM, yForNewZPM, ch));
 
 		}
-		VariableForSGG.EndofGame();
+		VariableForSGG.EndofGame(); //Vizsgáljuk hogy van e még zpm a pályán, ha nincs, nyertest hirdetünk
 	}
 	
+	/*
+	 * A lövedék átrepül a zpm-ek felett
+	 */
 	@Override
 	public void onCollisionWithBullet(Bullet bullet, Character c) {
 

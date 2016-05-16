@@ -8,25 +8,25 @@ import game.Replicator;
 
 public interface Entity {
 
-	// deklar�lja a getRec() f�ggv�nyt, hogy a list�ban t�rolt elemeken
-	// megh�vhassuk
+	// deklarájuk a getRec() függvény, hogy a listában tárolt elemeken
+	// meghívhassuk
 	public Rectangle getRec();
 
-	// els� param�ter
-	// azt adjuk meg, hogy Repliator, Character vagy Bullet - el t�rt�nt az
-	// �tk�z�s
-	// CollisionIndexinListofElements (kor�bban "i" param�ter volt)
-	// a list�ban mely indexen t�rt�nt az �tk�z�s
-	// r�j�ttem erre a param�terre nincs is sz�ks�g, mert az adott elem, amivel
-	// t�rt�nik az �tk�z�s
-	// tudja a saj�t index�t a list�ban, nem kell neki �tadni
-	// csak sim�n lek�rdezi indexOf(this) be�p�tett f�ggv�nnyel
+	// első paraméter
+	// azt adjuk meg, hogy Replicator, Character vagy Bullet - el történt az
+	// ütközés
+	// CollisionIndexinListofElements (korábban "i" paraméter volt)
+	// a listában mely indexen történt az ütközés
+	// rájöttem erre a paraméterre nincs is szükség, mert az adott elem, amivel
+	// történik az ütközés
+	// tudja a saját indexét a listában, nem kell neki átadni
+	// csak simán lekérdezi indexOf(this) beépített függvénnyel
 	// dx, dy
-	// az azt adja, meg hogy mely ir�nyb�l t�rt�nt az �tk�z�s
-	// 0, -32, +32 lehet az �rt�ke
-	// legin�bb arra haszn�ljuk, hogy az adott elem lepattintsa mag�r�l a
+	// az azt adja, meg hogy mely irányból történnt az ütközés
+	// 0, -32, +32 lehet az értéke
+	// leginkább arra használjuk, hogy az adott elem lepattintsa magáról a
 	// Replicatort vagy Charactert
-	// ez�rt nincs r� sz�ks�g a Bullet-n�l
+	// ezért nincs rá szükség a Bullet-nél
 	
 	public void onCollisionWithReplicator(Replicator replicator, Character c, Character j, int dx, int dy);
 

@@ -20,23 +20,23 @@ public class StarGateGame extends JPanel implements ActionListener {
 	private Timer timer;
 	private Map m;
 	
-	//összes felvehetõ ZPM szám
+	//Ã¶sszes felvehetÅ‘ ZPM szÃ¡m
 	private int zpmdb;
 
 	private Character ch;
 
-	//referencia a létrehozott colonelre
+	//referencia a lÃ©trehozott colonelre
 	private Character c;
-	//referencia a létrehozott jaffara
+	//referencia a lÃ©trehozott jaffara
 	private Character j;
-	//referencia a létrehozott replicatorra
+	//referencia a lÃ©trehozott replicatorra
 	private Replicator replicator;
 
-	//a pálya elemeit tartalmazó lámcolt lista
+	//a pÃ¡lya elemeit tartalmazÃ³ lÃ¡ncolt lista
 	private LinkedList<Entity> ll;
 	
 	/*
-	 * mérleg-ajtó párosok referenciái
+	 * MÃ©rleg ajtÃ³ pÃ¡rosok referenciÃ¡i
 	 */
 	private Scale scale1;
 	private Scale scale2;
@@ -49,11 +49,11 @@ public class StarGateGame extends JPanel implements ActionListener {
 	private Object[] options = { "QUIT" };
 	
     /*
-     * A StarGateGame osztály konstruktora
-     * Attribútumok inicializálása
-     * Pálya építése
+     * A StarGateGame osztÃ¡ly konstruktora
+     * AttribÃºtumok inicializÃ¡lÃ¡sa
+     * PÃ¡lya Ã©pÃ­tÃ©se
      * 
-     * Karakterek létrehozása
+     * Karakterek lÃ©trehozÃ¡sa
      */
 	public StarGateGame() {
 		door1 = null;
@@ -66,28 +66,28 @@ public class StarGateGame extends JPanel implements ActionListener {
 		m = new Map();
 		ll = new LinkedList<Entity>();
 		ch = new Character(this, 96, 96);
-		// pálya építése
+		// PÃ¡lya Ã©pÃ­tÃ©se
 		buildMAP();
 		/*
-		 * colonel és jaffa létrehozása, berakása a pályára
+		 * colonel Ã©s jaffa lÃ©trehozÃ¡sa, berakÃ¡sa a pÃ¡lyÃ¡ra
 		 */
 		c = new Character(this, 32, 32);
 		j = new Character(this, 896, 32);
 		
-		//replikátor létrehozása
+		//replikÃ¡tor lÃ©trehozÃ¡sa
 		replicator = new Replicator(this, 32, 896);
 
-		//keylistener hozzáadása
+		//keylistener hozzÃ¡adÃ¡sa
 		addKeyListener(new Cntrl());
 		setFocusable(true);
 
-		//timer hozzáadása, indítása
+		//timer hozzÃ¡adÃ¡sa, indÃ­tÃ¡sa
 		timer = new Timer(25, this);
 		timer.start();
 	}
 	
 	/*
-	 * Pálya újrarajzolása, ha valami interakció történik
+	 * PÃ¡lya ÃºjrarajzolÃ¡sa, ha valami interakciÃ³ tÃ¶rtÃ©nik
 	 * (non-Javadoc)
 	 * @see java.awt.event.ActionListener#actionPerformed(java.awt.event.ActionEvent)
 	 */
@@ -97,14 +97,14 @@ public class StarGateGame extends JPanel implements ActionListener {
 	}
 	
 	/*
-	 * A txtbõl feltöltött tömb gettere
+	 * A txtbÃ¶l feltÃ¶ltÃ¶tt tÃ¶mb gettere
 	 */
 	public Map getMap(){
 		return this.m;
 	}
 
 	/*
-	 * A 3 ajtó gettere
+	 * A 3 ajtÃ³ gettere
 	 */
 	public Door getDoor1() {
 		return door1;
@@ -118,7 +118,7 @@ public class StarGateGame extends JPanel implements ActionListener {
 	}
 
 	/*
-	 * A 3 mérleg gettere
+	 * A 3 mÃ©rleg gettere
 	 */
 	public Scale getScale1() {
 		return scale1;
@@ -152,7 +152,7 @@ public class StarGateGame extends JPanel implements ActionListener {
 	}
     
 	/*
-	 * popupwindowt létrehozó függvény
+	 * popupwindowt lÃ©trehozÃ³ fÃ¼ggvÃ©ny
 	 */
     private void popupwindow(String message) {
         int n = JOptionPane.showOptionDialog(null, message, "End of Game", JOptionPane.PLAIN_MESSAGE,
@@ -164,13 +164,13 @@ public class StarGateGame extends JPanel implements ActionListener {
     }
 
     /*
-     * Játék befejezéséért felelõs függvény
-     * Meghívódik, ha meghal egy játékos, vagy zpm felvétel történik
-     * Meghívja a popupwindowt
+     * JÃ¡tÃ©k befejezesÃ©Ã©rt felelÅ‘s fÃ¼ggvÃ©ny
+     * MegÃ­vÃ³dik, ha meghal egy jÃ¡tÃ©kos, vagy zpm felvÃ©tel tÃ¶rtÃ©nik
+     * MeghÃ­vja a popupwindowt
      */
     public void EndofGame() {
     	/*
-    	 * kiírjuk a játék végeredményét
+    	 * kiÃ­rjuk a jÃ¡tÃ©k vÃ©geredmÃ©nyÃ©t
     	 */
     	String Zpm = new String("\nColonel's ZPM: " + c.getzpmCounter() + "\nJaffa's ZPM: " +j.getzpmCounter());
     	/*
@@ -180,8 +180,8 @@ public class StarGateGame extends JPanel implements ActionListener {
             popupwindow("Game Over" + Zpm);
         }
         /*
-         * Ha elérjük a felvehetõ zpm-ek összes számát, és
-         * Ha a colonel vett fel több zpm-et, és életben van, akkor a Colonel nyert, egyébként a Jaffa 
+         * Ha elÃ©rjÃ¼k az Ã¶sszes felvehetÅ‘ zpm-ek  szÃ¡mÃ¡t, Ã©s
+         * Ha a colonel vett fel tÃ¶bb zpm-et, Ã©letben van, akkor a Colonel nyert, egyÃ©bkÃ©nt a Jaffa 
          */
         if ((j.getzpmCounter() + c.getzpmCounter()) == zpmdb) {
             if (c.getzpmCounter() > j.getzpmCounter()) {
@@ -194,7 +194,7 @@ public class StarGateGame extends JPanel implements ActionListener {
             } 
             
             /*
-             * Ha ugyanannyi zpm-et vett fel a két karakter, és mindketten életben vannak, akkor döntetlen
+             * Ha ugyanannyi zpm-et vett fel a kÃ©t karakter, Ã©s mindketten Ã©letben vannak, akkor dÃ¶ntetlen
              */
             if (c.getzpmCounter() == j.getzpmCounter()) {
                 if (c.getisAlive()) {
@@ -209,7 +209,7 @@ public class StarGateGame extends JPanel implements ActionListener {
             }
             
             /*
-             * Ha a jaffa vett fel több zpm-et, és életben van, akkor a jaffa nyert, egyébként a colonel 
+             * Ha a jaffa vett fel tÃ¶bb zpm-et, Ã©s Ã©letben van, akkor a jaffa nyert, egyÃ©bkÃ©nt a colonel 
              */
             if (j.getzpmCounter() > c.getzpmCounter()) {
                 if (j.getisAlive()) {
@@ -223,7 +223,7 @@ public class StarGateGame extends JPanel implements ActionListener {
     }
     
     /*
-     * elemeket tartalamzó lista gettere
+     * elemeket tartalamzÃ³ lista gettere
      */
 	public LinkedList<Entity> getList() {
 		return ll;
@@ -245,52 +245,52 @@ public class StarGateGame extends JPanel implements ActionListener {
 		 */ 
 
 		/*
-		 * Pálya felépítése a beolvasott txt alapján
-		 * elemek egyesével történõ hozzáadásával
+		 * PÃ¡lya felÃ©pÃ­tÃ©se a beolvasott txt alapjÃ¡n
+		 * elemek egyesÃ©vel tÃ¶rtÃ©nÅ‘ hozzÃ¡adÃ¡sÃ¡val
 		 * 
-		 * 30x30-as pálya
+		 * 30x30-as pÃ¡lya
 		 */
 		for (int x = 0; x < 30; x++) {
 			for (int y = 0; y < 30; y++) {
 				switch (m.getElement(x, y)) {
-				//ajtó hozzáadása (1)
+				//ajtÃ³ hozzÃ¡adÃ¡sa (1)
 				case '1':
 					door1 = new Door(x * 32, y * 32, ch);
 					ll.add(door1);
 					break;
-				//ajtó hozzáadása (2)
+				//ajtÃ³ hozzÃ¡adÃ¡sa (2)
 				case '3':
 					door2 = new Door(x * 32, y * 32, ch);
 					ll.add(door2);
 					break;
-				//ajtó hozzáadása (3)
+				//ajtÃ³ hozzÃ¡adÃ¡sa (3)
 				case '5':
 					door3 = new Door(x * 32, y * 32, ch);
 					ll.add(door3);
 					break;
-				//fal hozzáadása
+				//fal hozzÃ¡adÃ¡sa
 				case 'w':
 					ll.add(new Wall(x * 32, y * 32, false, ch));
 					break;
-				//speciális fal hozzáadása
+				//speciÃ¡lis fal hozzÃ¡adÃ¡sa
 				case 'q':
 					ll.add(new Wall(x * 32, y * 32, true, ch));
 					break;
-				//zpm hozzáadása
+				//zpm hozzÃ¡adÃ¡sa
 				case 'z':
 					ll.add(new Zpm(x * 32, y * 32, ch));
 					zpmdb++;
 					break;
-				//doboz hozzáadása
+				//doboz hozzÃ¡adÃ¡sa
 				case 'b':
 					ll.add(new Box(x * 32, y * 32, ch));
 					break;
-				//szakadék hozzáadása
+				//szakadÃ¡k hozzÃ¡adÃ¡sa
 				case 'p':
 					ll.add(new Pit(x * 32, y * 32, ch));
 					break;
 				/*
-				 * Portálok hozzáadása
+				 * PortÃ¡lok hozzÃ¡adÃ¡sa
 				 */
 				case 'y':
 					ll.add(new Portal(x * 32, y * 32, "yellow", ch));
@@ -312,20 +312,20 @@ public class StarGateGame extends JPanel implements ActionListener {
 			for (int y = 0; y < 30; y++) {
 				switch (m.getElement(x, y)) {
 				/*
-				 * Mérlegek hozzáadása, ajtókkal párosítva
+				 * MÃ©rlegek hozzÃ¡adÃ¡sa, ajtÃ³kkal pÃ¡rosÃ­tva
 				 */
 				
-				// Mérleg hozzáadása (1)
+				// MÃ©rleg hozzÃ¡adÃ¡sa (1)
 				case '2':
 					scale1 = new Scale(x * 32, y * 32, door1, 2, ch);
 					ll.add(scale1);
 					break;
-				// Mérleg hozzáadása (2)
+				//  MÃ©rleg hozzÃ¡adÃ¡sa (2)
 				case '4':
 					scale2 = new Scale(x * 32, y * 32, door2, 1, ch);
 					ll.add(scale2);
 					break;
-				// Mérleg hozzáadása (3)
+				//  MÃ©rleg hozzÃ¡adÃ¡sa  (3)
 				case '6':
 					scale3 = new Scale(x * 32, y * 32, door3, 1, ch);
 					ll.add(scale3);
@@ -337,15 +337,15 @@ public class StarGateGame extends JPanel implements ActionListener {
 	}
 
 	/*
-	 * Grafikus megjelenítés
+	 * Grafikus megjelenÃ­tÃ©s
 	 */
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		
 		/*
-		 * pálya kirajzolása
-		 * ahol nincs elem ott alapszínnel való kitöltése
+		 * PÃ¡lya kirajzolÃ¡sa
+		 * ahol nincs elem ott alapszÃ­nnel valÃ³ kitÃ¶ltÃ©se
 		 */
 		for (int x = 0; x < 30; x++) {
 			for (int y = 0; y < 30; y++) {
@@ -356,49 +356,49 @@ public class StarGateGame extends JPanel implements ActionListener {
 			}
 		}
 		
-		//colonel által kilõtt lövedék kirajzolása
+		//colonel Ã¡ltal kilÅ‘tt lÃ¶vedÃ©k kirajzolÃ¡sa
 		if (c.getBullet() != null) {
 			c.getBullet().render(g);
 		}
 		
-		//jaffa által kilõtt lövedék kirajzolása
+		//jaffa Ã¡ltal kilÅ‘tt lÃ¶vedÃ©k kirajzolÃ¡sa
 		if (j.getBullet() != null) {
 			j.getBullet().render(g);
 		}
 	
-		//replicator kirajzolása
+		//replicator kirajzolÃ¡sa
 		replicator.render(g);
 		
-		//pálya elemeintek kirajzolása
+		//PÃ¡lya elemeinek kirajzolÃ¡sa
 		for (int i = 0; i < ll.size(); ++i) {
 			ll.get(i).render(g);
 		}
 		
-		//Colonel kirajzolása
+		//Colonel kirajzolÃ¡sa
 		c.render(g);
-		//Jaffa kirajzolása
+		//Jaffa kirajzolÃ¡sa
 		j.render(g);
 		
 		
 	}
 
 	/*
-	 * ZMP darabszám gettere
+	 * ZMP darabszÃ¡m gettere
 	 */
 	public int getZpmdb() {
 		return zpmdb;
 	}
 
 	/*
-	 * ZPM darabszám settere
+	 * ZPM darabszÃ¡m settere
 	 */
 	public void setZpmdb(int i) {
 		this.zpmdb = i;
 	}
 
 	/*
-	 * Cntrl belsõ osztály
-	 * Felhasználói input kezeléséhez
+	 * Cntrl belsÅ‘ osztï¿½ly
+	 * FelhasznÃ¡lÃ³i input kezelÃ©sÃ©hez
 	 */
 	public class Cntrl extends KeyAdapter {
 		/*
@@ -408,11 +408,11 @@ public class StarGateGame extends JPanel implements ActionListener {
 		boolean keypressedJ = false;
 		
 		/*
-		 * Billentyûparancsok:
-		 * Karakterek irányítása,
-		 * Replikátor léptetése, ha egy karakter lép,
-		 * Doboz felvétele,
-		 * Lövedékek lövése
+		 * BillentyÅ±parancsok:
+		 * Karakterek irÃ¡nyÃ­tÃ¡sa,
+		 * ReplikÃ¡tor lÃ©ptetÃ©se, ha egy karakter lÃ©p,
+		 * Doboz felvÃ©tele,
+		 * LÃ¶vedÃ©kek lÃ¶vÃ©se
 		 * 
 		 * @see java.awt.event.KeyAdapter#keyPressed(java.awt.event.KeyEvent)
 		 */
@@ -420,107 +420,107 @@ public class StarGateGame extends JPanel implements ActionListener {
 		public void keyPressed(KeyEvent e) {
 			int keycode = e.getKeyCode();
 			
-			//Ha él a Colonel, akkor léphetünk vele
+			//Ha Ã©l a Colonel, akkor lÃ©phetÃ¼nk vele
 			if (c.getisAlive()) {
 				/*
-				 * Lépés felfelé
+				 * LÃ©pÃ©s felfelÃ©
 				 */
 				if (keycode == KeyEvent.VK_UP) {
-					//Ha nincs lenyomva billentyû akkor lépünk a Colonellel
-					//beállítjuk milyen irányba néz
+					//Ha nincs lenyomva billentyÅ± akkor lÃ©pÃ¼nk a Colonellel
+					//beÃ¡llÃ­tjuk milyen irÃ¡nyba nÃ©z
 					if(keypressedC == false){
 						c.move(0, -32);
 						c.setFacing("up");
 					}
-					//Ha él a replikátor, akkor léptetjük random irányba
+					//Ha Ã©l a replikÃ¡tor, akkor lÃ©ptetjÃ¼k random irÃ¡nyba
 					if (replicator.getisAlive() == true)
 						replicator.move();
-					//Lenyomott billentyûzet jelzése
+					//Lenyomott billentyÅ± jelzÃ©se
 					keypressedC = true;
 				}
 				/*
-				 * Lépés lefelé
+				 * LÃ©pÃ©s lefelÃ©
 				 */
 				if (keycode == KeyEvent.VK_DOWN) {
-					//Ha nincs lenyomva billentyû akkor lépünk a Colonellel
-					//beállítjuk milyen irányba néz
+					//Ha nincs lenyomva billentyÅ± akkor lÃ©pÃ¼nk a Colonellel
+					//beÃ¡llÃ­tjuk milyen irÃ¡nyba nÃ©z
 					if(keypressedC == false){
 						c.move(0, 32);
 						c.setFacing("down");
 					}
-					//Ha él a replikátor, akkor léptetjük random irányba
+					//Ha Ã©l a replikÃ¡tor, akkor lÃ©ptetjÃ¼k random irÃ¡nyba
 					if (replicator.getisAlive() == true)
 						replicator.move();
-					//Lenyomott billentyûzet jelzése
+					//Lenyomott billentyÅ± jelzÃ©se
 					keypressedC = true;
 				}
 				/*
-				 * Lépés balra
+				 * LÃ©pÃ©s balra
 				 */
 				if (keycode == KeyEvent.VK_LEFT) {
-					//Ha nincs lenyomva billentyû akkor lépünk a Colonellel
-					//beállítjuk milyen irányba néz
+					//Ha nincs lenyomva billentyÅ± akkor lÃ©pÃ¼nk a Colonellel
+					//beÃ¡llÃ­tjuk milyen irÃ¡nyba nÃ©z
 					if(keypressedC == false){
 						c.move(-32, 0);
 						c.setFacing("left");
 					}
-					//Ha él a replikátor, akkor léptetjük random irányba
+					//Ha Ã©l a replikÃ¡tor, akkor lÃ©ptetjÃ¼k random irÃ¡nyba
 					if (replicator.getisAlive() == true)
 						replicator.move();
-					//Lenyomott billentyûzet jelzése
+					//Lenyomott billentyÅ± jelzÃ©se
 					keypressedC = true;
 				}
 				/*
-				 * Lépés jobbra
+				 * LÃ©pÃ©s jobbra
 				 */
 				if (keycode == KeyEvent.VK_RIGHT) {
-					//Ha nincs lenyomva billentyû akkor lépünk a Colonellel
-					//beállítjuk milyen irányba néz
+					//Ha nincs lenyomva billentyÅ± akkor lÃ©pÃ¼nk a Colonellel
+					//beÃ¡llÃ­tjuk milyen irÃ¡nyba nÃ©z
 					if(keypressedC == false){
 						c.move(32, 0);
 						c.setFacing("right");
 					}
-					//Ha él a replikátor, akkor léptetjük random irányba
+					//Ha Ã©l a replikÃ¡tor, akkor lÃ©ptetjÃ¼k random irÃ¡nyba
 					if (replicator.getisAlive() == true)
 						replicator.move();
-					//Lenyomott billentyûzet jelzése
+					//Lenyomott billentyÅ±zet jelzÃ©se
 					keypressedC = true;
 					
 				}
 				/*
-				 * Sárga lövedék lövése
+				 * SÃ¡rga lÃ¶vedÃ©k lÃ¶vÃ©se
 				 */
 				if (keycode == KeyEvent.VK_N) {
-					//ha volt már portál adott koordinátán, akkor megszüntetjük, falat rakunk a helyére
+					//ha volt mÃ¡r portÃ¡l adott koordinÃ¡tÃ¡n, akkor megszÃ¼ntetjÃ¼k, falat rakunk a helyÃ©re
 					if (c.getPortalYellow_y() != -1 && c.getPortalYellow_x() != -1) {
 						ll.remove(c.getP2());
 						ll.add(new Wall(c.getPortalYellow_x(), c.getPortalYellow_y(), true, ch));
-						//-1-el jelezzük, hogy nincs nyitott portál
+						//-1-el jelezzÃ¼k, hogy nincs nyitott portÃ¡l
 						c.setPortalYellow_x(-1);
 						c.setPortalYellow_y(-1);
 					}
-					//lövedék színének beállítása, kilövése
+					//LÃ¶vedÃ©k szÃ­nÃ©nek beÃ¡llÃ­tÃ¡sa, kilÃ¶vÃ©se
 					c.shoot("yellow");
 
 				}
 				/*
-				 * Kék lövedék lövése
+				 * KÃ©k lÃ¶vedÃ©k lÃ¶vÃ©se
 				 */
 				if (keycode == KeyEvent.VK_M) {
-					//ha volt már portál adott koordinátán, akkor megszüntetjük, falat rakunk a helyére
+					//ha volt mÃ¡r portÃ¡l adott koordinÃ¡tÃ¡n, akkor megszÃ¼ntetjÃ¼k, falat rakunk a helyÃ©re
 					if (c.getPortalBlue_y() != -1 && c.getPortalBlue_x() != -1) {
 						ll.remove(c.getP1());
 						ll.add(new Wall(c.getPortalBlue_x(), c.getPortalBlue_y(), true, ch));
-						//-1-el jelezzük, hogy nincs nyitott portál
+						//-1-el jelezzÃ¼k, hogy nincs nyitott portÃ¡l
 						c.setPortalBlue_x(-1);
 						c.setPortalBlue_y(-1);
 					}
-					//lövedék színének beállítása, kilövése
+					//LÃ¶vedÃ©k szÃ­nÃ©nek beÃ¡llÃ­tÃ¡sa, kilÃ¶vÃ©se
 					c.shoot("blue");
 
 				}
 				/*
-				 * Doboz felvétele, lerakása
+				 * Doboz felvÃ©tele, lerakÃ¡sa
 				 */
 				if (keycode == KeyEvent.VK_B) {
 					boolean chechIfStangindOnBox = false;
@@ -528,13 +528,13 @@ public class StarGateGame extends JPanel implements ActionListener {
 					
 					int CollisionIndexinListofElements = c.Coll_Character(c, ll);
 					
-					//vizsgáljuk, hogy dobozon állunk-e
+					//vizsgÃ¡ljuk, hogy dobozon Ã¡llunk-e
 					if (CollisionIndexinListofElements >= 0) {
 						chechIfStangindOnBox = ll.get(CollisionIndexinListofElements).ifStandingOnBox(c);
 					}
-					//ha dobozzon állunk, és nincs a kezünkben még doboz, akkor felvesszük,
-					//ha van a kezünkben akkor rárakjuk a másik dobozra, vagy a helyen még nincs doboz, akkor
-					//simán lerakjuk, és lesz ott egy doboz
+					//ha dobozzon Ã¡llunk, Ã©s nincs a kezÃ¼nkben mÃ©g doboz, akkor felvesszÃ¼k,
+					//ha van a kezÃ¼nkben akkor rÃ¡rakjuk a mÃ¡sik dobozra, vagy a helyen mÃ©g nincs doboz, akkor
+					//simÃ¡n lerakjuk, Ã©s lesz ott egy doboz
 					if (chechIfStangindOnBox) {
 						if (c.gethaveBox()) {
 							c.putDown();
@@ -551,119 +551,119 @@ public class StarGateGame extends JPanel implements ActionListener {
 
 			}
 			
-			//Ha él a Jaffa, akkor léphetünk vele
+			//Ha Ã©l a Jaffa, akkor lÃ©phetÃ¼nk vele
 			if (j.getisAlive()) {
 				/*
-				 * Lépés felfelé
+				 * LÃ©pÃ©s felfelÃ©
 				 */
 				if (keycode == KeyEvent.VK_W) {
-					//Ha nincs lenyomva billentyû akkor lépünk a Jaffaval
-					//beállítjuk milyen irányba néz
+					//Ha nincs lenyomva billentyÅ± akkor lÃ©pÃ¼nk a Jaffaval
+					//beÃ¡llÃ­tjuk milyen irÃ¡nyba nÃ©z
 					if(keypressedJ == false){
 						j.move(0, -32);
 						j.setFacing("up");
 					}
-					//Ha él a replikátor, akkor léptetjük random irányba
+					//Ha Ã©l a replikÃ¡tor, akkor lÃ©ptetjÃ¼k random irÃ¡nyba
 					if (replicator.getisAlive() == true)
 						replicator.move();
-					//Lenyomott billentyûzet jelzése
+					//Lenyomott billentyÅ± jelzÃ©se
 					keypressedJ = true;
 				}
 				/*
-				 * Lépés lefelé
+				 * LÃ©pÃ©s lefelÃ©
 				 */
 				if (keycode == KeyEvent.VK_S) {
-					//Ha nincs lenyomva billentyû akkor lépünk a Jaffaval
-					//beállítjuk milyen irányba néz
+					//Ha nincs lenyomva billentyÅ± akkor lÃ©pÃ¼nk a Jaffaval
+					//beÃ¡llÃ­tjuk milyen irÃ¡nyba nÃ©z
 					if(keypressedJ == false){
 						j.move(0, 32);
 						j.setFacing("down");
 					}
-					//Ha él a replikátor, akkor léptetjük random irányba
+					//Ha Ã©l a replikÃ¡tor, akkor lÃ©ptetjÃ¼k random irÃ¡nyba
 					if (replicator.getisAlive() == true)
 						replicator.move();
-					//Lenyomott billentyûzet jelzése
+					//Lenyomott billentyÅ± jelzÃ©se
 					keypressedJ = true;
 				}
 				/*
-				 * Lépés balra
+				 * LÃ©pÃ©s balra
 				 */
 				if (keycode == KeyEvent.VK_A) {
-					//Ha nincs lenyomva billentyû akkor lépünk a Jaffaval
-					//beállítjuk milyen irányba néz
+					//Ha nincs lenyomva billentyÅ± akkor lÃ©pÃ¼nk a Jaffaval
+					//beÃ¡llÃ­tjuk milyen irÃ¡nyba nÃ©z
 					if(keypressedJ == false){
 						j.move(-32, 0);
 						j.setFacing("left");
 					}
-					//Ha él a replikátor, akkor léptetjük random irányba
+					//Ha Ã©l a replikÃ¡tor, akkor lÃ©ptetjÃ¼k random irÃ¡nyba
 					if (replicator.getisAlive() == true)
 						replicator.move();
-					//Lenyomott billentyûzet jelzése
+					//Lenyomott billentyÅ± jelzÃ©se
 					keypressedJ = true;
 				}
 				/*
-				 * Lépés jobbra
+				 * LÃ©pÃ©s jobbra
 				 */
 				if (keycode == KeyEvent.VK_D) {
-					//Ha nincs lenyomva billentyû akkor lépünk a Jaffaval
-					//beállítjuk milyen irányba néz
+					//Ha nincs lenyomva billentyÅ± akkor lÃ©pÃ¼nk a Jaffaval
+					//beÃ¡llÃ­tjuk milyen irÃ¡nyba nÃ©z
 					if(keypressedJ == false){
 						j.move(32, 0);
 						j.setFacing("right");
 					}
-					//Ha él a replikátor, akkor léptetjük random irányba
+					//Ha Ã©l a replikÃ¡tor, akkor lÃ©ptetjÃ¼k random irÃ¡nyba
 					if (replicator.getisAlive() == true)
 						replicator.move();
-					//Lenyomott billentyûzet jelzése
+					//Lenyomott billentyÅ± jelzÃ©se
 					keypressedJ = true;
 				}
 				/*
-				 * Zöld lövedék lövése
+				 * ZÃ¶ld lÃ¶vedÃ©k lÃ¶vÃ©se
 				 */
 				if (keycode == KeyEvent.VK_Q){
-					//ha volt már portál adott koordinátán, akkor megszüntetjük, falat rakunk a helyére
+					//ha volt mÃ¡r portÃ¡l adott koordinÃ¡tÃ¡n, akkor megszÃ¼ntetjÃ¼k, falat rakunk a helyÃ©re
 					if (j.getPortalGreen_y() != -1 && j.getPortalGreen_x() != -1) {
 						ll.remove(j.getP2());
 						ll.add(new Wall(j.getPortalGreen_x(), j.getPortalGreen_y(), true, ch));
-						//-1-el jelezzük, hogy nincs nyitott portál
+						//-1-el jelezzÃ¼k, hogy nincs nyitott porÃ¡l
 						j.setPortalGreen_x(-1);
 						j.setPortalGreen_y(-1);
 					}
-					//lövedék színének beállítása, kilövése
+					//LÃ¶vedÃ©k szÃ­nÃ©nek beÃ¡llÃ­tÃ¡sa, kilÃ¶vÃ©se
 					j.shoot("green");	
 				}
 				/*
-				 * Piros lövedék lövése
+				 * Piros lÃ¶vedÃ©k lÃ¶vÃ©se
 				 */
 				if (keycode == KeyEvent.VK_E) {
-					//ha volt már portál adott koordinátán, akkor megszüntetjük, falat rakunk a helyére
+					//ha volt mÃ¡r portÃ¡l adott koordinÃ¡tÃ¡n, akkor megszÃ¼ntetjÃ¼k, falat rakunk a helyÃ©re
 					if (j.getPortalRed_y() != -1 && j.getPortalRed_x() != -1) {
 						ll.remove(j.getP1());
 						ll.add(new Wall(j.getPortalRed_x(), j.getPortalRed_y(), true, ch));
-						//-1-el jelezzük, hogy nincs nyitott portál
+						//-1-el jelezzÃ¼k, hogy nincs nyitott portÃ¡l
 						j.setPortalRed_x(-1);
 						j.setPortalRed_y(-1);
 
 					}
-					//lövedék színének beállítása, kilövése
+					//LÃ¶vedÃ©k szÃ­nÃ©nek beÃ¡llÃ­tÃ¡sa, kilÃ¶vÃ©se
 					j.shoot("red");
 				}
 				/*
-				 * Doboz felvétele, lerakása
+				 * Doboz felvÃ©tele, lerakÃ¡sa
 				 */
 				if (keycode == KeyEvent.VK_F) {
 					boolean chechIfStangindOnBox = false;
 
 					int CollisionIndexinListofElements = j.Coll_Character(j, ll);
 					
-					//vizsgáljuk, hogy dobozon állunk-e
+					//vizsgÃ¡ljuk, hogy dobozon Ã¡llunk-e
 					if (CollisionIndexinListofElements >= 0) {
 						chechIfStangindOnBox = ll.get(CollisionIndexinListofElements).ifStandingOnBox(j);
 					}
 					
-					//ha dobozzon állunk, és nincs a kezünkben még doboz, akkor felvesszük,
-					//ha van a kezünkben akkor rárakjuk a másik dobozra, vagy a helyen még nincs doboz, akkor
-					//simán lerakjuk, és lesz ott egy doboz
+					//ha dobozzon Ã¡llunk, Ã©s nincs kezÃ¼nkben mÃ©g doboz, akkor felvesszÃ¼k,
+					//ha van a kezÃ¼nkben akkor rÃ¡rakjuk a mÃ¡sik dobozra, vagy a helyen mÃ©g nincs doboz, akkor
+					//simÃ¡n lerakjuk, Ã©s lesz ott egy doboz
 					if (chechIfStangindOnBox) {
 						if (j.gethaveBox()) {
 							j.putDown();
@@ -684,17 +684,17 @@ public class StarGateGame extends JPanel implements ActionListener {
 		
 		
 		/*
-		 * Karakterek mozgatásakor a léptetõ billentyûzetek
-		 * lenyomásakor a keypressedC és keypressedJ változókat
-		 * true-ra állítjuk, hogy ne lehessen lenyomva tartani a billentyût
-		 * és folyton lépni a karakterrel.
-		 * Ezt felengedéskor false-ra álíltjuk, hogy léphessünk megint a következõ lenyomáskor.
+		 * Karakterek mozgatÃ¡sÃ¡hoz a lÃ©ptetÅ‘ billentyÅ±zetek
+		 * lenyomÃ¡sakor a keypressedC Ã©s keypressedJ vÃ¡ltozÃ³kat
+		 * true-ra Ã¡llÃ­tjuk, hogy ne lehessen lenyomva tartani a billentyÅ±t
+		 * Ã©s folyton lÃ©pni a karakterrel
+		 * Ezt felengedÃ©skor false-ra Ã¡llÃ­tjuk, hogy lÃ©phessÃ¼nk megint a kÃ¶vetkezÅ‘ lenyomÃ¡skor.
 		 * 
 		 * @see java.awt.event.KeyAdapter#keyReleased(java.awt.event.KeyEvent)
 		 */
 		public void keyReleased(KeyEvent e){
 			int keycode = e.getKeyCode();
-			//Ha él a colonel akkor figyeljük a billentyûfelengedést, úgy mint a lenyomást
+			//Ha Ã©l a colonel akkor figyeljÃ¼k a billentyÅ±felengedÃ©st,Ãºgy mint a lenyomÃ¡st
 			if (c.getisAlive()) {
 				if (keycode == KeyEvent.VK_UP) {
 					keypressedC = false;
@@ -709,7 +709,7 @@ public class StarGateGame extends JPanel implements ActionListener {
 					keypressedC = false;
 				}
 			}
-			//Ha él a jaffa akkor figyeljük a billentyûfelengedést, úgy mint a lenyomást
+			//Ha Ã©l a jaffa akkor figyeljÃ¼k a billentyÅ±felengedÃ©st, Ãºgy mint a lenyomÃ¡st
 			if(j.getisAlive()){
 				if (keycode == KeyEvent.VK_W) {
 					keypressedJ = false;

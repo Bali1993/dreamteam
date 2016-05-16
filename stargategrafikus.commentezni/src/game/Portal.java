@@ -1,31 +1,48 @@
 package game;
 
 import java.awt.Graphics;
+
 import java.awt.Image;
 
+/*
+ * Portál osztálya
+ * Element ősosztály
+ */
 public class Portal extends Element {
-	// private String facing; f�l�esleges, mert a Coloneln�l el van t�rolva, �s
-	// a saj�t facingj�t a port�l nem haszn�lja, csak a p�rj��t
+	// private String facing; felesleges, mert a Colonelnél el van tárolva, és
+	// a saját facingjét a portál nem használja, csak a párjáét
 	private String colour; // yellow / blue / red / green
-
+	
+	//Képeknek fenntartott változók
 	private Image image_portal_blue;
 	private Image image_portal_yellow;
 	private Image image_portal_red;
 	private Image image_portal_green;
 	
-	
+	/*
+	 * Portal konstruktora 
+	 * Element ősosztály konstruktorának hívása
+	 * szín és referencia beállítása
+	 */
 	public Portal(int x, int y, String colour, Character ch) {
 		super(x, y, ch);
 		this.colour = colour;
 		
-		//kepek eltarolasa
+		//Képek beolvasása
 		Map map = ch.getSGG().getMap();
 		image_portal_blue = map.get_image_portal_blue();
 		image_portal_yellow = map.get_image_portal_yellow();
 		image_portal_red = map.get_image_portal_red();
 		image_portal_green = map.get_image_portal_green();
 	}
-
+	
+	/*
+ 	 * Ha egy karakter ütközik egy portállal akkor teleportál, 
+ 	 * ha nyitva van a portál párja, ezt itt vizsgáljuk
+ 	 * majd megnézzük, hogy merre néz a portál
+ 	 * amerre néz arra léptetjük ki a karaktereket
+ 	 * ha nincs nyitva a párja, akkor nem teleportál, hanem sima falként viselkedik
+ 	 */
 	@Override
 	public void onCollisionWithCharacter(Character character, int dx, int dy) {
 
@@ -33,7 +50,7 @@ public class Portal extends Element {
 			int X_blue = character.getPortalBlue_x();
 			int Y_blue = character.getPortalBlue_y();
 			String bluePortalFacing = character.getPortalBlue_Facing();
-			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
+			// tehát ha nyitva van a másik portál, teleportálja oda az ezredest
 			if (X_blue != -1) {
 				if (bluePortalFacing == "up") {
 					character.setX(X_blue);
@@ -51,20 +68,20 @@ public class Portal extends Element {
 					character.setX(X_blue + 32);
 					character.setY(Y_blue);
 				}
-			} else {
+			} else { //Lepattan, mint a falról
 				character.setX(character.getX() - dx);
 				character.setY(character.getY() - dy);
 			}
 		}
 
-		// ha a saj�t sz�ne k�k, akkor lek�rdezi a m�sik s�rga port�l helyzet�t
-		// �s ir�ny�t
+		// ha a saját színe kék, akkor lekérdezi a másik sárga portál helyzetét
+		// és irányát
 		if (colour == "blue") {
 			int X_yellow = character.getPortalYellow_x();
 			int Y_yellow = character.getPortalYellow_y();
 			String yellowPortalFacing = character.getPortalYellow_Facing();
 
-			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
+			// tehát ha nyitva van a másik portál, teleportálja oda az ezredest
 			if (X_yellow != -1) {
 				if (yellowPortalFacing == "up") {
 					character.setX(X_yellow);
@@ -82,7 +99,7 @@ public class Portal extends Element {
 					character.setX(X_yellow + 32);
 					character.setY(Y_yellow);
 				}
-			} else {// lepattan mint a falr�l
+			} else {// Lepattan mint a falról
 				character.setX(character.getX() - dx);
 				character.setY(character.getY() - dy);
 			}
@@ -93,7 +110,7 @@ public class Portal extends Element {
 			int Y_red = character.getPortalRed_y();
 			String redPortalFacing = character.getPortalRed_Facing();
 
-			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
+			// tehát ha nyitva van a másik portál, teleportálja oda az ezredest
 			if (X_red != -1) {
 				if (redPortalFacing == "up") {
 					character.setX(X_red);
@@ -111,10 +128,10 @@ public class Portal extends Element {
 					character.setX(X_red + 32);
 					character.setY(Y_red);
 				}
-			} else {
+			} else {  // lepattan mint a falról
 				character.setX(character.getX() - dx);
 				character.setY(character.getY() - dy);
-			}
+			
 		}
 
 		if (colour == "red") {
@@ -122,7 +139,7 @@ public class Portal extends Element {
 			int Y_green = character.getPortalGreen_y();
 			String greenPortalFacing = character.getPortalGreen_Facing();
 
-			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
+			// tehát ha nyitva van a másik portál, teleportálja oda az ezredest
 			if (X_green != -1) {
 				if (greenPortalFacing == "up") {
 					character.setX(X_green);
@@ -140,22 +157,24 @@ public class Portal extends Element {
 					character.setX(X_green + 32);
 					character.setY(Y_green);
 				}
-			} else {// lepattan mint a falr�l
+			} else {  // lepattan mint a falról
 				character.setX(character.getX() - dx);
 				character.setY(character.getY() - dy);
 			}
 		}
+		}
 	}
 	
 	
-	
+	//Replikátor portállal ütközését kezelő függvény
+	//Hasonló a karakteréhez
 	@Override
 	public void onCollisionWithReplicator(Replicator replicator, Character c, Character j, int dx, int dy) {
 		if (colour == "yellow") {
 			int X_blue = c.getPortalBlue_x();
 			int Y_blue = c.getPortalBlue_y();
 			String bluePortalFacing = c.getPortalBlue_Facing();
-			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
+			// tehát ha nyitva van a másik portál, teleportálja oda a replikátort
 			if (X_blue != -1) {
 				if (bluePortalFacing == "up") {
 					replicator.setX(X_blue);
@@ -173,20 +192,20 @@ public class Portal extends Element {
 					replicator.setX(X_blue + 32);
 					replicator.setY(Y_blue);
 				}
-			} else {
+			} else {  // lepattan mint a falról
 				replicator.setX(replicator.getX() - dx);
 				replicator.setY(replicator.getY() - dy);
 			}
 		}
 
-		// ha a saj�t sz�ne k�k, akkor lek�rdezi a m�sik s�rga port�l helyzet�t
-		// �s ir�ny�t
+		// ha a saját színe kék, akkor lekérdezi a másik sárga portál helyzetét
+		// és irányát
 		if (colour == "blue") {
 			int X_yellow = c.getPortalYellow_x();
 			int Y_yellow = c.getPortalYellow_y();
 			String yellowPortalFacing = c.getPortalYellow_Facing();
 
-			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
+			// tehát ha nyitva van a másik portál, teleportálja oda a replikátort
 			if (X_yellow != -1) {
 				if (yellowPortalFacing == "up") {
 					replicator.setX(X_yellow);
@@ -204,18 +223,18 @@ public class Portal extends Element {
 					replicator.setX(X_yellow + 32);
 					replicator.setY(Y_yellow);
 				}
-			} else {// lepattan mint a falr�l
+			} else {// lepattan mint a falról
 				replicator.setX(replicator.getX() - dx);
 				replicator.setY(replicator.getY() - dy);
 			}
 		}
-
+			//Ha zöld portálnak ütközött
 		if (colour == "green") {
 			int X_red = j.getPortalRed_x();
 			int Y_red = j.getPortalRed_y();
 			String redPortalFacing = j.getPortalRed_Facing();
 
-			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
+			// tehát ha nyitva van a másik portál, teleportálja oda a replikátort
 			if (X_red != -1) {
 				if (redPortalFacing == "up") {
 					replicator.setX(X_red);
@@ -233,7 +252,7 @@ public class Portal extends Element {
 					replicator.setX(X_red + 32);
 					replicator.setY(Y_red);
 				}
-			} else {
+			} else {   // lepattan mint a falról
 				replicator.setX(replicator.getX() - dx);
 				replicator.setY(replicator.getY() - dy);
 			}
@@ -244,7 +263,7 @@ public class Portal extends Element {
 			int Y_green = j.getPortalGreen_y();
 			String greenPortalFacing = j.getPortalGreen_Facing();
 
-			// teh�t ha nyitva van a m�sik port�l, teleport�lja oda az ezredest
+			// tehát ha nyitva van a másik portál, teleportálja oda a replikátort
 			if (X_green != -1) {
 				if (greenPortalFacing == "up") {
 					replicator.setX(X_green);
@@ -262,13 +281,14 @@ public class Portal extends Element {
 					replicator.setX(X_green + 32);
 					replicator.setY(Y_green);
 				}
-			} else {// lepattan mint a falr�l
+			} else {// lepattan mint a falról
 				replicator.setX(replicator.getX() - dx);
 				replicator.setY(replicator.getY() - dy);
 			}
 		}
 	}
 	
+	//A megfelelő portálképek kirajzolásáért felelős függvény
 	@Override
 	public void render(Graphics g) {
 		if (colour == "blue") {

@@ -1,6 +1,7 @@
 package game;
 
 import java.awt.Graphics;
+
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.util.LinkedList;
@@ -8,24 +9,43 @@ import java.util.Random;
 
 import ntrfc.Entity;
 
+/*
+ * Replikátor osztálya
+ * random mozog a pályán, ha meglőjük megsemmisül
+ * teleportál, használja a mérleget
+ */
 public class Replicator {
+	
+	//Replikátor koordinátái
 	private int x;
 	private int y;
 	StarGateGame sgg;
+	
+	//Él-e a replikátor, ha él true
 	private boolean isAlive;
 
 	private Image image_replicator;
 	
+	/*
+	 * replikátor konstruktora
+	 * isalive->true
+	 * koordinátái beállítása
+	 */
 	public Replicator(StarGateGame sgg, int x, int y) {
 		this.x = x;
 		this.y = y;
 		this.sgg = sgg;
 		isAlive = true;
 		
-		//kep eltarolasa
+		//Kép eltárolása
 		image_replicator = sgg.getMap().get_image_replicator();
 	}
-
+	
+	/*
+	 * Replikátor ütköztetése elemekkel
+	 * visszatér az elem indexével a listában ha ütközött
+	 * 0-val ha semmivel nem ütközött
+	 */
 	public int Coll_Replicator(Replicator r, LinkedList<Entity> ll) {
 		Rectangle RecOfReplicator = r.getRec();
 		for (int i = 0; i < ll.size(); ++i) {
@@ -36,9 +56,16 @@ public class Replicator {
 		}
 		return 0;
 	}
-
+	
+	/*
+	 * Replikátor random mozgása a pályán
+	 * és ütközés vizsgálata
+	 */
 	public void move() {
 		Random rand = new Random();
+		
+		//random szám generálása 1 és 4 között, 
+		//ami alapján +x,-x,+y,-y irányba léptetjük		
 		int n = rand.nextInt(4) + 1;
 		int dx = 0;
 		int dy = 0;
@@ -61,7 +88,7 @@ public class Replicator {
 			dy = -32;
 			break;
 		default:
-			System.out.println("REPLICATOR MOVE HIBBABABABAB nagy a baj more");
+			System.out.println("REPLICATOR MOVE ERROR");
 			break;
 
 		}
@@ -76,14 +103,14 @@ public class Replicator {
 		}
 	}
 
-	// megsemmisiti �nmag�t, ha szakad�kba l�p
-	// Pit oszt�ly h�vja, ha onColl-ja aktiv�l�dik azaz �tk�z�s t�rt�nik
+	// megsemmisiti önmagát, ha szakadékba lép
+	// Pit osztály hívja, ha onColl-ja aktiválódik azaz ütközés történik
 	public void destroy() {
 		this.x = -1;
 		this.y = -1;
 		this.isAlive = false;
 	}
-
+	//Replikátor attributumainak getterei, setterei
 	public int getX() {
 		return x;
 	}
@@ -99,7 +126,10 @@ public class Replicator {
 	public void setY(int y) {
 		this.y = y;
 	}
-
+	
+	/*
+	 * rectangle készítése a replikátor koordinátáival
+	 */
 	public Rectangle getRec() {
 		return new Rectangle(x, y, 32, 32);
 	}
@@ -107,7 +137,8 @@ public class Replicator {
 	public boolean getisAlive() {
 		return isAlive;
 	}
-
+	
+	//Replikátor képének kirajzolása.
 	public void render(Graphics g) {
 		if (isAlive) {
 			g.drawImage(image_replicator, this.x + 1, this.y + 1, 31, 31, null);
